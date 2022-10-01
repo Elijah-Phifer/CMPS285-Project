@@ -7,33 +7,33 @@ namespace LearningStarter.Entities
         {
             public int Id { get; set; }
             public string ItemName { get; set; }
-            public string ProductionCost { get; set; }
+            public int ProductionCost { get; set; }
             public int Quantity { get; set; }
             public int NetTotal { get; set; }
             public string Availabilty { get; set; }
             public int OnlineStoreId { get; set; }
-            public OnlineStores OnlineStores { get; set; }
+           // public OnlineStores OnlineStores { get; set; }
             public string SiteListing { get; set; }
             public string DateAdded { get; set; }
-            public List<Inventories> Invnetories { get; set; } = new List<Inventories>();
+            public List<OnlineStores> OnlineStores { get; set; } = new List<OnlineStores>();
         }
-        public class InventoriesGetDto
+
+    public class InventoriesCreateDto
+    {
+        public string ItemName { get; set; }
+        public int ProductionCost { get; set; }
+        public int Quantity { get; set; }
+        public int NetTotal { get; set; }
+        public string Availabilty { get; set; }
+        public int OnlineStoreId { get; set; }
+        public string SiteListing { get; set; }
+        public string DateAdded { get; set; }
+    }
+    public class InventoriesGetDto
         {
             public int Id { get; set; }
             public string ItemName { get; set; }
-            public string ProductionCost { get; set; }
-            public int Quantity { get; set; }
-            public int NetTotal { get; set; }
-            public string Availabilty { get; set; }
-            public int OnlineStoreId { get; set; }
-            public string SiteListing { get; set; }
-            public string DateAdded { get; set; }
-        }
-
-        public class InventoriesCreateDto
-        {
-            public string ItemName { get; set; }
-            public string ProductionCost { get; set; }
+            public int ProductionCost { get; set; }
             public int Quantity { get; set; }
             public int NetTotal { get; set; }
             public string Availabilty { get; set; }
@@ -45,7 +45,7 @@ namespace LearningStarter.Entities
         public class InventoriesUpdateDto
         {
             public string ItemName { get; set; }
-            public string ProductionCost { get; set; }
+            public int ProductionCost { get; set; }
             public int Quantity { get; set; }
             public int NetTotal { get; set; }
             public string Availabilty { get; set; }
