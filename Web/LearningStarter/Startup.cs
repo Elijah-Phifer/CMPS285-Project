@@ -134,29 +134,6 @@ namespace LearningStarter
                 }
             });
 
-            SeedUsers(dataContext);
-            SeedBulletJournalEntries(dataContext);
-        }
-
-        private void SeedBulletJournalEntries(DataContext dataContext)
-        {
-            if (!dataContext.BulletJournalEntries.Any())
-            {
-                var seededBulletJournalEntry = new BulletJournalEntry
-                {
-                    DateCreated = DateTimeOffset.Now,
-                    Contents = "Enter Somthing Here",
-                    IsDone = false,
-                    Pushes = 0
-                };
-
-                dataContext.BulletJournalEntries.Add(seededBulletJournalEntry);
-                dataContext.SaveChanges();
-            }
-        }
-
-        public void SeedUsers(DataContext dataContext)
-        {
             var numUsers = dataContext.Users.Count();
 
             if (numUsers == 0)
@@ -168,7 +145,7 @@ namespace LearningStarter
                     Username = "admin",
                     Password = "password"
                 };
-
+                
                 dataContext.Users.Add(seededUser);
                 dataContext.SaveChanges();
             }
