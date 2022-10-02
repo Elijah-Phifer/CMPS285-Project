@@ -1,6 +1,9 @@
 using System;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using LearningStarter.Common;
 using LearningStarter.Data;
 using LearningStarter.Entities;
 using LearningStarter.Services;
@@ -8,6 +11,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -133,7 +137,32 @@ namespace LearningStarter
                     spa.UseProxyToSpaDevelopmentServer("http://localhost:3001");
                 }
             });
+            SeedUsers(dataContext);
+            SeedInventories(dataContext);
+        }
 
+        private void SeedInventories(DataContext dataContext)
+        {
+            if (!dataContext.Inventories.Any()) {
+                var seededInventory = new Inventories
+                {
+                    ItemName = "BlueDress",
+                    ProductionCost = 12,
+                    Quantity = 4, 
+                    NetTotal = 35,
+                    Availabilty = "Yes",
+                    //OnlineStoreId = ,
+                    DateAdded = "2/3/12"
+                };
+                dataContext.Inventories.Add(seededInventory);
+                dataContext.SaveChanges();
+
+            }
+        }
+
+
+        public void SeedUsers(DataContext dataContext)
+        {
             var numUsers = dataContext.Users.Count();
 
             if (numUsers == 0)
@@ -145,10 +174,12 @@ namespace LearningStarter
                     Username = "admin",
                     Password = "password"
                 };
-                
+
                 dataContext.Users.Add(seededUser);
                 dataContext.SaveChanges();
             }
+
         }
+        
     }
 }
