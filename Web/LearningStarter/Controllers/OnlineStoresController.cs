@@ -107,7 +107,7 @@ namespace LearningStarter.Controllers
             {
                 return BadRequest(response);
             }
-            var onlineStoresToAdd = new OnlineStores()
+            var onlineStoresToAdd = new onlineStores()
             {
                 StoreName = onlinestoresCreateDto.StoreName,
                 ListingFees = onlinestoresCreateDto.ListingFees,

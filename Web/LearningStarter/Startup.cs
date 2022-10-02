@@ -147,16 +147,27 @@ namespace LearningStarter
         { 
             if (!dataContext.Onlinestores.Any())
             {
-                var seededOnlineStores = new OnlineStores
+                var seededOnlineStores = new onlineStores
                 {
                     StoreName = "Ebay",
-                    ListingFees = 10,
-                    SellingFees = 34,
-                    Taxes = 3,
+                    ListingFees = .35,
+                    SellingFees = 6.5,
+                    Taxes = 8.45,
                     Country = "United States of America",
                     Region = "Louisisana",
                 };
-
+                var seededOnlineStores1 = new onlineStores
+                {
+                    StoreName = "Etsy",
+                    ListingFees = .2,
+                    SellingFees = 6.5,
+                    Taxes = 8.45,
+                    Country = "United States of America",
+                    Region = "Louisisana",
+                };
+                
+                
+               
             }
         }
         private void SeedInventories(DataContext dataContext)
@@ -165,17 +176,19 @@ namespace LearningStarter
                 var seededInventory = new Inventories
                 {
                     ItemName = "BlueDress",
-                    ProductionCost = 12,
+                    ProductionCost = 12.00,
                     Quantity = 4, 
                     NetTotal = 35,
                     Availabilty = "Yes",
-                    OnlineStoreId = 3,
-                    DateAdded = "2/3/12"
+                    OnlineStoreId = 1,
+                    SiteListing = 43.23,
+                    DateAdded = "2/3/12",
                 };
                 dataContext.Inventories.Add(seededInventory);
                 dataContext.SaveChanges();
 
             }
+               
         }
 
 
@@ -190,8 +203,10 @@ namespace LearningStarter
                     FirstName = "Seeded",
                     LastName = "User",
                     Username = "admin",
-                    Password = "password"
+                    Password = "password",
                 };
+
+
 
                 dataContext.Users.Add(seededUser);
                 dataContext.SaveChanges();

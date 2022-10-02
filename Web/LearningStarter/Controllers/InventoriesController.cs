@@ -4,6 +4,7 @@ using LearningStarter.Entities;
 using LearningStarter.Entities.LearningStarter.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 namespace LearningStarter.Controllers
 {
@@ -16,6 +17,11 @@ namespace LearningStarter.Controllers
         public InventoriesController(DataContext dataContext)
         {
             _dataContext = dataContext;
+        }
+
+        public static class Listing 
+        {
+           
         }
 
         [HttpGet]
@@ -82,10 +88,6 @@ namespace LearningStarter.Controllers
                 response.AddError("ItemName", "Item Name cannot be empty");
             }
 
-            if (string.IsNullOrEmpty(inventoriesCreateDto.SiteListing))
-            {
-                response.AddError("SiteListing", "Site Listing cannot be empty");
-            }
 
             if (string.IsNullOrEmpty(inventoriesCreateDto.Availabilty))
             {
@@ -118,6 +120,7 @@ namespace LearningStarter.Controllers
                 response.AddError("OnlineStoreId", "Online Store Id Added cannot be less than zero");
 
             }
+            
 
             if (response.HasErrors)
                 { 
