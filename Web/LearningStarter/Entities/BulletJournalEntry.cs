@@ -7,7 +7,7 @@ namespace LearningStarter.Entities
         public int Id { get; set; }
         public string Contents { get; set; }
         public DateTimeOffset DateCreated { get; set; }
-        public Boolean IsDone { get; set; }
+        public bool IsDone { get; set; }
         public int Pushes { get; set; }
     }
 
@@ -16,7 +16,7 @@ namespace LearningStarter.Entities
         public int Id { get; set; }
         public string Contents { get; set; }
         public DateTimeOffset DateCreated { get; set; }
-        public Boolean IsDone { get; set; }
+        public bool IsDone { get; set; }
         public int Pushes { get; set; }
     }
 
@@ -24,15 +24,13 @@ namespace LearningStarter.Entities
     {
         public string Contents { get; set; }
         public DateTimeOffset DateCreated { get; set; }
-        public Boolean IsDone { get; set; }
-        public int Pushes { get; set; }
     }
     
     public class BulletJournalEntryUpdateDto
     {
         public string Contents { get; set; }
         public DateTimeOffset DateCreated { get; set; }
-        public Boolean IsDone { get; set; }
+        public bool IsDone { get; set; }
         public int Pushes { get; set; }
    }
 
@@ -41,7 +39,7 @@ namespace LearningStarter.Entities
         public int Id { get; set; }
         public string Contents { get; set; }
         public DateTimeOffset DateCreated { get; set; }
-        public Boolean IsDone { get; set; }
+        public bool IsDone { get; set; }
     }
     
 

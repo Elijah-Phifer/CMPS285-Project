@@ -80,12 +80,16 @@ namespace LearningStarter.Controllers
                 return BadRequest(response);
             }
 
+           /* if (bulletJournalEntryGetDto) 
+            {
+
+            } */
+           //Keeping this here because i had an idea but i lost it
+
             var bulletJournalEntryToAdd = new BulletJournalEntry
             {
                 DateCreated = DateTimeOffset.Now,
                 Contents = bulletJournalEntryCreateDto.Contents,
-                IsDone = bulletJournalEntryCreateDto.IsDone,
-                Pushes = 0,
             };
 
             _dataContext.BulletJournalEntries.Add(bulletJournalEntryToAdd);
