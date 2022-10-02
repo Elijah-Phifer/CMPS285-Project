@@ -5,6 +5,8 @@ using LearningStarter.Data;
 using LearningStarter.Entities;
 using Microsoft.AspNetCore.Mvc;
 
+
+
 namespace LearningStarter.Controllers
 {
     [ApiController]
@@ -12,13 +14,16 @@ namespace LearningStarter.Controllers
     public class SubscribersController : ControllerBase
     {
         private readonly DataContext _dataContext;
+
         public SubscribersController(
             DataContext dataContext)
         {
             _dataContext = dataContext;
+
         }
 
         [HttpGet]
+
         public IActionResult GetAll()
         {
             var response = new Response();
@@ -27,13 +32,14 @@ namespace LearningStarter.Controllers
             .Select(subscriber => new SubscriberGetDto
             {
                 Id = subscriber.Id,
-                Name = subscriber.Title,
-                Email = subscriber.Message,
-                DateSubcribed = subscriber.DateSent,
+                Name = subscriber.Name,
+                Email = subscriber.Email,
+                DateSubscribed = subscriber.DateSubscribed,
             })
             .ToList();
+
             response.Data = subscribers;
             return Ok(response);
         }
-        }
     }
+}

@@ -12,7 +12,7 @@ namespace LearningStarter.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<EmailNewsletter> EmailNewsletters { get; set; }
-        public DbSet<Subscribers> Subcribers { get; set; }
+        public DbSet<Subscriber> Subscribers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
