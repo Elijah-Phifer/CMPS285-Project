@@ -172,7 +172,8 @@ namespace LearningStarter
                     FirstName = "Seeded",
                     LastName = "User",
                     Username = "admin",
-                    Password = "password"
+                    Password = "password",
+                    Email = "Email"
                 };
 
                 dataContext.Users.Add(seededUser);
