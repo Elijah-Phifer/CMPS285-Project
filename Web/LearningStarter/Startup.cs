@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LearningStarter.Common;
 using LearningStarter.Data;
 using LearningStarter.Entities;
+using LearningStarter.Entities.LearningStarter.Entities;
 using LearningStarter.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -139,8 +140,25 @@ namespace LearningStarter
             });
             SeedUsers(dataContext);
             SeedInventories(dataContext);
+            SeedOnlineStores(dataContext);
         }
 
+        private void SeedOnlineStores(DataContext dataContext) 
+        { 
+            if (!dataContext.Onlinestores.Any())
+            {
+                var seededOnlineStores = new OnlineStores
+                {
+                    StoreName = "Ebay",
+                    ListingFees = 10,
+                    SellingFees = 34,
+                    Taxes = 3,
+                    Country = "United States of America",
+                    State = "Louisisana",
+                };
+
+            }
+        }
         private void SeedInventories(DataContext dataContext)
         {
             if (!dataContext.Inventories.Any()) {
