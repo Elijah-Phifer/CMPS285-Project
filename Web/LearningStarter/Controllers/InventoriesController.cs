@@ -41,11 +41,66 @@ namespace LearningStarter.Controllers
             return Ok(response);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById([FromRoute] int id)
+        {
+            var response = new Response();
+            
+            var inventoriesToReturn = _dataContext
+                .Inventories
+                .Select (inventories => new InventoriesGetDto
+                {
+                    Id = inventories.Id,
+                    Availabilty = inventories.Availabilty,
+                    DateAdded = inventories.DateAdded,
+                    ItemName = inventories.ItemName,
+                    NetTotal = inventories.NetTotal,
+                    OnlineStoreId = inventories.OnlineStoreId,
+                    ProductionCost = inventories.ProductionCost,
+                    Quantity = inventories.Quantity,
+                    SiteListing = inventories.SiteListing,
+                })
+                .FirstOrDefault(inventories => inventories.Id == id);
+            
+            if (inventoriesToReturn == null)
+            {
+                response.AddError("id", "Entry not found.");
+                return BadRequest(response);
+            }
+            response.Data = inventoriesToReturn;
+            return Ok(response);
+
+        }
+
         [HttpPost]
         public IActionResult Create([FromBody] InventoriesCreateDto inventoriesCreateDto)
         {
             var response = new Response();
 
+            if(string.IsNullOrEmpty(inventoriesCreateDto.ItemName))
+            {
+                response.AddError("ItemName", "Item Name cannot be empty");
+            }
+
+            if (string.IsNullOrEmpty(inventoriesCreateDto.SiteListing))
+            {
+                response.AddError("SiteListing", "Site Listing cannot be empty");
+            }
+
+            if (string.IsNullOrEmpty(inventoriesCreateDto.Availabilty))
+            {
+                response.AddError("Availabilty", "Availabilty cannot be empty");
+            }
+
+            if (string.IsNullOrEmpty(inventoriesCreateDto.DateAdded))
+            {
+                response.AddError("DateAdded", "Date Added cannot be empty");
+            }
+
+            if (response.HasErrors)
+                { 
+                    return BadRequest(response);
+                }
             var inventoriesToAdd = new Inventories()
             {
                 Availabilty = inventoriesCreateDto.Availabilty,
@@ -93,14 +148,15 @@ namespace LearningStarter.Controllers
                 response.AddError("id", "Entry not found");
                 return BadRequest(response);
             }
-            inventoriesToUpdate.Availabilty = inventoriesToUpdate.Availabilty;
-            inventoriesToUpdate.DateAdded = inventoriesToUpdate.DateAdded;
-            inventoriesToUpdate.ItemName = inventoriesToUpdate.ItemName;
-            inventoriesToUpdate.NetTotal = inventoriesToUpdate.NetTotal;
-            inventoriesToUpdate.ProductionCost = inventoriesToUpdate.ProductionCost;
-            inventoriesToUpdate.Quantity = inventoriesToUpdate.Quantity;    
-            inventoriesToUpdate.SiteListing = inventoriesToUpdate.SiteListing;  
-            inventoriesToUpdate.OnlineStoreId = inventoriesToUpdate.OnlineStoreId;            
+            inventoriesToUpdate.Availabilty = inventoriesUpdateDto.Availabilty;
+            inventoriesToUpdate.DateAdded = inventoriesUpdateDto.DateAdded;
+            inventoriesToUpdate.ItemName = inventoriesUpdateDto.ItemName;
+            inventoriesToUpdate.NetTotal = inventoriesUpdateDto.NetTotal;
+            inventoriesToUpdate.ProductionCost = inventoriesUpdateDto.ProductionCost;
+            inventoriesToUpdate.Quantity = inventoriesUpdateDto.Quantity;
+            inventoriesToUpdate.SiteListing = inventoriesUpdateDto.SiteListing;
+            inventoriesToUpdate.OnlineStoreId = inventoriesUpdateDto.OnlineStoreId;
+
             _dataContext.SaveChanges();
 
             var inventoriesToRetrun = new InventoriesGetDto
@@ -117,6 +173,28 @@ namespace LearningStarter.Controllers
             };
 
             response.Data = inventoriesToRetrun;
+            return Ok(response);
+        }
+        [HttpDelete("{id:int}")]
+        public IActionResult Delete([FromRoute] int id)
+        {
+            var response = new Response();
+
+            var inventoriesToDelete = _dataContext
+                .Inventories
+                .FirstOrDefault(inventories => inventories.Id == id);
+
+            if (inventoriesToDelete == null)
+
+            {
+                response.AddError("id", "Entry not found");
+                return BadRequest(response);
+            }
+
+            _dataContext.Remove(inventoriesToDelete);
+            _dataContext.SaveChanges();
+
+            response.Data = true;
             return Ok(response);
         }
     }

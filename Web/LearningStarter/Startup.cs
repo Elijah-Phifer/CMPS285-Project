@@ -151,7 +151,7 @@ namespace LearningStarter
                     Quantity = 4, 
                     NetTotal = 35,
                     Availabilty = "Yes",
-                    //OnlineStoreId = ,
+                    OnlineStoreId = 3,
                     DateAdded = "2/3/12"
                 };
                 dataContext.Inventories.Add(seededInventory);

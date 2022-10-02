@@ -12,10 +12,10 @@ namespace LearningStarter.Entities
             public int NetTotal { get; set; }
             public string Availabilty { get; set; }
             public int OnlineStoreId { get; set; }
-           // public OnlineStores OnlineStores { get; set; }
+//            public OnlineStores OnlineStores { get; set; }
             public string SiteListing { get; set; }
             public string DateAdded { get; set; }
-            public List<OnlineStores> OnlineStores { get; set; } = new List<OnlineStores>();
+            public List<OnlineStores> onlineStores { get; set; } = new List<OnlineStores>();
         }
 
     public class InventoriesCreateDto
