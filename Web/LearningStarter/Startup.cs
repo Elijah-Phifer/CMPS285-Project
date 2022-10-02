@@ -145,7 +145,7 @@ namespace LearningStarter
                 var seededBulletJournalEntry = new BulletJournalEntry
                 {
                     DateCreated = DateTimeOffset.Now,
-                    Contents = "Enter Somthing Here",
+                    Contents = "Do Somthing",
                     IsDone = false,
                     Pushes = 0
                 };
