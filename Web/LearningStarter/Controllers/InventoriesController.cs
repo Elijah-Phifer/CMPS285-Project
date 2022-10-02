@@ -97,6 +97,28 @@ namespace LearningStarter.Controllers
                 response.AddError("DateAdded", "Date Added cannot be empty");
             }
 
+            if (inventoriesCreateDto.ProductionCost < 0)
+            {
+                response.AddError("ProductionCost", "Production Cost Added cannot be empty");
+            }
+
+            if (inventoriesCreateDto.NetTotal < 0) 
+            {
+                response.AddError("NetTotal", "Net Total Cost Added cannot be empty");
+            }
+
+            if (inventoriesCreateDto.Quantity < 0)
+            {
+                response.AddError("Quantity", "Quantity Added cannot be empty");
+            }
+
+
+            if(inventoriesCreateDto.OnlineStoreId < 0)
+            {
+                response.AddError("OnlineStoreId", "Online Store Id Added cannot be empty");
+
+            }
+
             if (response.HasErrors)
                 { 
                     return BadRequest(response);
