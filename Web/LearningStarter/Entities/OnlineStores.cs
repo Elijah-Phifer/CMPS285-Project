@@ -13,7 +13,7 @@
             public int SellingFees { get; set; }
             public int Taxes { get; set; }
             public string Country { get; set; }
-            public string State { get; set; }
+            public string Region { get; set; }
             public List<Inventories> Invnetories { get; set; } = new List<Inventories>();
         }
         public class OnlineStoresGetDto
@@ -24,7 +24,7 @@
             public int SellingFees { get; set; }
             public int Taxes { get; set; }
             public string Country { get; set; }
-            public string State { get; set; }
+            public string Region { get; set; }
         }
 
         public class OnlinestoresCreateDto
@@ -34,7 +34,7 @@
             public int SellingFees { get; set; }
             public int Taxes { get; set; }
             public string Country { get; set; }
-            public string State { get; set; }
+            public string Region { get; set; }
         }
 
         public class OnlinestoresUpdateDto
@@ -44,7 +44,7 @@
             public int SellingFees { get; set; }
             public int Taxes { get; set; }
             public string Country { get; set; }
-            public string State { get; set; }
+            public string Region { get; set; }
         }
 
     }

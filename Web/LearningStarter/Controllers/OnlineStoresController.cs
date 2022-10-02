@@ -32,7 +32,7 @@ namespace LearningStarter.Controllers
                     SellingFees = OnlineStores.SellingFees,
                     Taxes = OnlineStores.Taxes,
                     Country = OnlineStores.Country,
-                    State = OnlineStores.State
+                    Region = OnlineStores.Region
                 })
             .ToList();
             response.Data = OnlineStores;
@@ -54,7 +54,7 @@ namespace LearningStarter.Controllers
                     SellingFees = onlineStores.SellingFees,
                     Taxes = onlineStores.Taxes,
                     Country = onlineStores.Country,
-                    State = onlineStores.State,
+                    Region = onlineStores.Region,
 
                 })
                 .FirstOrDefault(onlineStores => onlineStores.Id == id);
@@ -72,6 +72,41 @@ namespace LearningStarter.Controllers
         public IActionResult Create([FromBody] OnlinestoresCreateDto onlinestoresCreateDto)
         {
             var response = new Response();
+
+            if (string.IsNullOrEmpty(onlinestoresCreateDto.StoreName))
+            {
+                response.AddError("StoreName", "Store Name cannot be empty");
+            }
+
+            if (string.IsNullOrEmpty(onlinestoresCreateDto.Country))
+            {
+                response.AddError("Country", "Country cannot be empty");
+            }
+
+            if (string.IsNullOrEmpty(onlinestoresCreateDto.Region))
+            {
+                response.AddError("Region", "Region cannot be empty");
+            }
+
+            if (onlinestoresCreateDto.ListingFees < 0)
+            {
+                response.AddError("ListingFees", "Listing Fees cannot be less than zero");
+            }
+
+            if (onlinestoresCreateDto.Taxes < 0)
+            {
+                response.AddError("Taxes", "Taxes Fees cannot be less than zero");
+            }
+
+            if (onlinestoresCreateDto.SellingFees < 0)
+            {
+                response.AddError("SellingFees", "Selling Fees Fees cannot be less than zero");
+            }
+
+            if (response.HasErrors)
+            {
+                return BadRequest(response);
+            }
             var onlineStoresToAdd = new OnlineStores()
             {
                 StoreName = onlinestoresCreateDto.StoreName,
@@ -79,7 +114,7 @@ namespace LearningStarter.Controllers
                 SellingFees = onlinestoresCreateDto.SellingFees,
                 Taxes = onlinestoresCreateDto.Taxes,
                 Country = onlinestoresCreateDto.Country,
-                State = onlinestoresCreateDto.State,
+                Region = onlinestoresCreateDto.Region,
             };
             _dataContext.Onlinestores.Add(onlineStoresToAdd);
             _dataContext.SaveChanges();
@@ -91,7 +126,7 @@ namespace LearningStarter.Controllers
                 SellingFees = onlineStoresToAdd.SellingFees,
                 Taxes = onlineStoresToAdd.Taxes,
                 Country = onlineStoresToAdd.Country,
-                State = onlineStoresToAdd.State,
+                Region = onlineStoresToAdd.Region,
             };
             response.Data = onlineStoresToReturn;
             return Created("", response);
@@ -119,7 +154,7 @@ namespace LearningStarter.Controllers
             onlineStoreToUpdate.SellingFees = onlineStoreToUpdate.SellingFees;
             onlineStoresUpdateDto.Taxes = onlineStoreToUpdate.Taxes;
             onlineStoreToUpdate.Country = onlineStoreToUpdate.Country;
-            onlineStoreToUpdate.State = onlineStoreToUpdate.State;
+            onlineStoreToUpdate.Region = onlineStoreToUpdate.Region;
 
             _dataContext.SaveChanges();
 
@@ -130,7 +165,7 @@ namespace LearningStarter.Controllers
                 ListingFees = onlineStoreToUpdate.ListingFees,
                 SellingFees = onlineStoreToUpdate.SellingFees,
                 Country = onlineStoreToUpdate.Country,
-                State = onlineStoreToUpdate.State,
+                Region = onlineStoreToUpdate.Region,
                 Taxes = onlineStoreToUpdate.Taxes,
 
             };

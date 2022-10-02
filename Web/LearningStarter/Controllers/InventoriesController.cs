@@ -99,23 +99,23 @@ namespace LearningStarter.Controllers
 
             if (inventoriesCreateDto.ProductionCost < 0)
             {
-                response.AddError("ProductionCost", "Production Cost Added cannot be empty");
+                response.AddError("ProductionCost", "Production Cost Added cannot be less than zero");
             }
 
             if (inventoriesCreateDto.NetTotal < 0) 
             {
-                response.AddError("NetTotal", "Net Total Cost Added cannot be empty");
+                response.AddError("NetTotal", "Net Total Cost Added cannot be less than zero");
             }
 
             if (inventoriesCreateDto.Quantity < 0)
             {
-                response.AddError("Quantity", "Quantity Added cannot be empty");
+                response.AddError("Quantity", "Quantity Added cannot be less than zero");
             }
 
 
             if(inventoriesCreateDto.OnlineStoreId < 0)
             {
-                response.AddError("OnlineStoreId", "Online Store Id Added cannot be empty");
+                response.AddError("OnlineStoreId", "Online Store Id Added cannot be less than zero");
 
             }
 

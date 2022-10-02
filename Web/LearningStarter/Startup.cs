@@ -154,7 +154,7 @@ namespace LearningStarter
                     SellingFees = 34,
                     Taxes = 3,
                     Country = "United States of America",
-                    State = "Louisisana",
+                    Region = "Louisisana",
                 };
 
             }
