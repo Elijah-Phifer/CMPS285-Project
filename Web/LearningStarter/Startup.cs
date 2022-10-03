@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LearningStarter.Common;
 using LearningStarter.Data;
 using LearningStarter.Entities;
+using LearningStarter.Entities.LearningStarter.Entities;
 using LearningStarter.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -141,25 +142,58 @@ namespace LearningStarter
             SeedUsers(dataContext);
             SeedInventories(dataContext);
             SeedBulletJournalEntries(dataContext);
+            SeedOnlineStores(dataContext);
         }
 
+        private void SeedOnlineStores(DataContext dataContext) 
+        { 
+            if (!dataContext.Onlinestores.Any())
+            {
+                var seededOnlineStores = new OnlineStores
+                {
+                    StoreName = "Ebay",
+                    ListingFees = .35,
+                    SellingFees = 1.065,
+                    Taxes = 1.0845,
+                    Country = "United States of America",
+                    Region = "Louisisana",
+                };
+                
+                var seededOnlineStores1 = new OnlineStores
+                {
+                    StoreName = "Etsy",
+                    ListingFees = .2,
+                    SellingFees = 1.065,
+                    Taxes = 1.0845,
+                    Country = "United States of America",
+                    Region = "Louisisana",
+                };
+                dataContext.Onlinestores.Add(seededOnlineStores);
+                dataContext.Onlinestores.Add(seededOnlineStores1);
+                dataContext.SaveChanges();
+                
+
+            }
+        }
         private void SeedInventories(DataContext dataContext)
         {
             if (!dataContext.Inventories.Any()) {
                 var seededInventory = new Inventories
                 {
                     ItemName = "BlueDress",
-                    ProductionCost = 12,
-                    Quantity = 4,
-                    NetTotal = 35,
+                    ProductionCost = 12.00,
+                    Quantity = 4, 
+                    GrossTotal = 35.54,
                     Availabilty = "Yes",
-                    //OnlineStoreId = ,
-                    DateAdded = "2/3/12"
+                    OnlineStoreId = 1,
+                    SiteListing = 43.23,
+                    DateAdded = "2/3/12",
                 };
                 dataContext.Inventories.Add(seededInventory);
                 dataContext.SaveChanges();
 
             }
+               
         }
 
 
@@ -195,6 +229,8 @@ namespace LearningStarter
                     Password = "password",
                     Email = "Email"
                 };
+
+
 
                 dataContext.Users.Add(seededUser);
                 dataContext.SaveChanges();
