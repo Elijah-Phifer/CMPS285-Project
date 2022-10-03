@@ -227,6 +227,7 @@ namespace LearningStarter
                     LastName = "User",
                     Username = "admin",
                     Password = "password",
+                    Email = "Email"
                 };
 
 
