@@ -140,10 +140,46 @@ namespace LearningStarter
             });
 
             SeedUsers(dataContext);
+
+            SeedSubscribers(dataContext);
+            SeedEmailNewsletters(dataContext); 
             SeedInventories(dataContext);
             SeedBulletJournalEntries(dataContext);
             SeedOnlineStores(dataContext);
         }
+
+        private void SeedSubscribers(DataContext dataContext)
+        {
+            if (!dataContext.Subscribers.Any())
+            {
+                var seededSubscriber = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "First Last",
+                    Email = "email.aol" 
+                };
+                dataContext.Subscribers.Add(seededSubscriber);
+                dataContext.SaveChanges();
+            }
+        }
+         private void SeedEmailNewsletters(DataContext dataContext)
+        {
+            if (!dataContext.EmailNewsletters.Any())
+            {
+                var seededEmailNewsletter = new EmailNewsletter
+                {
+                    DateSent = DateTimeOffset.Now,
+                    Title = "Welcome!",
+                    Message = "Hi, Welcome to your Virtual Newsletter!" 
+                };
+                dataContext.EmailNewsletters.Add(seededEmailNewsletter);
+                dataContext.SaveChanges();
+            }
+        }
+
+
+
+
 
         private void SeedOnlineStores(DataContext dataContext) 
         { 
@@ -217,6 +253,7 @@ namespace LearningStarter
 
         public void SeedUsers(DataContext dataContext)
         {
+
             var numUsers = dataContext.Users.Count();
 
             if (numUsers == 0)
