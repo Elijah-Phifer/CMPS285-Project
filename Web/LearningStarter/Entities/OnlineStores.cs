@@ -5,7 +5,7 @@
 
     namespace LearningStarter.Entities
     {
-        public class onlineStores
+        public class OnlineStores
         {
             public int Id { get; set; }
             public string StoreName { get; set; }

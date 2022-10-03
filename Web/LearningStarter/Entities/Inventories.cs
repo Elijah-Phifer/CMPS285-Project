@@ -10,15 +10,14 @@ namespace LearningStarter.Entities
             public string ItemName { get; set; }
             public double ProductionCost { get; set; }
             public int Quantity { get; set; }
+            public double GrossTotal { get; set; }
             public double NetTotal { get; set; }
             public string Availabilty { get; set; }
             public double SiteListing { get; set; }
             public string DateAdded { get; set; }
-            [ForeignKey("OnlineStores")]
-            public int OnlineStoreId { get; set; }
-            
-            public onlineStores OnlineStores { get; set; }
-            public List<onlineStores> onlineStores { get; set; } = new List<onlineStores>();
+            public int OnlineStoreId { get; set; }    
+            public OnlineStores OnlineStores { get; set; }
+            public List<OnlineStores> OnlineStoresList { get; set; } = new List<OnlineStores>();
     }
 
     public class InventoriesCreateDto
@@ -26,12 +25,12 @@ namespace LearningStarter.Entities
         public string ItemName { get; set; }
         public double ProductionCost { get; set; }
         public int Quantity { get; set; }
-        public double NetTotal { get; set; }
+        public double GrossTotal { get; set; }
         public string Availabilty { get; set; }
         public int OnlineStoreId { get; set; }
         public double SiteListing { get; set; }
         public string DateAdded { get; set; }
-        public int onlineStores {get; set;}
+        public int OnlineStores {get; set;}
     }
     public class InventoriesGetDto
         {
@@ -39,6 +38,7 @@ namespace LearningStarter.Entities
             public string ItemName { get; set; }
             public double ProductionCost { get; set; }
             public int Quantity { get; set; }
+            public double GrossTotal { get; set; }
             public double NetTotal { get; set; }
             public string Availabilty { get; set; }
             public int OnlineStoreId { get; set; }
@@ -51,6 +51,7 @@ namespace LearningStarter.Entities
             public string ItemName { get; set; }
             public double ProductionCost { get; set; }
             public int Quantity { get; set; }
+            public double GrossTotal { get; set; }
             public double NetTotal { get; set; }
             public string Availabilty { get; set; }
             public int OnlineStoreId { get; set; }

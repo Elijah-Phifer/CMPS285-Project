@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 
-namespace LearningStarter.Controllers
+namespace LearningStarter.Controllers 
 {
 
     [ApiController]
@@ -14,17 +14,14 @@ namespace LearningStarter.Controllers
     public class InventoriesController : ControllerBase
     {
         private readonly DataContext _dataContext;
+        
+
         public InventoriesController(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
 
-        public static class Listing 
-        {
-           
-        }
-
-        [HttpGet]
+            [HttpGet]
         public IActionResult GetAll()
         {
             var response = new Response();
@@ -36,7 +33,8 @@ namespace LearningStarter.Controllers
                     Availabilty = Inventory.Availabilty,
                     DateAdded = Inventory.DateAdded,
                     ItemName = Inventory.ItemName,
-                    NetTotal = Inventory.NetTotal,
+                    GrossTotal = Inventory.GrossTotal,
+                    NetTotal = Inventory.NetTotal, //Inventory.GrossTotal * (OnlineStores.Taxes + onlineStores.SellingFees) - onlineStores.ListingFees,
                     OnlineStoreId = Inventory.OnlineStoreId,
                     ProductionCost = Inventory.ProductionCost,
                     Quantity = Inventory.Quantity,
@@ -60,6 +58,7 @@ namespace LearningStarter.Controllers
                     Availabilty = inventories.Availabilty,
                     DateAdded = inventories.DateAdded,
                     ItemName = inventories.ItemName,
+                    GrossTotal = inventories.GrossTotal,
                     NetTotal = inventories.NetTotal,
                     OnlineStoreId = inventories.OnlineStoreId,
                     ProductionCost = inventories.ProductionCost,
@@ -104,7 +103,7 @@ namespace LearningStarter.Controllers
                 response.AddError("ProductionCost", "Production Cost Added cannot be less than zero");
             }
 
-            if (inventoriesCreateDto.NetTotal < 0) 
+            if (inventoriesCreateDto.GrossTotal < 0) 
             {
                 response.AddError("NetTotal", "Net Total Cost Added cannot be less than zero");
             }
@@ -131,7 +130,7 @@ namespace LearningStarter.Controllers
                 Availabilty = inventoriesCreateDto.Availabilty,
                 DateAdded = inventoriesCreateDto.DateAdded,
                 ItemName = inventoriesCreateDto.ItemName,
-                NetTotal = inventoriesCreateDto.NetTotal,
+                GrossTotal = inventoriesCreateDto.GrossTotal,
                 OnlineStoreId = inventoriesCreateDto.OnlineStoreId,
                 ProductionCost = inventoriesCreateDto.ProductionCost,
                 Quantity = inventoriesCreateDto.Quantity,
@@ -146,12 +145,12 @@ namespace LearningStarter.Controllers
                 Availabilty = inventoriesToAdd.Availabilty,
                 DateAdded = inventoriesToAdd.DateAdded,
                 ItemName = inventoriesToAdd.ItemName,
+                GrossTotal = inventoriesToAdd.GrossTotal,
                 NetTotal = inventoriesToAdd.NetTotal,
                 OnlineStoreId = inventoriesToAdd.OnlineStoreId,
                 ProductionCost = inventoriesToAdd.ProductionCost,
                 Quantity = inventoriesToAdd.Quantity,
                 SiteListing = inventoriesToAdd.SiteListing,
-
             };
             response.Data = inventoriesToReturn;
             return Created("", response);
@@ -176,6 +175,7 @@ namespace LearningStarter.Controllers
             inventoriesToUpdate.Availabilty = inventoriesUpdateDto.Availabilty;
             inventoriesToUpdate.DateAdded = inventoriesUpdateDto.DateAdded;
             inventoriesToUpdate.ItemName = inventoriesUpdateDto.ItemName;
+            inventoriesToUpdate.GrossTotal = inventoriesUpdateDto.GrossTotal;
             inventoriesToUpdate.NetTotal = inventoriesUpdateDto.NetTotal;
             inventoriesToUpdate.ProductionCost = inventoriesUpdateDto.ProductionCost;
             inventoriesToUpdate.Quantity = inventoriesUpdateDto.Quantity;
@@ -190,7 +190,7 @@ namespace LearningStarter.Controllers
                 Availabilty = inventoriesToUpdate.Availabilty,
                 DateAdded = inventoriesToUpdate.DateAdded,
                 ItemName = inventoriesToUpdate.ItemName,
-                NetTotal = inventoriesToUpdate.NetTotal,
+                GrossTotal = inventoriesToUpdate.GrossTotal,
                 OnlineStoreId = inventoriesToUpdate.OnlineStoreId,
                 ProductionCost = inventoriesToUpdate.ProductionCost,
                 Quantity = inventoriesToUpdate.Quantity,

@@ -147,27 +147,30 @@ namespace LearningStarter
         { 
             if (!dataContext.Onlinestores.Any())
             {
-                var seededOnlineStores = new onlineStores
+                var seededOnlineStores = new OnlineStores
                 {
                     StoreName = "Ebay",
                     ListingFees = .35,
-                    SellingFees = 6.5,
-                    Taxes = 8.45,
+                    SellingFees = 1.065,
+                    Taxes = 1.0845,
                     Country = "United States of America",
                     Region = "Louisisana",
                 };
-                var seededOnlineStores1 = new onlineStores
+                
+                var seededOnlineStores1 = new OnlineStores
                 {
                     StoreName = "Etsy",
                     ListingFees = .2,
-                    SellingFees = 6.5,
-                    Taxes = 8.45,
+                    SellingFees = 1.065,
+                    Taxes = 1.0845,
                     Country = "United States of America",
                     Region = "Louisisana",
                 };
+                dataContext.Onlinestores.Add(seededOnlineStores);
+                dataContext.Onlinestores.Add(seededOnlineStores1);
+                dataContext.SaveChanges();
                 
-                
-               
+
             }
         }
         private void SeedInventories(DataContext dataContext)
@@ -178,7 +181,7 @@ namespace LearningStarter
                     ItemName = "BlueDress",
                     ProductionCost = 12.00,
                     Quantity = 4, 
-                    NetTotal = 35,
+                    GrossTotal = 35.54,
                     Availabilty = "Yes",
                     OnlineStoreId = 1,
                     SiteListing = 43.23,
