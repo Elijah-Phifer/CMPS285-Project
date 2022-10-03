@@ -29,7 +29,8 @@ namespace LearningStarter.Controllers
                     Id = x.Id,
                     FirstName = x.FirstName,
                     LastName = x.LastName,
-                    Username = x.Username
+                    Username = x.Username,
+                    Email = x.Email,
                 })
                 .ToList();
 
@@ -55,7 +56,8 @@ namespace LearningStarter.Controllers
                 Id = user.Id,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Username = user.Username
+                Username = user.Username,
+                Email = user.Email,
             };
 
             response.Data = userGetDto;
@@ -89,6 +91,11 @@ namespace LearningStarter.Controllers
                 response.AddError("password", "Password cannot be empty.");
             }
 
+            if (userCreateDto.Email == null || userCreateDto.Email == "")
+            {
+                response.AddError("email", "Email cannot be empty");
+            }
+
             if (response.HasErrors)
             {
                 return BadRequest(response);
@@ -100,6 +107,7 @@ namespace LearningStarter.Controllers
                 LastName = userCreateDto.LastName,
                 Username = userCreateDto.Username,
                 Password = userCreateDto.Password,
+                Email = userCreateDto.Email,
             };
 
             _context.Users.Add(userToCreate);
@@ -110,7 +118,8 @@ namespace LearningStarter.Controllers
                 Id = userToCreate.Id,
                 FirstName = userToCreate.FirstName,
                 LastName = userToCreate.LastName,
-                Username = userToCreate.Username
+                Username = userToCreate.Username,
+                Email = userToCreate.Email,
             };
 
             response.Data = userGetDto;
@@ -159,6 +168,11 @@ namespace LearningStarter.Controllers
                 response.AddError("password", "Password cannot be empty.");
             }
 
+            if (user.Email == null || user.Email == "")
+            {
+                response.AddError("email", "Email cannot be empty");
+            }
+
             if (response.HasErrors)
             {
                 return BadRequest(response);
@@ -168,6 +182,7 @@ namespace LearningStarter.Controllers
             userToEdit.LastName = user.LastName;
             userToEdit.Username = user.Username;
             userToEdit.Password = user.Password;
+            userToEdit.Email = user.Email;
 
             _context.SaveChanges();
 
@@ -176,7 +191,8 @@ namespace LearningStarter.Controllers
                 Id = userToEdit.Id,
                 FirstName = userToEdit.FirstName,
                 LastName = userToEdit.LastName,
-                Username = userToEdit.Username
+                Username = userToEdit.Username,
+                Email = userToEdit.Email,
             };
 
             response.Data = userGetDto;
