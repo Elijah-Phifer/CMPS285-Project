@@ -1,4 +1,5 @@
 ﻿using LearningStarter.Entities;
+using LearningStarter.Entities.LearningStarter.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace LearningStarter.Data
@@ -12,6 +13,8 @@ namespace LearningStarter.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<BulletJournalEntry> BulletJournalEntries { get; set; }
+        public DbSet<OnlineStores> Onlinestores { get; set; }
+        public DbSet<Inventories> Inventories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
