@@ -33,6 +33,10 @@ namespace LearningStarter.Data
             modelBuilder.Entity<User>()
                 .Property(x => x.Password)
                 .IsRequired();
+
+            modelBuilder.Entity<User>()
+                .Property(x => x.Email)
+                .IsRequired();
         }
     }
 }
