@@ -12,6 +12,7 @@ namespace LearningStarter.Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<BulletJournalEntry> BulletJournalEntries { get; set; }
         public DbSet<OnlineStores> Onlinestores { get; set; }
         public DbSet<Inventories> Inventories { get; set; }
 
@@ -31,6 +32,10 @@ namespace LearningStarter.Data
 
             modelBuilder.Entity<User>()
                 .Property(x => x.Password)
+                .IsRequired();
+
+            modelBuilder.Entity<User>()
+                .Property(x => x.Email)
                 .IsRequired();
         }
     }

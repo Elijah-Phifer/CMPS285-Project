@@ -4,8 +4,9 @@ using LearningStarter.Entities;
 using LearningStarter.Entities.LearningStarter.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
-namespace LearningStarter.Controllers
+namespace LearningStarter.Controllers 
 {
 
     [ApiController]
@@ -13,12 +14,14 @@ namespace LearningStarter.Controllers
     public class InventoriesController : ControllerBase
     {
         private readonly DataContext _dataContext;
+        
+
         public InventoriesController(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
 
-        [HttpGet]
+            [HttpGet]
         public IActionResult GetAll()
         {
             var response = new Response();
@@ -30,7 +33,8 @@ namespace LearningStarter.Controllers
                     Availabilty = Inventory.Availabilty,
                     DateAdded = Inventory.DateAdded,
                     ItemName = Inventory.ItemName,
-                    NetTotal = Inventory.NetTotal,
+                    GrossTotal = Inventory.GrossTotal,
+                    NetTotal = Inventory.NetTotal, //Inventory.GrossTotal * (OnlineStores.Taxes + onlineStores.SellingFees) - onlineStores.ListingFees,
                     OnlineStoreId = Inventory.OnlineStoreId,
                     ProductionCost = Inventory.ProductionCost,
                     Quantity = Inventory.Quantity,
@@ -41,17 +45,92 @@ namespace LearningStarter.Controllers
             return Ok(response);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById([FromRoute] int id)
+        {
+            var response = new Response();
+            
+            var inventoriesToReturn = _dataContext
+                .Inventories
+                .Select (inventories => new InventoriesGetDto
+                {
+                    Id = inventories.Id,
+                    Availabilty = inventories.Availabilty,
+                    DateAdded = inventories.DateAdded,
+                    ItemName = inventories.ItemName,
+                    GrossTotal = inventories.GrossTotal,
+                    NetTotal = inventories.NetTotal,
+                    OnlineStoreId = inventories.OnlineStoreId,
+                    ProductionCost = inventories.ProductionCost,
+                    Quantity = inventories.Quantity,
+                    SiteListing = inventories.SiteListing,
+                })
+                .FirstOrDefault(inventories => inventories.Id == id);
+            
+            if (inventoriesToReturn == null)
+            {
+                response.AddError("id", "Entry not found.");
+                return BadRequest(response);
+            }
+            response.Data = inventoriesToReturn;
+            return Ok(response);
+
+        }
+
         [HttpPost]
         public IActionResult Create([FromBody] InventoriesCreateDto inventoriesCreateDto)
         {
             var response = new Response();
 
+            if(string.IsNullOrEmpty(inventoriesCreateDto.ItemName))
+            {
+                response.AddError("ItemName", "Item Name cannot be empty");
+            }
+
+
+            if (string.IsNullOrEmpty(inventoriesCreateDto.Availabilty))
+            {
+                response.AddError("Availabilty", "Availabilty cannot be empty");
+            }
+
+            if (string.IsNullOrEmpty(inventoriesCreateDto.DateAdded))
+            {
+                response.AddError("DateAdded", "Date Added cannot be empty");
+            }
+
+            if (inventoriesCreateDto.ProductionCost < 0)
+            {
+                response.AddError("ProductionCost", "Production Cost Added cannot be less than zero");
+            }
+
+            if (inventoriesCreateDto.GrossTotal < 0) 
+            {
+                response.AddError("NetTotal", "Net Total Cost Added cannot be less than zero");
+            }
+
+            if (inventoriesCreateDto.Quantity < 0)
+            {
+                response.AddError("Quantity", "Quantity Added cannot be less than zero");
+            }
+
+
+            if(inventoriesCreateDto.OnlineStoreId < 0)
+            {
+                response.AddError("OnlineStoreId", "Online Store Id Added cannot be less than zero");
+
+            }
+            
+
+            if (response.HasErrors)
+                { 
+                    return BadRequest(response);
+                }
             var inventoriesToAdd = new Inventories()
             {
                 Availabilty = inventoriesCreateDto.Availabilty,
                 DateAdded = inventoriesCreateDto.DateAdded,
                 ItemName = inventoriesCreateDto.ItemName,
-                NetTotal = inventoriesCreateDto.NetTotal,
+                GrossTotal = inventoriesCreateDto.GrossTotal,
                 OnlineStoreId = inventoriesCreateDto.OnlineStoreId,
                 ProductionCost = inventoriesCreateDto.ProductionCost,
                 Quantity = inventoriesCreateDto.Quantity,
@@ -66,12 +145,12 @@ namespace LearningStarter.Controllers
                 Availabilty = inventoriesToAdd.Availabilty,
                 DateAdded = inventoriesToAdd.DateAdded,
                 ItemName = inventoriesToAdd.ItemName,
+                GrossTotal = inventoriesToAdd.GrossTotal,
                 NetTotal = inventoriesToAdd.NetTotal,
                 OnlineStoreId = inventoriesToAdd.OnlineStoreId,
                 ProductionCost = inventoriesToAdd.ProductionCost,
                 Quantity = inventoriesToAdd.Quantity,
                 SiteListing = inventoriesToAdd.SiteListing,
-
             };
             response.Data = inventoriesToReturn;
             return Created("", response);
@@ -93,14 +172,16 @@ namespace LearningStarter.Controllers
                 response.AddError("id", "Entry not found");
                 return BadRequest(response);
             }
-            inventoriesToUpdate.Availabilty = inventoriesToUpdate.Availabilty;
-            inventoriesToUpdate.DateAdded = inventoriesToUpdate.DateAdded;
-            inventoriesToUpdate.ItemName = inventoriesToUpdate.ItemName;
-            inventoriesToUpdate.NetTotal = inventoriesToUpdate.NetTotal;
-            inventoriesToUpdate.ProductionCost = inventoriesToUpdate.ProductionCost;
-            inventoriesToUpdate.Quantity = inventoriesToUpdate.Quantity;    
-            inventoriesToUpdate.SiteListing = inventoriesToUpdate.SiteListing;  
-            inventoriesToUpdate.OnlineStoreId = inventoriesToUpdate.OnlineStoreId;            
+            inventoriesToUpdate.Availabilty = inventoriesUpdateDto.Availabilty;
+            inventoriesToUpdate.DateAdded = inventoriesUpdateDto.DateAdded;
+            inventoriesToUpdate.ItemName = inventoriesUpdateDto.ItemName;
+            inventoriesToUpdate.GrossTotal = inventoriesUpdateDto.GrossTotal;
+            inventoriesToUpdate.NetTotal = inventoriesUpdateDto.NetTotal;
+            inventoriesToUpdate.ProductionCost = inventoriesUpdateDto.ProductionCost;
+            inventoriesToUpdate.Quantity = inventoriesUpdateDto.Quantity;
+            inventoriesToUpdate.SiteListing = inventoriesUpdateDto.SiteListing;
+            inventoriesToUpdate.OnlineStoreId = inventoriesUpdateDto.OnlineStoreId;
+
             _dataContext.SaveChanges();
 
             var inventoriesToRetrun = new InventoriesGetDto
@@ -109,7 +190,7 @@ namespace LearningStarter.Controllers
                 Availabilty = inventoriesToUpdate.Availabilty,
                 DateAdded = inventoriesToUpdate.DateAdded,
                 ItemName = inventoriesToUpdate.ItemName,
-                NetTotal = inventoriesToUpdate.NetTotal,
+                GrossTotal = inventoriesToUpdate.GrossTotal,
                 OnlineStoreId = inventoriesToUpdate.OnlineStoreId,
                 ProductionCost = inventoriesToUpdate.ProductionCost,
                 Quantity = inventoriesToUpdate.Quantity,
@@ -117,6 +198,28 @@ namespace LearningStarter.Controllers
             };
 
             response.Data = inventoriesToRetrun;
+            return Ok(response);
+        }
+        [HttpDelete("{id:int}")]
+        public IActionResult Delete([FromRoute] int id)
+        {
+            var response = new Response();
+
+            var inventoriesToDelete = _dataContext
+                .Inventories
+                .FirstOrDefault(inventories => inventories.Id == id);
+
+            if (inventoriesToDelete == null)
+
+            {
+                response.AddError("id", "Entry not found");
+                return BadRequest(response);
+            }
+
+            _dataContext.Remove(inventoriesToDelete);
+            _dataContext.SaveChanges();
+
+            response.Data = true;
             return Ok(response);
         }
     }
