@@ -137,6 +137,7 @@ namespace LearningStarter
                     spa.UseProxyToSpaDevelopmentServer("http://localhost:3001");
                 }
             });
+
             SeedUsers(dataContext);
             SeedInventories(dataContext);
             SeedBulletJournalEntries(dataContext);
@@ -149,7 +150,7 @@ namespace LearningStarter
                 {
                     ItemName = "BlueDress",
                     ProductionCost = 12,
-                    Quantity = 4, 
+                    Quantity = 4,
                     NetTotal = 35,
                     Availabilty = "Yes",
                     //OnlineStoreId = ,
@@ -159,6 +160,7 @@ namespace LearningStarter
                 dataContext.SaveChanges();
 
             }
+        }
 
 
         private void SeedBulletJournalEntries(DataContext dataContext)
@@ -176,6 +178,7 @@ namespace LearningStarter
                 dataContext.BulletJournalEntries.Add(seededBulletJournalEntry);
                 dataContext.SaveChanges();
             }
+
         }
 
         public void SeedUsers(DataContext dataContext)
