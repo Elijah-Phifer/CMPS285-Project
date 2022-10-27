@@ -21,3 +21,11 @@ export type UserDto = {
   lastName: string;
   userName: string;
 };
+
+export type BulletJournalTypeCreateDTO = {
+  id: number;
+  dateCreated: Date;
+  contents: string;
+  isDone: boolean;
+  pushes: number;
+}
