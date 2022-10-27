@@ -22,10 +22,16 @@ export type UserDto = {
   userName: string;
 };
 
-export type BulletJournalTypeCreateDTO = {
+export type BulletJournalEntryCreateDTO = {
   id: number;
-  dateCreated: Date;
   contents: string;
   isDone: boolean;
   pushes: number;
+}
+
+export type BulletJournalEntryGetDTO = {
+  id: number;
+  contents: string;
+  isDone: boolean;
+  //add others from controller later
 }
