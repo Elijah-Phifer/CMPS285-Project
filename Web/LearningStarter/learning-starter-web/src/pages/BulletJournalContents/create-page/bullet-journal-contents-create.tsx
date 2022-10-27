@@ -1,13 +1,14 @@
 import axios from "axios";
 
-import { Field, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import React from "react";
 import { useStateWithHistory } from "react-use";
-import { Button, Form, Input } from "semantic-ui-react";
+
 import { BaseUrl } from "../../../constants/ens-vars";
 import { ApiResponse, BulletJournalEntryCreateDTO, BulletJournalEntryGetDTO } from "../../../constants/types";
 import { useHistory } from 'react-router-dom';
 import { routes } from "../../../routes/config";
+import { Button, Input } from "semantic-ui-react";
 
 
 const initialValues: BulletJournalEntryCreateDTO = {
@@ -25,7 +26,7 @@ export const BulletJournalCreatePage = () =>   {
 
     const onSubmit = async (values:BulletJournalEntryCreateDTO) => {
         const response = await axios.post<ApiResponse<BulletJournalEntryGetDTO>>(
-        '${BaseUrl} /api/BulletJournal',
+        `${BaseUrl}/api/BulletJournal`,
         values
         );
 

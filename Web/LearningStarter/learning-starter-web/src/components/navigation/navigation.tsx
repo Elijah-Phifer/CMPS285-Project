@@ -1,5 +1,5 @@
 import "./navigation.css";
-import React, { useMemo } from "react";
+import React, { Children, useMemo } from "react";
 import { NavLink, NavLinkProps } from "react-router-dom";
 import { Dropdown, Image, Menu, Icon, SemanticICONS } from "semantic-ui-react";
 import logo from "../../assets/logo.png";
@@ -46,6 +46,19 @@ const DesktopNavigation = () => {
           to: routes.user,
         },
       },
+      {
+        text: "Bullet Journal Entries",
+        children: [
+          {
+            text: "Create",
+            icon: "plus",
+            hide: false,
+            nav: {
+              to: routes.bulletJournal.create,
+            },
+          }
+        ]
+      }
     ];
   }, []);
 
