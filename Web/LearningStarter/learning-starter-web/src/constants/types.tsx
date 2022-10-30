@@ -21,3 +21,15 @@ export type UserDto = {
   lastName: string;
   userName: string;
 };
+
+export type InventoriesGetDto = {
+  id: number;
+  itemName: string;
+  productionCost: number;
+  quantity: number;
+  grosstotal: DoubleRange;
+  availaiblty: string;
+  onlineStoreId: number;
+  SiteListing: number;
+  DateAdded: string;
+};

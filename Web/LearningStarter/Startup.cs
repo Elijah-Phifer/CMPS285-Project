@@ -219,10 +219,21 @@ namespace LearningStarter
                     ItemName = "BlueDress",
                     ProductionCost = 12.00,
                     Quantity = 4, 
-                    GrossTotal = 35.54,
+                    GrossTotal = 35,
                     Availabilty = "Yes",
                     OnlineStoreId = 1,
-                    SiteListing = 43.23,
+                    SiteListing = 43,
+                    DateAdded = "2/3/12",
+                };
+                var seededInventory1 = new Inventories
+                {
+                    ItemName = "RedHeels",
+                    ProductionCost = 2,
+                    Quantity = 12,
+                    GrossTotal = 99,
+                    Availabilty = "Yes",
+                    OnlineStoreId = 1,
+                    SiteListing = 99,
                     DateAdded = "2/3/12",
                 };
                 dataContext.Inventories.Add(seededInventory);
