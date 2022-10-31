@@ -1,4 +1,5 @@
 //This type uses a generic (<T>).  For more information on generics see: https://www.typescriptlang.org/docs/handbook/2/generics.html
+
 //You probably wont need this for the scope of this class :)
 export type ApiResponse<T> = {
   data: T;
@@ -27,9 +28,8 @@ export type InventoriesGetDto = {
   itemName: string;
   productionCost: number;
   quantity: number;
-  grosstotal: DoubleRange;
-  availaiblty: string;
+  availabilty: string;
   onlineStoreId: number;
-  SiteListing: number;
-  DateAdded: string;
+  siteListing: number;
+  dateAdded: string;
 };

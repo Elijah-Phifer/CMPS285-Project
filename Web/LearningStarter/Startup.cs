@@ -217,9 +217,8 @@ namespace LearningStarter
                 var seededInventory = new Inventories
                 {
                     ItemName = "BlueDress",
-                    ProductionCost = 12.00,
+                    ProductionCost = 12,
                     Quantity = 4, 
-                    GrossTotal = 35,
                     Availabilty = "Yes",
                     OnlineStoreId = 1,
                     SiteListing = 43,
@@ -230,7 +229,6 @@ namespace LearningStarter
                     ItemName = "RedHeels",
                     ProductionCost = 2,
                     Quantity = 12,
-                    GrossTotal = 99,
                     Availabilty = "Yes",
                     OnlineStoreId = 1,
                     SiteListing = 99,
