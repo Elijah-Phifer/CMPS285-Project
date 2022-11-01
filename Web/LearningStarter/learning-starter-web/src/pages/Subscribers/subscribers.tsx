@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Segment, Table } from 'semantic-ui-react';
+import { Header, Segment, Table } from 'semantic-ui-react';
 import { ApiResponse, SubscriberGetDto } from '../../constants/types'
 
 export const SubscribersPage = () => {
@@ -24,15 +24,9 @@ export const SubscribersPage = () => {
     return(
         <>
         {subscribers && (
-        <>
-        <h1>
-            Subscribers
-        </h1>
-        <div>
-            {subscribers.map(subscriber => {
-                return (
-                    <Segment>
-                        <Table>
+        <Segment>
+        <Header>Subscribers</Header>
+        <Table>
                             <Table.Header>
                                 <Table.HeaderCell>
                                     Id
@@ -48,38 +42,26 @@ export const SubscribersPage = () => {
                                 </Table.HeaderCell>
                         </Table.Header>
                         <Table.Body>
-                        <Table.Cell>
-                            {subscriber.id}
-                        </Table.Cell>
-                        <Table.Cell>
-                            {subscriber.name} 
-                        </Table.Cell>
-                        <Table.Cell>
-                            {subscriber.email}
-                        </Table.Cell>
-                        <Table.Cell>
-                            {subscriber.dateSubscribed}
-                        </Table.Cell>
+            {subscribers.map(subscriber => {
+                return (
+                    <>
+                        
+                        <Table.Cell>{subscriber.id}</Table.Cell>
+                        <Table.Cell>{subscriber.name} </Table.Cell>
+                        <Table.Cell>{subscriber.email}</Table.Cell>
+                        <Table.Cell>{subscriber.dateSubscribed}</Table.Cell>
+                        </>
+                );
+            })}
                         </Table.Body>
                         </Table>
                         </Segment>
-
-                )
-            })}
-        </div>
-
-        <div className="ui icon input loading" id="abId0.14781943156262267">
-        <input type="text" placeholder="Search..." spellCheck="false" data-ms-editor="true"/>
-        <i className="search icon"></i>
-        </div>
-    
-        </>
         )}
         </>
 
     )
 
-        }   
+}  
                 
             
 
