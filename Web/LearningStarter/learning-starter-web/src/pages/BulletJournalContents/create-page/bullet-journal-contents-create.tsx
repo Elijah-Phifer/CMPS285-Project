@@ -16,7 +16,8 @@ const initialValues: BulletJournalEntryCreateDTO = {
     id: 0,
     //need to add date created
     isDone: false,
-    pushes: 0
+    /*DateCreated: Now,*/
+    pushes: 0,
 };
 
 
@@ -35,10 +36,10 @@ export const BulletJournalCreatePage = () =>   {
                 console.log(err.message);
             });
         }else {
-            alert(JSON.stringify(values, null, 2));
-                console.log(values);
+           /* alert(JSON.stringify(values, null, 2));
+                console.log(values); */
 
-            /*history.push(routes.home); //probably needs to go to listing page */
+            history.push(routes.bulletJournal.listing); //probably needs to go to listing page
 
         }
     };
@@ -48,20 +49,21 @@ export const BulletJournalCreatePage = () =>   {
             <Formik initialValues={initialValues} onSubmit={(onSubmit)}>
                 <Form>
                     <div>
-                        <label htmlFor="contents">contents</label>
+                        <label htmlFor="contents">What do you have to do?</label>
                     </div>
-                    <span>
+                   {/* <span>
                     <Field id ='isDone' name='isDone' type='input' class="ui fitted checkbox">
                         {({ field }) => <Input type="checkbox" name="isDone" {...field}/>}
                     </Field>
                     
                     </span>
+                    */}
                     <Field id ='contents' name='contents' type='input' placeholder='Do Something'>
                         {({ field }) => <Input {...field} />}
                     </Field>
 
                     <div>
-                        <Button type="onSubmit">Save</Button>
+                        <Button type="submit">Save</Button>
                     </div>
                 </Form>
             </Formik>
