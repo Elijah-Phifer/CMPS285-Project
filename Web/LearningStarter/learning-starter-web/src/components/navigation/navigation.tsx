@@ -50,6 +50,14 @@ const DesktopNavigation = () => {
         text: "Bullet Journal Entries",
         children: [
           {
+            text: "Listing",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.bulletJournal.listing,
+            },
+          },
+          {
             text: "Create",
             icon: "plus",
             hide: false,

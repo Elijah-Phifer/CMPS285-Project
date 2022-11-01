@@ -11,7 +11,22 @@ import { BulletJournalCreatePage } from "./pages/BulletJournalContents/create-pa
 
 //This is almost the base level of your app.  You can also put global things here.
 
-export default function App() {
+//This is almost the base level of your app.  You can also put global things here.
+function App() {
+  return (
+    <div className="App">
+      <GlobalStyles />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
+    </div>
+  );
+}
+
+export default App;
+
+
+/*export default function App() {
   return (
     //eventually let user name bullet journal
 
@@ -57,13 +72,13 @@ export default function App() {
       <AuthProvider>
         <Routes />
       </AuthProvider>
-    </div>*/
+    </div>
   );
 }
+*/
 
 
-
-export function BulletJournal() {
+/*export function BulletJournal() {
   const name = " ";
   return (
     <div className="BulletJournal">
@@ -95,4 +110,4 @@ const CustomHeader: React.FC<CustomHeaderProps> = (props) => {
 
 
 };
-
+*/
