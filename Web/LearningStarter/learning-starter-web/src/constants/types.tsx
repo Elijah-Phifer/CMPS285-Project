@@ -33,3 +33,25 @@ export type InventoriesGetDto = {
   siteListing: number;
   dateAdded: string;
 };
+export type BulletJournalEntryCreateDTO = {
+  id: number;
+  contents: string;
+  isDone: boolean;
+  /*DateCreated: Date;*/
+  pushes: number;
+}
+
+export type BulletJournalEntryGetDTO = {
+  id: number;
+  contents: string;
+  isDone: boolean;
+  DateCreated: Date;
+  //add others from controller later
+}
+
+export type BulletJournalEntryUpdateDTO = {
+  id: number;
+  isDone: boolean;
+
+  //add others from controller later
+}
