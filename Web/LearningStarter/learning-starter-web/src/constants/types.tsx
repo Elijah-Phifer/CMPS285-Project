@@ -55,3 +55,19 @@ export type BulletJournalEntryUpdateDTO = {
 
   //add others from controller later
 }
+export type SubscriberGetDto = {
+  id: number;
+  name: string;
+  email: string;
+  dateSubscribed: Date;
+
+
+}
+
+export type EmailNewsletterGetDto = {
+  id: number;
+  title: string;
+  message: string;
+  dateSent: Date;
+
+}

@@ -8,6 +8,8 @@ import { PageWrapper } from "../components/page-wrapper/page-wrapper";
 import { InventoriesPage } from "../pages/Inventories-page/Inventories";
 import { BulletJournalCreatePage } from "../pages/BulletJournalContents/create-page/bullet-journal-contents-create";
 import { BulletJournalListingPage } from "../pages/BulletJournalContents/listing-page/bullet-journal-listing";
+import { SubscribersPage } from "../pages/Subscribers/subscribers";
+import { EmailNewslettersPage } from "../pages/EmailNewsletter/emailNewsletter";
 
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
@@ -19,6 +21,10 @@ export const routes = {
     listing: '/BulletJournal',
     create: '/BulletJournal/create'
   },
+  Subscribers: {
+    listing: "/subscribers",
+  },
+  EmailNewsletters: "/emailNewsletters",
 };
 
 //This is where you will tell React Router what to render when the path matches the route specified.
@@ -34,7 +40,7 @@ export const Routes = () => {
           <Route path={routes.home} exact>
             <LandingPage />
           </Route>
-          {/* When path === /iser render UserPage */}
+          {/* When path === /user render UserPage */}
           <Route path={routes.user} exact>
             <UserPage />
           </Route>
@@ -54,6 +60,12 @@ export const Routes = () => {
             <BulletJournalCreatePage />
           </Route>
 
+          <Route path={routes.EmailNewsletters} exact>
+            <EmailNewslettersPage />
+          </Route>
+          <Route path={routes.Subscribers.listing} exact>
+            <SubscribersPage />
+          </Route>
           {/* This should always come last.  
             If the path has no match, show page not found */}
           <Route path="*" exact>
