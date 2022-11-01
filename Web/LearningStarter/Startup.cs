@@ -188,21 +188,11 @@ namespace LearningStarter
                 var seededOnlineStores = new OnlineStores
                 {
                     StoreName = "Ebay",
-                    ListingFees = .35,
-                    SellingFees = 1.065,
-                    Taxes = 1.0845,
-                    Country = "United States of America",
-                    Region = "Louisisana",
                 };
                 
                 var seededOnlineStores1 = new OnlineStores
                 {
                     StoreName = "Etsy",
-                    ListingFees = .2,
-                    SellingFees = 1.065,
-                    Taxes = 1.0845,
-                    Country = "United States of America",
-                    Region = "Louisisana",
                 };
                 dataContext.Onlinestores.Add(seededOnlineStores);
                 dataContext.Onlinestores.Add(seededOnlineStores1);

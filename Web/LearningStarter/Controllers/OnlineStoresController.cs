@@ -28,11 +28,6 @@ namespace LearningStarter.Controllers
                 {
                     Id = OnlineStores.Id,
                     StoreName = OnlineStores.StoreName,
-                    ListingFees = OnlineStores.ListingFees,
-                    SellingFees = OnlineStores.SellingFees,
-                    Taxes = OnlineStores.Taxes,
-                    Country = OnlineStores.Country,
-                    Region = OnlineStores.Region
                 })
             .ToList();
             response.Data = OnlineStores;
@@ -50,11 +45,6 @@ namespace LearningStarter.Controllers
                 {
                     Id = onlineStores.Id,
                     StoreName = onlineStores.StoreName,
-                    ListingFees = onlineStores.ListingFees,
-                    SellingFees = onlineStores.SellingFees,
-                    Taxes = onlineStores.Taxes,
-                    Country = onlineStores.Country,
-                    Region = onlineStores.Region,
 
                 })
                 .FirstOrDefault(onlineStores => onlineStores.Id == id);
@@ -78,30 +68,6 @@ namespace LearningStarter.Controllers
                 response.AddError("StoreName", "Store Name cannot be empty");
             }
 
-            if (string.IsNullOrEmpty(onlinestoresCreateDto.Country))
-            {
-                response.AddError("Country", "Country cannot be empty");
-            }
-
-            if (string.IsNullOrEmpty(onlinestoresCreateDto.Region))
-            {
-                response.AddError("Region", "Region cannot be empty");
-            }
-
-            if (onlinestoresCreateDto.ListingFees < 0)
-            {
-                response.AddError("ListingFees", "Listing Fees cannot be less than zero");
-            }
-
-            if (onlinestoresCreateDto.Taxes < 0)
-            {
-                response.AddError("Taxes", "Taxes Fees cannot be less than zero");
-            }
-
-            if (onlinestoresCreateDto.SellingFees < 0)
-            {
-                response.AddError("SellingFees", "Selling Fees Fees cannot be less than zero");
-            }
 
             if (response.HasErrors)
             {
@@ -110,11 +76,7 @@ namespace LearningStarter.Controllers
             var onlineStoresToAdd = new OnlineStores()
             {
                 StoreName = onlinestoresCreateDto.StoreName,
-                ListingFees = onlinestoresCreateDto.ListingFees,
-                SellingFees = onlinestoresCreateDto.SellingFees,
-                Taxes = onlinestoresCreateDto.Taxes,
-                Country = onlinestoresCreateDto.Country,
-                Region = onlinestoresCreateDto.Region,
+
             };
             _dataContext.Onlinestores.Add(onlineStoresToAdd);
             _dataContext.SaveChanges();
@@ -122,11 +84,7 @@ namespace LearningStarter.Controllers
             var onlineStoresToReturn = new OnlineStoresGetDto
             {
                 StoreName = onlineStoresToAdd.StoreName,
-                ListingFees = onlineStoresToAdd.ListingFees,
-                SellingFees = onlineStoresToAdd.SellingFees,
-                Taxes = onlineStoresToAdd.Taxes,
-                Country = onlineStoresToAdd.Country,
-                Region = onlineStoresToAdd.Region,
+
             };
             response.Data = onlineStoresToReturn;
             return Created("", response);
@@ -149,12 +107,7 @@ namespace LearningStarter.Controllers
                 response.AddError("id", "Entry not found.");
                 return BadRequest();
             }
-            onlineStoreToUpdate.StoreName = onlineStoreToUpdate.StoreName;
-            onlineStoreToUpdate.ListingFees = onlineStoreToUpdate.ListingFees;
-            onlineStoreToUpdate.SellingFees = onlineStoreToUpdate.SellingFees;
-            onlineStoresUpdateDto.Taxes = onlineStoreToUpdate.Taxes;
-            onlineStoreToUpdate.Country = onlineStoreToUpdate.Country;
-            onlineStoreToUpdate.Region = onlineStoreToUpdate.Region;
+            onlineStoreToUpdate.StoreName = onlineStoresUpdateDto.StoreName;
 
             _dataContext.SaveChanges();
 
@@ -162,11 +115,7 @@ namespace LearningStarter.Controllers
             {
                 Id = onlineStoreToUpdate.Id,
                 StoreName = onlineStoreToUpdate.StoreName,
-                ListingFees = onlineStoreToUpdate.ListingFees,
-                SellingFees = onlineStoreToUpdate.SellingFees,
-                Country = onlineStoreToUpdate.Country,
-                Region = onlineStoreToUpdate.Region,
-                Taxes = onlineStoreToUpdate.Taxes,
+    
 
             };
             response.Data = onlineStoreToReturn;
