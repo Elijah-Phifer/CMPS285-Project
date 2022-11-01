@@ -5,6 +5,9 @@ import { NotFoundPage } from "../pages/not-found";
 import { useUser } from "../authentication/use-auth";
 import { UserPage } from "../pages/user-page/user-page";
 import { PageWrapper } from "../components/page-wrapper/page-wrapper";
+import { InventoriesPage } from "../pages/Inventories-page/Inventories";
+import { BulletJournalCreatePage } from "../pages/BulletJournalContents/create-page/bullet-journal-contents-create";
+import { BulletJournalListingPage } from "../pages/BulletJournalContents/listing-page/bullet-journal-listing";
 import { SubscribersPage } from "../pages/Subscribers/subscribers";
 import { EmailNewslettersPage } from "../pages/EmailNewsletter/emailNewsletter";
 
@@ -13,6 +16,11 @@ export const routes = {
   root: `/`,
   home: `/home`,
   user: `/user`,
+  inventory: '/inventories',
+  bulletJournal: {
+    listing: '/BulletJournal',
+    create: '/BulletJournal/create'
+  },
   Subscribers: {
     listing: "/subscribers",
   },
@@ -36,10 +44,22 @@ export const Routes = () => {
           <Route path={routes.user} exact>
             <UserPage />
           </Route>
+          <Route path={routes.inventory} exact>
+            <InventoriesPage />
+          </Route>
           {/* Going to route "localhost:5001/" will go to homepage */}
           <Route path={routes.root} exact>
             <Redirect to={routes.home} />
           </Route>
+
+          <Route path={routes.bulletJournal.listing} exact>
+            <BulletJournalListingPage />
+          </Route>
+
+          <Route path={routes.bulletJournal.create} exact>
+            <BulletJournalCreatePage />
+          </Route>
+
           <Route path={routes.EmailNewsletters} exact>
             <EmailNewslettersPage />
           </Route>

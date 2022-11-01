@@ -1,13 +1,18 @@
 using System;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using LearningStarter.Common;
 using LearningStarter.Data;
 using LearningStarter.Entities;
+using LearningStarter.Entities.LearningStarter.Entities;
 using LearningStarter.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -134,6 +139,154 @@ namespace LearningStarter
                 }
             });
 
+            SeedUsers(dataContext);
+
+            SeedSubscribers(dataContext);
+            SeedEmailNewsletters(dataContext); 
+            SeedInventories(dataContext);
+            SeedBulletJournalEntries(dataContext);
+            SeedOnlineStores(dataContext);
+        }
+
+        private void SeedSubscribers(DataContext dataContext)
+        {
+            if (!dataContext.Subscribers.Any())
+            {
+                var seededSubscriber = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "First Last",
+                    Email = "email.aol" 
+                };
+                dataContext.Subscribers.Add(seededSubscriber);
+                dataContext.SaveChanges();
+            }
+        }
+         private void SeedEmailNewsletters(DataContext dataContext)
+        {
+            if (!dataContext.EmailNewsletters.Any())
+            {
+                var seededEmailNewsletter = new EmailNewsletter
+                {
+                    DateSent = DateTimeOffset.Now,
+                    Title = "Welcome!",
+                    Message = "Hi, Welcome to your Virtual Newsletter!" 
+                };
+                dataContext.EmailNewsletters.Add(seededEmailNewsletter);
+                dataContext.SaveChanges();
+            }
+        }
+
+
+
+
+
+        private void SeedOnlineStores(DataContext dataContext) 
+        { 
+            if (!dataContext.Onlinestores.Any())
+            {
+                var seededOnlineStores = new OnlineStores
+                {
+                    StoreName = "Ebay",
+                };
+                
+                var seededOnlineStores1 = new OnlineStores
+                {
+                    StoreName = "Etsy",
+                };
+                dataContext.Onlinestores.Add(seededOnlineStores);
+                dataContext.Onlinestores.Add(seededOnlineStores1);
+                dataContext.SaveChanges();
+                
+
+            }
+        }
+        private void SeedInventories(DataContext dataContext)
+        {
+            if (!dataContext.Inventories.Any()) {
+                var seededInventory = new Inventories 
+                {
+                    ItemName = "Blue Dress",
+                    ProductionCost = 12,
+                    Quantity = 4, 
+                    Availabilty = "Yes",
+                    OnlineStoreId = 1,
+                    SiteListing = 43,
+                    DateAdded = "2/3/12",
+                };
+                var seededInventory1 = new Inventories
+                {
+                    ItemName = "Red Heels",
+                    ProductionCost = 2,
+                    Quantity = 12,
+                    Availabilty = "Yes",
+                    OnlineStoreId = 1,
+                    SiteListing = 99,
+                    DateAdded = "2/3/12",
+                };
+                var seededInventory2 = new Inventories
+                {
+                    ItemName = "Pokemon Socks",
+                    ProductionCost = 5,
+                    Quantity = 30,
+                    Availabilty = "Yes, only if your cool",
+                    OnlineStoreId = 2,
+                    SiteListing = 9,
+                    DateAdded = "5/23/20",
+                };
+                var seededInventory3 = new Inventories
+                {
+                    ItemName = "The One Ring",
+                    ProductionCost = 25,
+                    Quantity = 1,
+                    Availabilty = "No",
+                    OnlineStoreId = 2,
+                    SiteListing = 1000,
+                    DateAdded = "2/3/01",
+                };
+                var seededInventory4 = new Inventories
+                {
+                    ItemName = "Hitch Hiker's guide book",
+                    ProductionCost = 99999999,
+                    Quantity = 1,
+                    Availabilty = "Yes",
+                    OnlineStoreId = 1,
+                    SiteListing = 42,
+                    DateAdded = "1/5/81",
+                };
+                dataContext.Inventories.Add(seededInventory);
+                dataContext.Inventories.Add(seededInventory1);
+                dataContext.Inventories.Add(seededInventory2);
+                dataContext.Inventories.Add(seededInventory3);
+                dataContext.Inventories.Add(seededInventory4);
+                dataContext.SaveChanges();
+
+            }
+               
+        }
+
+
+        private void SeedBulletJournalEntries(DataContext dataContext)
+        {
+            if (!dataContext.BulletJournalEntries.Any())
+            {
+                var seededBulletJournalEntry = new BulletJournalEntry
+                {
+                    DateCreated = DateTimeOffset.Now,
+                    Contents = "Do Somthing",
+                    IsDone = false,
+                    Pushes = 0
+                };
+
+                dataContext.BulletJournalEntries.Add(seededBulletJournalEntry);
+                dataContext.SaveChanges();
+            }
+
+        }
+
+        public void SeedUsers(DataContext dataContext)
+        {
+
             var numUsers = dataContext.Users.Count();
 
             if (numUsers == 0)
@@ -143,12 +296,17 @@ namespace LearningStarter
                     FirstName = "Seeded",
                     LastName = "User",
                     Username = "admin",
-                    Password = "password"
+                    Password = "password",
+                    Email = "Email"
                 };
-                
+
+
+
                 dataContext.Users.Add(seededUser);
                 dataContext.SaveChanges();
             }
+
         }
+        
     }
 }

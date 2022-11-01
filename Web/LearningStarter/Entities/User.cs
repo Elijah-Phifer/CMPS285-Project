@@ -11,6 +11,7 @@ namespace LearningStarter.Entities
         public string LastName { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string Email { get; set; }
     }
 
     public class UserCreateDto
@@ -19,6 +20,7 @@ namespace LearningStarter.Entities
         public string LastName { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string Email { get; set; }
     }
 
     public class UserUpdateDto
@@ -28,6 +30,7 @@ namespace LearningStarter.Entities
         public string LastName { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string Email { get; set; }
     }
 
     public class UserGetDto
@@ -36,5 +39,6 @@ namespace LearningStarter.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }
+        public string Email { get; set; }
     }
 }
