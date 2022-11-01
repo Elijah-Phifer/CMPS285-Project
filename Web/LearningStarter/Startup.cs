@@ -162,7 +162,37 @@ namespace LearningStarter
                 dataContext.SaveChanges();
             }
         }
-         private void SeedEmailNewsletters(DataContext dataContext)
+        private void SeedSubscribers1(DataContext dataContext)
+        {
+            if (!dataContext.Subscribers.Any())
+            {
+                var seededSubscriber = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "Kearney Butler",
+                    Email = "email@gmail.com"
+                };
+                dataContext.Subscribers.Add(seededSubscriber);
+                dataContext.SaveChanges();
+            }
+        }
+
+        private void SeedSubscribers2(DataContext dataContext)
+        {
+            if (!dataContext.Subscribers.Any())
+            {
+                var seededSubscriber = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "John soe",
+                    Email = "Johnsoe.aol"
+                };
+                dataContext.Subscribers.Add(seededSubscriber);
+                dataContext.SaveChanges();
+            }
+        }
+
+        private void SeedEmailNewsletters(DataContext dataContext)
         {
             if (!dataContext.EmailNewsletters.Any())
             {
