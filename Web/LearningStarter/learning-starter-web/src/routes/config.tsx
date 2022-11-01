@@ -6,6 +6,7 @@ import { useUser } from "../authentication/use-auth";
 import { UserPage } from "../pages/user-page/user-page";
 import { PageWrapper } from "../components/page-wrapper/page-wrapper";
 import { BulletJournalCreatePage } from "../pages/BulletJournalContents/create-page/bullet-journal-contents-create";
+import { BulletJournalListingPage } from "../pages/BulletJournalContents/listing-page/bullet-journal-listing";
 
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
@@ -13,7 +14,8 @@ export const routes = {
   home: `/home`,
   user: `/user`,
   bulletJournal: {
-    create: '/bullet-journal-entry/create'
+    listing: '/BulletJournal',
+    create: '/BulletJournal/create'
   },
 };
 
@@ -37,6 +39,10 @@ export const Routes = () => {
           {/* Going to route "localhost:5001/" will go to homepage */}
           <Route path={routes.root} exact>
             <Redirect to={routes.home} />
+          </Route>
+
+          <Route path={routes.bulletJournal.listing} exact>
+            <BulletJournalListingPage />
           </Route>
 
           <Route path={routes.bulletJournal.create} exact>
