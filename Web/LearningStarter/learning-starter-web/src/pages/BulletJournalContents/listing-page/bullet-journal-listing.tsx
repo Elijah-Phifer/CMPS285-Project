@@ -2,7 +2,7 @@ import axios from "axios";
 import { O_DIRECTORY } from "constants";
 import { Field, Formik, Form } from "formik";
 import React, { useEffect, useState } from "react";
-import { Header, Input, Segment, Table } from "semantic-ui-react";
+import { Header, Input, Segment, Tab, Table, TableBody } from "semantic-ui-react";
 import { BaseUrl } from "../../../constants/ens-vars";
 import { ApiResponse, BulletJournalEntryGetDTO, BulletJournalEntryUpdateDTO } from "../../../constants/types";
 
@@ -53,19 +53,11 @@ export const BulletJournalListingPage = () => {
     return( 
         <>
         {bulletJournalEntries && (
-        <>
-            <h1>
-                Bullet Journal
-            </h1>
-            <h2>
-                Entries
-            </h2>
-            <div>
-                {bulletJournalEntries.map(bulletJournalEntry => {
-                    return(
-                        <Segment>
-                            <Table>
-                                <Table.Header>
+        <Segment>
+            <Header>Entries</Header>
+            <Table>
+            <Table.Header>
+                <Table.Row>
                                     <Table.HeaderCell>
                                         Id
                                     </Table.HeaderCell>
@@ -78,8 +70,12 @@ export const BulletJournalListingPage = () => {
                                     <Table.HeaderCell>
                                         Date Created
                                     </Table.HeaderCell>
-                                </Table.Header>
-                                <Table.Body>
+                </Table.Row>
+            </Table.Header>
+            <TableBody>
+                {bulletJournalEntries.map(bulletJournalEntry => {
+                    return(
+                            <Table.Row key={bulletJournalEntry.id}>
                                     <Table.Cell>
                                         {bulletJournalEntry.id}
                                     </Table.Cell>
@@ -98,13 +94,12 @@ export const BulletJournalListingPage = () => {
                                     <Table.Cell>
                                         {bulletJournalEntry.DateCreated}
                                     </Table.Cell>
-                                </Table.Body>
-                            </Table>
-                        </Segment>
+                            </Table.Row>
                     )
                 })}
-            </div>
-        </>
+                </TableBody>
+            </Table>
+        </Segment>
         )}
         </>
     );
