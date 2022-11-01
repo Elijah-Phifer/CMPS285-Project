@@ -13,8 +13,10 @@ export const routes = {
   root: `/`,
   home: `/home`,
   user: `/user`,
-  Subscribers: '/subscribers',
-  EmailNewsletters: '/emailNewsletters',
+  Subscribers: {
+    listing: "/subscribers",
+  },
+  EmailNewsletters: "/emailNewsletters",
 };
 
 //This is where you will tell React Router what to render when the path matches the route specified.
@@ -30,7 +32,7 @@ export const Routes = () => {
           <Route path={routes.home} exact>
             <LandingPage />
           </Route>
-          {/* When path === /iser render UserPage */}
+          {/* When path === /user render UserPage */}
           <Route path={routes.user} exact>
             <UserPage />
           </Route>
@@ -41,7 +43,7 @@ export const Routes = () => {
           <Route path={routes.EmailNewsletters} exact>
             <EmailNewslettersPage />
           </Route>
-          < Route path = {routes.Subscribers} exact>
+          <Route path={routes.Subscribers.listing} exact>
             <SubscribersPage />
           </Route>
           {/* This should always come last.  
