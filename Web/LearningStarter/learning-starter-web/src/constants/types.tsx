@@ -21,3 +21,20 @@ export type UserDto = {
   lastName: string;
   userName: string;
 };
+
+export type SubscriberGetDto = {
+  id: number;
+  name: string;
+  email: string;
+  dateSubscribed: Date;
+
+
+}
+
+export type EmailNewsletterGetDto = {
+  id: number;
+  title: string;
+  message: string;
+  dateSent: Date;
+
+}
