@@ -5,6 +5,7 @@ import { NotFoundPage } from "../pages/not-found";
 import { useUser } from "../authentication/use-auth";
 import { UserPage } from "../pages/user-page/user-page";
 import { PageWrapper } from "../components/page-wrapper/page-wrapper";
+import { InventoriesPage } from "../pages/Inventories-page/Inventories";
 import { BulletJournalCreatePage } from "../pages/BulletJournalContents/create-page/bullet-journal-contents-create";
 import { BulletJournalListingPage } from "../pages/BulletJournalContents/listing-page/bullet-journal-listing";
 
@@ -13,6 +14,7 @@ export const routes = {
   root: `/`,
   home: `/home`,
   user: `/user`,
+  inventory: '/inventories',
   bulletJournal: {
     listing: '/BulletJournal',
     create: '/BulletJournal/create'
@@ -35,6 +37,9 @@ export const Routes = () => {
           {/* When path === /iser render UserPage */}
           <Route path={routes.user} exact>
             <UserPage />
+          </Route>
+          <Route path={routes.inventory} exact>
+            <InventoriesPage />
           </Route>
           {/* Going to route "localhost:5001/" will go to homepage */}
           <Route path={routes.root} exact>

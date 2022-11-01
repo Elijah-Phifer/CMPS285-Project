@@ -188,21 +188,11 @@ namespace LearningStarter
                 var seededOnlineStores = new OnlineStores
                 {
                     StoreName = "Ebay",
-                    ListingFees = .35,
-                    SellingFees = 1.065,
-                    Taxes = 1.0845,
-                    Country = "United States of America",
-                    Region = "Louisisana",
                 };
                 
                 var seededOnlineStores1 = new OnlineStores
                 {
                     StoreName = "Etsy",
-                    ListingFees = .2,
-                    SellingFees = 1.065,
-                    Taxes = 1.0845,
-                    Country = "United States of America",
-                    Region = "Louisisana",
                 };
                 dataContext.Onlinestores.Add(seededOnlineStores);
                 dataContext.Onlinestores.Add(seededOnlineStores1);
@@ -214,18 +204,61 @@ namespace LearningStarter
         private void SeedInventories(DataContext dataContext)
         {
             if (!dataContext.Inventories.Any()) {
-                var seededInventory = new Inventories
+                var seededInventory = new Inventories 
                 {
-                    ItemName = "BlueDress",
-                    ProductionCost = 12.00,
+                    ItemName = "Blue Dress",
+                    ProductionCost = 12,
                     Quantity = 4, 
-                    GrossTotal = 35.54,
                     Availabilty = "Yes",
                     OnlineStoreId = 1,
-                    SiteListing = 43.23,
+                    SiteListing = 43,
                     DateAdded = "2/3/12",
                 };
+                var seededInventory1 = new Inventories
+                {
+                    ItemName = "Red Heels",
+                    ProductionCost = 2,
+                    Quantity = 12,
+                    Availabilty = "Yes",
+                    OnlineStoreId = 1,
+                    SiteListing = 99,
+                    DateAdded = "2/3/12",
+                };
+                var seededInventory2 = new Inventories
+                {
+                    ItemName = "Pokemon Socks",
+                    ProductionCost = 5,
+                    Quantity = 30,
+                    Availabilty = "Yes, only if your cool",
+                    OnlineStoreId = 2,
+                    SiteListing = 9,
+                    DateAdded = "5/23/20",
+                };
+                var seededInventory3 = new Inventories
+                {
+                    ItemName = "The One Ring",
+                    ProductionCost = 25,
+                    Quantity = 1,
+                    Availabilty = "No",
+                    OnlineStoreId = 2,
+                    SiteListing = 1000,
+                    DateAdded = "2/3/01",
+                };
+                var seededInventory4 = new Inventories
+                {
+                    ItemName = "Hitch Hiker's guide book",
+                    ProductionCost = 99999999,
+                    Quantity = 1,
+                    Availabilty = "Yes",
+                    OnlineStoreId = 1,
+                    SiteListing = 42,
+                    DateAdded = "1/5/81",
+                };
                 dataContext.Inventories.Add(seededInventory);
+                dataContext.Inventories.Add(seededInventory1);
+                dataContext.Inventories.Add(seededInventory2);
+                dataContext.Inventories.Add(seededInventory3);
+                dataContext.Inventories.Add(seededInventory4);
                 dataContext.SaveChanges();
 
             }

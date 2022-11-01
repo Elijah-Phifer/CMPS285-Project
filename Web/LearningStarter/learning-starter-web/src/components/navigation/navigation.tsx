@@ -47,6 +47,14 @@ const DesktopNavigation = () => {
         },
       },
       {
+        text: "Inventory",
+        icon: "user",
+        hide: false,
+        nav: {
+          to: routes.inventory,
+        },
+      },
+        {
         text: "Bullet Journal Entries",
         children: [
           {

@@ -33,8 +33,6 @@ namespace LearningStarter.Controllers
                     Availabilty = Inventory.Availabilty,
                     DateAdded = Inventory.DateAdded,
                     ItemName = Inventory.ItemName,
-                    GrossTotal = Inventory.GrossTotal,
-                    NetTotal = Inventory.NetTotal, //Inventory.GrossTotal * (OnlineStores.Taxes + onlineStores.SellingFees) - onlineStores.ListingFees,
                     OnlineStoreId = Inventory.OnlineStoreId,
                     ProductionCost = Inventory.ProductionCost,
                     Quantity = Inventory.Quantity,
@@ -58,8 +56,6 @@ namespace LearningStarter.Controllers
                     Availabilty = inventories.Availabilty,
                     DateAdded = inventories.DateAdded,
                     ItemName = inventories.ItemName,
-                    GrossTotal = inventories.GrossTotal,
-                    NetTotal = inventories.NetTotal,
                     OnlineStoreId = inventories.OnlineStoreId,
                     ProductionCost = inventories.ProductionCost,
                     Quantity = inventories.Quantity,
@@ -103,11 +99,6 @@ namespace LearningStarter.Controllers
                 response.AddError("ProductionCost", "Production Cost Added cannot be less than zero");
             }
 
-            if (inventoriesCreateDto.GrossTotal < 0) 
-            {
-                response.AddError("NetTotal", "Net Total Cost Added cannot be less than zero");
-            }
-
             if (inventoriesCreateDto.Quantity < 0)
             {
                 response.AddError("Quantity", "Quantity Added cannot be less than zero");
@@ -130,7 +121,6 @@ namespace LearningStarter.Controllers
                 Availabilty = inventoriesCreateDto.Availabilty,
                 DateAdded = inventoriesCreateDto.DateAdded,
                 ItemName = inventoriesCreateDto.ItemName,
-                GrossTotal = inventoriesCreateDto.GrossTotal,
                 OnlineStoreId = inventoriesCreateDto.OnlineStoreId,
                 ProductionCost = inventoriesCreateDto.ProductionCost,
                 Quantity = inventoriesCreateDto.Quantity,
@@ -145,8 +135,6 @@ namespace LearningStarter.Controllers
                 Availabilty = inventoriesToAdd.Availabilty,
                 DateAdded = inventoriesToAdd.DateAdded,
                 ItemName = inventoriesToAdd.ItemName,
-                GrossTotal = inventoriesToAdd.GrossTotal,
-                NetTotal = inventoriesToAdd.NetTotal,
                 OnlineStoreId = inventoriesToAdd.OnlineStoreId,
                 ProductionCost = inventoriesToAdd.ProductionCost,
                 Quantity = inventoriesToAdd.Quantity,
@@ -175,8 +163,6 @@ namespace LearningStarter.Controllers
             inventoriesToUpdate.Availabilty = inventoriesUpdateDto.Availabilty;
             inventoriesToUpdate.DateAdded = inventoriesUpdateDto.DateAdded;
             inventoriesToUpdate.ItemName = inventoriesUpdateDto.ItemName;
-            inventoriesToUpdate.GrossTotal = inventoriesUpdateDto.GrossTotal;
-            inventoriesToUpdate.NetTotal = inventoriesUpdateDto.NetTotal;
             inventoriesToUpdate.ProductionCost = inventoriesUpdateDto.ProductionCost;
             inventoriesToUpdate.Quantity = inventoriesUpdateDto.Quantity;
             inventoriesToUpdate.SiteListing = inventoriesUpdateDto.SiteListing;
@@ -190,7 +176,6 @@ namespace LearningStarter.Controllers
                 Availabilty = inventoriesToUpdate.Availabilty,
                 DateAdded = inventoriesToUpdate.DateAdded,
                 ItemName = inventoriesToUpdate.ItemName,
-                GrossTotal = inventoriesToUpdate.GrossTotal,
                 OnlineStoreId = inventoriesToUpdate.OnlineStoreId,
                 ProductionCost = inventoriesToUpdate.ProductionCost,
                 Quantity = inventoriesToUpdate.Quantity,
