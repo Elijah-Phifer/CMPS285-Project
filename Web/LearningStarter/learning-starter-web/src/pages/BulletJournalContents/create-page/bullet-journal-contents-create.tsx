@@ -35,25 +35,33 @@ export const BulletJournalCreatePage = () =>   {
                 console.log(err.message);
             });
         }else {
+            alert(JSON.stringify(values, null, 2));
+                console.log(values);
 
-            history.push(routes.home);
+            /*history.push(routes.home); //probably needs to go to listing page */
 
         }
     };
 
     return ( 
         <>
-            <Formik initialValues={initialValues} onSubmit={onSubmit}>
+            <Formik initialValues={initialValues} onSubmit={(onSubmit)}>
                 <Form>
                     <div>
                         <label htmlFor="contents">contents</label>
                     </div>
-                    <Field id ='contents' contents='contents'>
+                    <span>
+                    <Field id ='isDone' name='isDone' type='input' class="ui fitted checkbox">
+                        {({ field }) => <Input type="checkbox" name="isDone" {...field}/>}
+                    </Field>
+                    
+                    </span>
+                    <Field id ='contents' name='contents' type='input' placeholder='Do Something'>
                         {({ field }) => <Input {...field} />}
                     </Field>
 
                     <div>
-                        <Button type="submit">Create</Button>
+                        <Button type="onSubmit">Save</Button>
                     </div>
                 </Form>
             </Formik>

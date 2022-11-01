@@ -13,7 +13,7 @@ export const routes = {
   home: `/home`,
   user: `/user`,
   bulletJournal: {
-    create: '/bullet-journal-entry/ create'
+    create: '/bullet-journal-entry/create'
   },
 };
 
