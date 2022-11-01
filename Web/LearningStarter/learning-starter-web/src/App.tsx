@@ -5,7 +5,7 @@ import { Routes } from "./routes/config";
 import { GlobalStyles } from "./styles/index";
 import { AuthProvider } from "./authentication/use-auth";
 import { Button, Header, Input } from "semantic-ui-react";
-import { Link, Route, Switch} from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import { BulletJournalCreatePage } from "./pages/BulletJournalContents/create-page/bullet-journal-contents-create";
 // import { ListingExample } from "./components/ListingExample";
 
@@ -24,7 +24,6 @@ function App() {
 }
 
 export default App;
-
 
 /*export default function App() {
   return (
@@ -76,7 +75,6 @@ export default App;
   );
 }
 */
-
 
 /*export function BulletJournal() {
   const name = " ";
