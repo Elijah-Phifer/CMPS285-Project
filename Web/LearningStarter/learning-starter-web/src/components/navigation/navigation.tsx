@@ -54,7 +54,7 @@ const DesktopNavigation = () => {
           to: routes.inventory,
         },
       },
-        {
+      {
         text: "Bullet Journal Entries",
         children: [
           {
@@ -72,9 +72,22 @@ const DesktopNavigation = () => {
             nav: {
               to: routes.bulletJournal.create,
             },
-          }
-        ]
-      }
+          },
+        ],
+      },
+      {
+        text: "Subscribers",
+        children: [
+          {
+            text: "Listing",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.Subscribers.listing,
+            },
+          },
+        ],
+      },
     ];
   }, []);
 
