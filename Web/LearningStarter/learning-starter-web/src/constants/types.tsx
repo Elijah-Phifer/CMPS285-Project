@@ -33,13 +33,24 @@ export type InventoriesGetDto = {
   siteListing: number;
   dateAdded: string;
 };
+
+export type InventoriesCreateDto = {
+  itemName: string;
+  productionCost: number;
+  quantity: number;
+  availabilty: string;
+  onlineStoreId: number;
+  siteListing: number;
+  dateAdded: string;
+};
+
 export type BulletJournalEntryCreateDTO = {
   id: number;
   contents: string;
   isDone: boolean;
   /*DateCreated: Date;*/
   pushes: number;
-}
+};
 
 export type BulletJournalEntryGetDTO = {
   id: number;
@@ -47,27 +58,24 @@ export type BulletJournalEntryGetDTO = {
   isDone: boolean;
   DateCreated: Date;
   //add others from controller later
-}
+};
 
 export type BulletJournalEntryUpdateDTO = {
   id: number;
   isDone: boolean;
 
   //add others from controller later
-}
+};
 export type SubscriberGetDto = {
   id: number;
   name: string;
   email: string;
   dateSubscribed: Date;
-
-
-}
+};
 
 export type EmailNewsletterGetDto = {
   id: number;
   title: string;
   message: string;
   dateSent: Date;
-
-}
+};

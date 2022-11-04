@@ -46,15 +46,30 @@ const DesktopNavigation = () => {
           to: routes.user,
         },
       },
+
       {
         text: "Inventory",
-        icon: "user",
-        hide: false,
-        nav: {
-          to: routes.inventory,
-        },
+        children: [
+          {
+            text: "Inventory",
+            icon: "user",
+            hide: false,
+            nav: {
+              to: routes.inventory.Inventory,
+            },
+          },
+          {
+            text: "Create a listing",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.inventory.InventoryCreate,
+            },
+          },
+        ],
       },
-        {
+
+      {
         text: "Bullet Journal Entries",
         children: [
           {
@@ -72,9 +87,22 @@ const DesktopNavigation = () => {
             nav: {
               to: routes.bulletJournal.create,
             },
-          }
-        ]
-      }
+          },
+        ],
+      },
+      {
+        text: "Subscribers",
+        children: [
+          {
+            text: "Subscribers",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.Subscribers,
+            },
+          },
+        ],
+      },
     ];
   }, []);
 

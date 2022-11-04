@@ -27,7 +27,6 @@ namespace LearningStarter.Entities
         public int OnlineStoreId { get; set; }
         public int SiteListing { get; set; }
         public string DateAdded { get; set; }
-        public int OnlineStores {get; set;}
     }
     public class InventoriesGetDto
         {
