@@ -12,12 +12,13 @@ import { useHistory } from "react-router-dom";
 import { routes } from "../../routes/config";
 
 const initialValues: InventoriesCreateDto = {
+  id: 0,
   itemName: "",
-  productionCost: 0,
-  quantity: 0,
+  productionCost: "",
+  quantity: "",
   availabilty: "",
-  onlineStoreId: 0,
-  siteListing: 0,
+  onlineStoreId: "",
+  siteListing: "",
   dateAdded: "",
 };
 
@@ -34,7 +35,7 @@ export const InventoriesCreatePage = () => {
         console.log(err.message);
       });
     } else {
-      history.push(routes.inventory);
+      history.push(routes.inventory.Inventory);
     }
   };
 
@@ -45,17 +46,44 @@ export const InventoriesCreatePage = () => {
           <div>
             <label htmlFor="itemName">Item Name</label>
           </div>
-          <Field
-            id="itemName"
-            itemName="itemName"
-            productionCost="production Cost"
-            quantity="quantity"
-            availabilty="availabilty"
-            onlineStoreId="onlineStoreId"
-            siteListing="siteListing"
-            dateAdded="dateAdded"
-          >
-            {({ Field }) => <Input {...Field} />}
+          <Field id="itemName" name="itemName">
+            {({ field }) => <Input {...field} />}
+          </Field>
+          <div>
+            <label htmlFor="productionCost">production Cost</label>
+          </div>
+          <Field id="productionCost" name="productionCost">
+            {({ field }) => <Input {...field} />}
+          </Field>
+          <div>
+            <label htmlFor="quantity">Quantity</label>
+          </div>
+          <Field id="quantity" name="quantity">
+            {({ field }) => <Input {...field} />}
+          </Field>
+          <div>
+            <label htmlFor="availabilty">availabilty</label>
+          </div>
+          <Field id="availabilty" name="availabilty">
+            {({ field }) => <Input {...field} />}
+          </Field>
+          <div>
+            <label htmlFor="onlineStoreId">onlineStoreId</label>
+          </div>
+          <Field id="onlineStoreId" name="onlineStoreId">
+            {({ field }) => <Input {...field} />}
+          </Field>
+          <div>
+            <label htmlFor="siteListing">Site Listing</label>
+          </div>
+          <Field id="siteListing" name="siteListing">
+            {({ field }) => <Input {...field} />}
+          </Field>
+          <div>
+            <label htmlFor="dateAdded">Date Added</label>
+          </div>
+          <Field id="dateAdded" name="dateAdded">
+            {({ field }) => <Input {...field} />}
           </Field>
           <div>
             <Button type="submit">Create</Button>

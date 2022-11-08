@@ -17,6 +17,7 @@ export const routes = {
   root: `/`,
   home: `/home`,
   user: `/user`,
+
   inventory: {
     Inventory: "/inventories",
     InventoryCreate: "/inventory/create",
@@ -26,9 +27,11 @@ export const routes = {
     listing: "/BulletJournal",
     create: "/BulletJournal/create",
   },
+
   Subscribers: {
     listing: "/subscribers",
   },
+
   EmailNewsletters: "/emailNewsletters",
 };
 

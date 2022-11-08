@@ -26,7 +26,7 @@ export type UserDto = {
 export type InventoriesGetDto = {
   id: number;
   itemName: string;
-  productionCost: number;
+  productionCost: string;
   quantity: number;
   availabilty: string;
   onlineStoreId: number;
@@ -35,12 +35,13 @@ export type InventoriesGetDto = {
 };
 
 export type InventoriesCreateDto = {
+  id: number;
   itemName: string;
-  productionCost: number;
-  quantity: number;
+  productionCost: string;
+  quantity: string;
   availabilty: string;
-  onlineStoreId: number;
-  siteListing: number;
+  onlineStoreId: string;
+  siteListing: string;
   dateAdded: string;
 };
 
