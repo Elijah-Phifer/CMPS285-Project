@@ -16,10 +16,11 @@ export const routes = {
   root: `/`,
   home: `/home`,
   user: `/user`,
-  inventory: '/inventories',
+  inventory: "/inventories",
   bulletJournal: {
-    listing: '/BulletJournal',
-    create: '/BulletJournal/create'
+    listing: "/BulletJournal",
+    create: "/BulletJournal/create",
+    update: "/BulletJournal/Update",
   },
   Subscribers: {
     listing: "/subscribers",
@@ -59,6 +60,10 @@ export const Routes = () => {
           <Route path={routes.bulletJournal.create} exact>
             <BulletJournalCreatePage />
           </Route>
+
+          {/* <Route path={routes.bulletJournal.update} exact>
+            <BulletJournalUpdatePage />
+  </Route> */}
 
           <Route path={routes.EmailNewsletters} exact>
             <EmailNewslettersPage />

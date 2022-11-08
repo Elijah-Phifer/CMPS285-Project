@@ -3,6 +3,7 @@ import { O_DIRECTORY } from "constants";
 import { Field, Formik, Form } from "formik";
 import React, { useEffect, useState } from "react";
 import {
+  Checkbox,
   Header,
   Input,
   Segment,
@@ -21,7 +22,14 @@ const initialValues: BulletJournalEntryUpdateDTO = {
   id: 0,
   //need to add date created
   isDone: false,
-  /*DateCreated: Now,*/
+  _DateCreated: {
+    get DateCreated() {
+      return this._DateCreated;
+    },
+    set DateCreated(value) {
+      this._DateCreated = value;
+    },
+  },
 };
 
 const onSubmit = async (values: BulletJournalEntryUpdateDTO) => {
@@ -62,6 +70,25 @@ export const BulletJournalListingPage = () => {
     fetchBulletJournal();
   }, []);
 
+  const markBulletJournalEntryAsDone = async (id: number, isDone: Boolean) => {
+    console.log("debug", { isDone });
+    const response = await axios.put(
+      `${BaseUrl}/api/BulletJournal/mark-done/${id}`,
+      isDone,
+      {
+        headers: {
+          "Content-Type": "application/json;charset=UTF-8",
+        },
+      }
+    );
+
+    if (response.data.hasErrors) {
+      response.data.errors.forEach((err) => {
+        console.log(err.message);
+      });
+    }
+  };
+
   return (
     <>
       {bulletJournalEntries && (
@@ -82,23 +109,19 @@ export const BulletJournalListingPage = () => {
                   <Table.Row key={bulletJournalEntry.id}>
                     <Table.Cell>{bulletJournalEntry.id}</Table.Cell>
                     <Table.Cell>
-                      <Formik initialValues={initialValues} onSubmit={onSubmit}>
-                        <Form>
-                          <Field
-                            id="isDone"
-                            name="isDone"
-                            type="input"
-                            class="ui fitted checkbox"
-                          >
-                            {({ field }) => (
-                              <Input type="checkbox" name="isDone" {...field} />
-                            )}
-                          </Field>
-                        </Form>
-                      </Formik>
+                      <Checkbox
+                        name="isDone"
+                        defaultChecked={bulletJournalEntry.isDone}
+                        onChange={(e, data) =>
+                          markBulletJournalEntryAsDone(
+                            bulletJournalEntry.id,
+                            data.checked ?? false
+                          )
+                        }
+                      />
                     </Table.Cell>
                     <Table.Cell>{bulletJournalEntry.contents}</Table.Cell>
-                    <Table.Cell>{bulletJournalEntry.DateCreated}</Table.Cell>
+                    <Table.Cell>{bulletJournalEntry._DateCreated}</Table.Cell>
                   </Table.Row>
                 );
               })}

@@ -1,0 +1,44 @@
+import axios from "axios";
+import { O_DIRECTORY } from "constants";
+import { Field, Formik, Form } from "formik";
+import React, { useEffect, useState } from "react";
+import {
+  Checkbox,
+  Header,
+  Input,
+  Segment,
+  Tab,
+  Table,
+  TableBody,
+} from "semantic-ui-react";
+import { BaseUrl } from "../../../constants/ens-vars";
+import {
+  ApiResponse,
+  BulletJournalEntryGetDTO,
+  BulletJournalEntryUpdateDTO,
+} from "../../../constants/types";
+
+export const BulletJournalUpdatePage = () => {
+    const [bulletJournalEntries, setBulletJournalEntries] =
+      useState<BulletJournalEntryUpdateDTO[]>();
+    console.log(bulletJournalEntries);
+    const fetchBulletJournal = async () => {
+      const response = await axios.get<ApiResponse<BulletJournalEntryUpdateDTO[]>>(
+        `${BaseUrl}/api/BulletJournal`
+      );
+      if (response.data.hasErrors) {
+        alert("Something went wrong!");
+        return;
+        /*response.data.errors.forEach(err => {
+                  console.log(err.message);
+              });*/
+      } else {
+        setBulletJournalEntries(response.data.data);
+      }
+    };
+  
+    useEffect(() => {
+      fetchBulletJournal();
+    }, []);
+
+};
