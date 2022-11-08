@@ -10,6 +10,7 @@ import { BulletJournalCreatePage } from "../pages/BulletJournalContents/create-p
 import { BulletJournalListingPage } from "../pages/BulletJournalContents/listing-page/bullet-journal-listing";
 import { SubscribersPage } from "../pages/Subscribers/subscribers";
 import { EmailNewslettersPage } from "../pages/EmailNewsletter/emailNewsletter";
+import { BulletJournalUpdatePage } from "../pages/BulletJournalContents/update-page/bullet-journal-update";
 
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
@@ -20,7 +21,7 @@ export const routes = {
   bulletJournal: {
     listing: "/BulletJournal",
     create: "/BulletJournal/create",
-    update: "/BulletJournal/Update",
+    update: "/BulletJournal/update/:id",
   },
   Subscribers: {
     listing: "/subscribers",
@@ -61,9 +62,9 @@ export const Routes = () => {
             <BulletJournalCreatePage />
           </Route>
 
-          {/* <Route path={routes.bulletJournal.update} exact>
+          <Route path={routes.bulletJournal.update} exact>
             <BulletJournalUpdatePage />
-  </Route> */}
+          </Route>
 
           <Route path={routes.EmailNewsletters} exact>
             <EmailNewslettersPage />
