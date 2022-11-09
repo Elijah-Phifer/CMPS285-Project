@@ -12,6 +12,7 @@ namespace LearningStarter.Controllers
     public class BulletJournalEntriesController : ControllerBase
     {
         private readonly DataContext _dataContext;
+
         public BulletJournalEntriesController(DataContext dataContext)
         {
             _dataContext = dataContext;
