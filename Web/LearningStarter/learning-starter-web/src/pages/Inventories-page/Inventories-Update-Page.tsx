@@ -4,8 +4,15 @@ import React, { useEffect, useState } from "react";
 import { Button, Input, Label } from "semantic-ui-react";
 import { ApiResponse, InventoriesGetDto } from "../../constants/types";
 import { useRouteMatch } from "react-router-dom";
+import { BaseUrl } from "../../constants/ens-vars";
 
 export const InventoriesUpdatePage = () => {
+  const onSubmit = async (values: InventoriesGetDto) => {
+    const response = await axios.post<ApiResponse<InventoriesGetDto>>(
+      `${BaseUrl}/api/Inventories`,
+      values
+    );
+  };
   let match = useRouteMatch<{ id: string }>();
   const id = match.params.id;
   const [inventories, setInventories] = useState<InventoriesGetDto>();
@@ -23,7 +30,7 @@ export const InventoriesUpdatePage = () => {
   return (
     <>
       {inventories && (
-        <Formik initialValues={inventories} onSubmit={() => {}}>
+        <Formik initialValues={inventories} onSubmit={onSubmit}>
           <Form>
             {/* <div>
               <Label>Item Name</Label>
