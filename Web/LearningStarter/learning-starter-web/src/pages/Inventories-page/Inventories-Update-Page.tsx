@@ -19,20 +19,20 @@ export const InventoriesUpdatePage = () => {
       setInventories(response.data.data);
     };
     fetchInvetories();
-  }, [id]);
+  }, []);
   return (
     <>
       {inventories && (
         <Formik initialValues={inventories} onSubmit={() => {}}>
           <Form>
-            <div>
+            {/* <div>
               <Label>Item Name</Label>
             </div>
             <Field id="itemName" name="itemName">
               {({ field }) => <Input {...field} />}
-            </Field>
-            {/* <div>
-              <Label>Item Name</Label>
+            </Field> */}
+            <div>
+              <label htmlFor="itemName">Item Name</label>
             </div>
             <Field id="itemName" name="itemName">
               {({ field }) => <Input {...field} />}
@@ -72,8 +72,10 @@ export const InventoriesUpdatePage = () => {
             </div>
             <Field id="dateAdded" name="dateAdded">
               {({ field }) => <Input {...field} />}
-            </Field> */}
-            <Button type="submit">Submit</Button>
+            </Field>
+            <div>
+              <Button type="submit">Submit</Button>
+            </div>
           </Form>
         </Formik>
       )}

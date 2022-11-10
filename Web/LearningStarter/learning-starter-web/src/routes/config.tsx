@@ -22,7 +22,7 @@ export const routes = {
   inventory: {
     Inventory: "/inventory",
     InventoryCreate: "/inventory/create",
-    InventoryUpdate: "/inventory/update/1",
+    InventoryUpdate: "/inventory/update/:id",
   },
 
   bulletJournal: {
