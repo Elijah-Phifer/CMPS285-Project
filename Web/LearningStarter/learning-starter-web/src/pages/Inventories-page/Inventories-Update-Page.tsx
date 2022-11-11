@@ -4,23 +4,18 @@ import React, { useEffect, useState } from "react";
 import { Button, Input, Label } from "semantic-ui-react";
 import {
   ApiResponse,
-  InventoriesCreateDto,
+  InventoriesUpdateDto,
   InventoriesGetDto,
 } from "../../constants/types";
 import { useRouteMatch } from "react-router-dom";
-import { BaseUrl } from "../../constants/ens-vars";
+import { useHistory } from "react-router-dom";
+import { routes } from "../../routes/config";
 
 export const InventoriesUpdatePage = () => {
-  let match = useRouteMatch<{ id: string }>();
+  let match = useRouteMatch<{ id: number }>();
   const id = match.params.id;
+  const history = useHistory();
   const [inventories, setInventories] = useState<InventoriesGetDto>();
-
-  const onSubmit = async (values: InventoriesGetDto) => {
-    const response = await axios.post<ApiResponse<InventoriesGetDto>>(
-      `${BaseUrl}/api/Inventories`,
-      values
-    );
-  };
 
   useEffect(() => {
     const fetchInvetories = async () => {
@@ -30,8 +25,24 @@ export const InventoriesUpdatePage = () => {
 
       setInventories(response.data.data);
     };
+
     fetchInvetories();
-  }, [id]);
+  }, []);
+
+  const onSubmit = async (values: InventoriesUpdateDto) => {
+    const response = await axios.put<ApiResponse<InventoriesGetDto>>(
+      `/api/Inventories/${id}`,
+      values
+    );
+    if (response.data.hasErrors) {
+      response.data.errors.forEach((err) => {
+        console.log(err.message);
+      });
+    } else {
+      history.push(routes.inventory.Inventory);
+    }
+  };
+
   return (
     <>
       {inventories && (
@@ -47,43 +58,43 @@ export const InventoriesUpdatePage = () => {
             <div>
               <label htmlFor="itemName">Item Name</label>
             </div>
-            <Field id="${id}" name="itemName">
+            <Field id="itemName" name="itemName">
               {({ field }) => <Input {...field} />}
             </Field>
             <div>
               <label htmlFor="productionCost">production Cost</label>
             </div>
-            <Field id="${id}" name="productionCost">
+            <Field id="productionCost" name="productionCost">
               {({ field }) => <Input {...field} />}
             </Field>
             <div>
               <label htmlFor="quantity">Quantity</label>
             </div>
-            <Field id="${id}" name="quantity">
+            <Field id="quantity" name="quantity">
               {({ field }) => <Input {...field} />}
             </Field>
             <div>
               <label htmlFor="availabilty">availabilty</label>
             </div>
-            <Field id="${id}" name="availabilty">
+            <Field id="availabilty" name="availabilty">
               {({ field }) => <Input {...field} />}
             </Field>
             <div>
               <label htmlFor="onlineStoreId">onlineStoreId</label>
             </div>
-            <Field id="${id}" name="onlineStoreId">
+            <Field id="onlineStoreId" name="onlineStoreId">
               {({ field }) => <Input {...field} />}
             </Field>
             <div>
               <label htmlFor="siteListing">Site Listing</label>
             </div>
-            <Field id="${id}" name="siteListing">
+            <Field id="siteListing" name="siteListing">
               {({ field }) => <Input {...field} />}
             </Field>
             <div>
               <label htmlFor="dateAdded">Date Added</label>
             </div>
-            <Field id="${id}" name="dateAdded">
+            <Field id="dateAdded" name="dateAdded">
               {({ field }) => <Input {...field} />}
             </Field>
             <div>
