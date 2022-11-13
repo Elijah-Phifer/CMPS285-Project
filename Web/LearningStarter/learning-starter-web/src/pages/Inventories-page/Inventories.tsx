@@ -4,6 +4,8 @@ import { Header, Segment, Table, TableBody, Button } from "semantic-ui-react";
 import { ApiResponse, InventoriesGetDto } from "../../constants/types";
 import { useHistory } from "react-router-dom";
 import { routes } from "../../routes/config";
+import { Form, Formik } from "formik";
+
 export const InventoriesPage = () => {
   const history = useHistory();
   const [inventories, setInventories] = useState<InventoriesGetDto[]>();
@@ -38,6 +40,7 @@ export const InventoriesPage = () => {
                 <Table.HeaderCell>Site Listing</Table.HeaderCell>
                 <Table.HeaderCell>Date Added</Table.HeaderCell>
                 <Table.HeaderCell></Table.HeaderCell>
+                <Table.HeaderCell></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <TableBody>
@@ -66,6 +69,20 @@ export const InventoriesPage = () => {
                         Edit
                       </Button>
                     </Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        onClick={() =>
+                          history.push(
+                            routes.inventory.InventoryDelete.replace(
+                              ":id",
+                              `${inventory.id}`
+                            )
+                          )
+                        }
+                      >
+                        Delete?
+                      </Button>
+                    </Table.Cell>
                   </Table.Row>
                 );
               })}
@@ -76,3 +93,6 @@ export const InventoriesPage = () => {
     </>
   );
 };
+function useRouteMatch<T>() {
+  throw new Error("Function not implemented.");
+}

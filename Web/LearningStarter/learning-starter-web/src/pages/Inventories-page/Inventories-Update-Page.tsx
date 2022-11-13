@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { Button, Input, Label } from "semantic-ui-react";
+import { Button, Input, Label, Table } from "semantic-ui-react";
 import {
   ApiResponse,
   InventoriesUpdateDto,
@@ -100,6 +100,62 @@ export const InventoriesUpdatePage = () => {
             <div>
               <Button type="submit">Submit</Button>
             </div>
+          </Form>
+        </Formik>
+      )}
+    </>
+  );
+};
+
+export const InventoriesDelete = () => {
+  let match = useRouteMatch<{ id: number }>();
+  const id = match.params.id;
+  const history = useHistory();
+  const [inventories, setInventories] = useState<InventoriesGetDto>();
+
+  useEffect(() => {
+    const fetchInvetories = async () => {
+      const response = await axios.get<ApiResponse<InventoriesGetDto>>(
+        `/api/Inventories/${id}`
+      );
+
+      setInventories(response.data.data);
+    };
+
+    fetchInvetories();
+  }, [id]);
+
+  const onSubmit = async () => {
+    const response = await axios.delete<ApiResponse<InventoriesGetDto>>(
+      `/api/Inventories/${id}`
+    );
+    if (response.data.hasErrors) {
+      response.data.errors.forEach((err) => {
+        console.log(err.message);
+      });
+    } else {
+      history.push(routes.inventory.Inventory);
+    }
+  };
+
+  return (
+    <>
+      {inventories && (
+        <Formik initialValues={inventories} onSubmit={onSubmit}>
+          <Form>
+            <Table.Cell>
+              <Button
+                onClick={() => history.push(routes.inventory.Inventory)}
+                type="submit"
+              >
+                Delete?
+              </Button>
+            </Table.Cell>
+            <Table.Cell>
+              <Button onClick={() => history.push(routes.inventory.Inventory)}>
+                Cancel
+              </Button>
+            </Table.Cell>
           </Form>
         </Formik>
       )}
