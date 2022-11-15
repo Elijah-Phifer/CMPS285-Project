@@ -1,4 +1,28 @@
-.btn.ui {
-    color: blue;
-    
+
+
+.btn.ui.button {
+    background-color: rgb(195, 193, 193);
+    color: black;
 }
+
+
+
+.btn.ui.button:hover {
+    background-color: black;
+    color: blue;
+}
+
+.btn-cancel.ui.button {
+    background-color: gray;
+    color: black;
+}
+
+.btn-cancel.ui.button:hover {
+    background-color: black;
+    color: blue;
+}
+
+.create-input.ui {
+    align-self: center;
+}
+

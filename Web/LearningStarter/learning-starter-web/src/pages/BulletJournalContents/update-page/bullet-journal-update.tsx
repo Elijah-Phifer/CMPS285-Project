@@ -1,21 +1,28 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { Button, Dropdown, Input } from "semantic-ui-react";
+import { Button, Dropdown, Input, Table } from "semantic-ui-react";
 import {
   ApiResponse,
   BulletJournalEntryGetDTO,
-  BulletJournalEntryUpdateDTO,
+  BulletJournalEntryUpdateDto,
 } from "../../../constants/types";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import { routes } from "../../../routes/config";
+import { BaseUrl } from "../../../constants/ens-vars";
 
 export const BulletJournalUpdatePage = () => {
+  const history = useHistory();
+
   let match = useRouteMatch<{ id: string }>();
   const id = match.params.id;
 
   const [bulletJournalEntries, setBulletJournalEntries] =
     useState<BulletJournalEntryGetDTO>();
+
+  /*const [bulletJournalEntriesOptions, setBulletJournalEntriesOptions] =
+    useState<BulletJournalOptionsResponseDto>();
+  */
 
   useEffect(() => {
     const fetchBulletJournal = async () => {
@@ -23,39 +30,38 @@ export const BulletJournalUpdatePage = () => {
         `/api/BulletJournal/${id}`
       );
 
-      if (response.data.hasErrors) {
-        console.log(response.data.errors);
-      }
       setBulletJournalEntries(response.data.data);
     };
 
-    const fetchBulletJournalEntryOptions = async () => {
-      const response = await axios.get<
-        ApiResponse<BulletJournalEntryUpdateDTO>
-      >(`/api/BulletJournal/${id}`);
-    };
-
     fetchBulletJournal();
-  }, [id]);
+  }, []);
+
+  const onSubmit = async (values: BulletJournalEntryUpdateDto) => {
+    const response = await axios.put<ApiResponse<BulletJournalEntryGetDTO>>(
+      `/api/BulletJournal/${id}`,
+      values //values
+    );
+
+    if (response.data.hasErrors) {
+      response.data.errors.forEach((err) => {
+        console.log(err.message);
+      });
+    } else {
+      history.push(routes.bulletJournal.listing); //probably needs to go to listing page
+    }
+  };
 
   return (
     <>
       {bulletJournalEntries && (
-        <Formik initialValues={bulletJournalEntries} onSubmit={() => {}}>
+        <Formik initialValues={bulletJournalEntries} onSubmit={onSubmit}>
           <Form>
             <div>
               <label htmlFor="contents">Contents</label>
             </div>
             <Field id="contents" name="contents">
-              {({ feild }) => <Input {...feild} />}
+              {({ field }) => <Input {...field} />}
             </Field>
-            {/* <Dropdown
-            selection
-            multiple
-            clearable
-            placeholder="Bullet Journal Entry"
-            options={{}}
-      />*/}
             <div>
               <Button type="submit">Submit</Button>
             </div>
@@ -65,3 +71,74 @@ export const BulletJournalUpdatePage = () => {
     </>
   );
 };
+
+export const BulletJournalDeletePage = () => {
+  const history = useHistory();
+
+  let match = useRouteMatch<{ id: string }>();
+  const id = match.params.id;
+
+  const [bulletJournalEntries, setBulletJournalEntries] =
+    useState<BulletJournalEntryGetDTO>();
+
+  /*const [bulletJournalEntriesOptions, setBulletJournalEntriesOptions] =
+    useState<BulletJournalOptionsResponseDto>();
+  */
+
+  useEffect(() => {
+    const fetchBulletJournal = async () => {
+      const response = await axios.get<ApiResponse<BulletJournalEntryGetDTO>>(
+        `/api/BulletJournal/${id}`
+      );
+
+      setBulletJournalEntries(response.data.data);
+    };
+
+    fetchBulletJournal();
+  }, [id]);
+
+  const onSubmit1 = async () => {
+    const response = await axios.delete<ApiResponse<BulletJournalEntryGetDTO>>(
+      `/api/BulletJournal/${id}`
+    );
+
+    if (response.data.hasErrors) {
+      response.data.errors.forEach((err) => {
+        console.log(err.message);
+      });
+    } else {
+      history.push(routes.bulletJournal.listing); //probably needs to go to listing page
+    }
+  };
+
+  return (
+    <>
+      {bulletJournalEntries && (
+        <Formik initialValues={bulletJournalEntries} onSubmit={onSubmit1}>
+          <Form>
+            <Table.Cell>
+              <Button type="submit">Delete</Button>
+            </Table.Cell>
+            <Table.Cell>
+              <Button
+                onClick={() => history.push(routes.bulletJournal.listing)}
+              >
+                Cancel
+              </Button>
+            </Table.Cell>
+          </Form>
+        </Formik>
+      )}
+    </>
+  );
+};
+
+/* <div>
+              <label htmlFor="contents">Contents</label>
+            </div>
+            <Field id="contents" name="contents">
+              {({ field }) => <Input {...field} />}
+            </Field>
+            <div>
+              <Button type="submit">Submit</Button>
+            </div> */

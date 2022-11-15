@@ -3,9 +3,11 @@ import { O_DIRECTORY } from "constants";
 import { Field, Formik, Form } from "formik";
 import React, { useEffect, useState } from "react";
 import {
+  Button,
   Checkbox,
   Header,
   Input,
+  List,
   Segment,
   Tab,
   Table,
@@ -15,41 +17,16 @@ import { BaseUrl } from "../../../constants/ens-vars";
 import {
   ApiResponse,
   BulletJournalEntryGetDTO,
-  BulletJournalEntryUpdateDTO,
 } from "../../../constants/types";
 
-const initialValues: BulletJournalEntryUpdateDTO = {
-  id: 0,
-  //need to add date created
-  isDone: false,
-  _DateCreated: {
-    get DateCreated() {
-      return this._DateCreated;
-    },
-    set DateCreated(value) {
-      this._DateCreated = value;
-    },
-  },
-};
+import { useHistory } from "react-router-dom";
+import { routes } from "../../../routes/config";
 
-const onSubmit = async (values: BulletJournalEntryUpdateDTO) => {
-  const response = await axios.post<ApiResponse<BulletJournalEntryGetDTO>>(
-    `${BaseUrl}/api/BulletJournal`,
-    values
-  );
-
-  if (response.data.hasErrors) {
-    response.data.errors.forEach((err) => {
-      console.log(err.message);
-    });
-  } else {
-    alert(JSON.stringify(values, null, 2));
-    console.log(values);
-  }
-};
 export const BulletJournalListingPage = () => {
+  const history = useHistory();
   const [bulletJournalEntries, setBulletJournalEntries] =
     useState<BulletJournalEntryGetDTO[]>();
+
   console.log(bulletJournalEntries);
   const fetchBulletJournal = async () => {
     const response = await axios.get<ApiResponse<BulletJournalEntryGetDTO[]>>(
@@ -70,6 +47,8 @@ export const BulletJournalListingPage = () => {
     fetchBulletJournal();
   }, []);
 
+  //try going in back end and make controller for mark-done
+
   const markBulletJournalEntryAsDone = async (id: number, isDone: Boolean) => {
     console.log("debug", { isDone });
     const response = await axios.put(
@@ -89,11 +68,32 @@ export const BulletJournalListingPage = () => {
     }
   };
 
+  //possibly animate button to change what it says when hovered over
+
   return (
     <>
       {bulletJournalEntries && (
         <Segment>
+          <div>
+            <span>
+              <Input
+                type="text"
+                placeholder="Search..."
+                className="ui right input"
+              ></Input>
+            </span>
+          </div>
           <Header>Entries</Header>
+          <div>
+            <a
+              href="https://localhost:5001/BulletJournal/create"
+              /* onClick={() => {
+          alert("Redirecting to create page");
+        }}*/
+            >
+              <Button className="ui fluid button">Create An Entry</Button>
+            </a>
+          </div>
           <Table>
             <Table.Header>
               <Table.Row>
@@ -101,6 +101,8 @@ export const BulletJournalListingPage = () => {
                 <Table.HeaderCell>isDone</Table.HeaderCell>
                 <Table.HeaderCell>Contents</Table.HeaderCell>
                 <Table.HeaderCell>Date Created</Table.HeaderCell>
+                <Table.HeaderCell></Table.HeaderCell>
+                <Table.HeaderCell></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <TableBody>
@@ -121,7 +123,35 @@ export const BulletJournalListingPage = () => {
                       />
                     </Table.Cell>
                     <Table.Cell>{bulletJournalEntry.contents}</Table.Cell>
-                    <Table.Cell>{bulletJournalEntry._DateCreated}</Table.Cell>
+                    <Table.Cell>{bulletJournalEntry.DateCreated}</Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        onClick={() =>
+                          history.push(
+                            routes.bulletJournal.update.replace(
+                              ":id",
+                              `${bulletJournalEntry.id}`
+                            )
+                          )
+                        }
+                      >
+                        Edit
+                      </Button>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        onClick={() =>
+                          history.push(
+                            routes.bulletJournal.delete.replace(
+                              ":id",
+                              `${bulletJournalEntry.id}`
+                            )
+                          )
+                        }
+                      >
+                        Delete
+                      </Button>
+                    </Table.Cell>
                   </Table.Row>
                 );
               })}

@@ -45,17 +45,27 @@ export type BulletJournalEntryGetDTO = {
   id: number;
   contents: string;
   isDone: boolean;
-  _DateCreated: Date;
+  DateCreated: Date;
   //add others from controller later
 };
 
-export type BulletJournalEntryUpdateDTO = {
-  _DateCreated: any;
-  id: number;
-  isDone: boolean;
+export type BulletJournalEntryUpdateDto = {
+  // isDone: boolean;
+  contents: string;
 
   //add others from controller later nkjhlkjhlk
 };
+
+export type BulletJournalOptionsDto = {
+  text: string;
+  values: number;
+};
+
+export type BulletJournalOptionsResponseDto = {
+  itemTypeOptions: BulletJournalOptionsDto[];
+  effectTypeOptions: BulletJournalOptionsDto[];
+};
+
 export type SubscriberGetDto = {
   id: number;
   name: string;
