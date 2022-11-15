@@ -8,8 +8,7 @@
 
 
 .btn.ui.button:hover {
-    background-color: black;
-    color: blue;
+    background-color: darkgray;
 }
 
 .btn-cancel.ui.button {
@@ -18,8 +17,7 @@
 }
 
 .btn-cancel.ui.button:hover {
-    background-color: black;
-    color: blue;
+    background-color: rgb(92, 87, 87);
 }
 
 .create-input.ui {

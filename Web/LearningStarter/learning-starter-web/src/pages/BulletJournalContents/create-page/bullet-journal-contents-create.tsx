@@ -29,7 +29,7 @@ const initialValues: BulletJournalEntryCreateDTO = {
   id: 0,
   //need to add date created
   isDone: false,
-  /*DateCreated: Now,*/
+  DateCreated: new Date(),
   pushes: 0,
 };
 

@@ -28,22 +28,21 @@ export const BulletJournalListingPage = () => {
     useState<BulletJournalEntryGetDTO[]>();
 
   console.log(bulletJournalEntries);
-  const fetchBulletJournal = async () => {
-    const response = await axios.get<ApiResponse<BulletJournalEntryGetDTO[]>>(
-      `${BaseUrl}/api/BulletJournal`
-    );
-    if (response.data.hasErrors) {
-      alert("Something went wrong!");
-      return;
-      /*response.data.errors.forEach(err => {
+  useEffect(() => {
+    const fetchBulletJournal = async () => {
+      const response = await axios.get<ApiResponse<BulletJournalEntryGetDTO[]>>(
+        `${BaseUrl}/api/BulletJournal`
+      );
+      if (response.data.hasErrors) {
+        alert("Something went wrong!");
+        return;
+        /*response.data.errors.forEach(err => {
                 console.log(err.message);
             });*/
-    } else {
+      }
       setBulletJournalEntries(response.data.data);
-    }
-  };
+    };
 
-  useEffect(() => {
     fetchBulletJournal();
   }, []);
 
@@ -126,6 +125,7 @@ export const BulletJournalListingPage = () => {
                     <Table.Cell>{bulletJournalEntry.DateCreated}</Table.Cell>
                     <Table.Cell>
                       <Button
+                        className="ui icon button"
                         onClick={() =>
                           history.push(
                             routes.bulletJournal.update.replace(
@@ -135,11 +135,12 @@ export const BulletJournalListingPage = () => {
                           )
                         }
                       >
-                        Edit
+                        <i className="pencil icon"></i>
                       </Button>
                     </Table.Cell>
                     <Table.Cell>
                       <Button
+                        className="ui icon button"
                         onClick={() =>
                           history.push(
                             routes.bulletJournal.delete.replace(
@@ -149,7 +150,7 @@ export const BulletJournalListingPage = () => {
                           )
                         }
                       >
-                        Delete
+                        <i className="eraser icon"></i>
                       </Button>
                     </Table.Cell>
                   </Table.Row>

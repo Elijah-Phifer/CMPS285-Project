@@ -37,7 +37,7 @@ export type BulletJournalEntryCreateDTO = {
   id: number;
   contents: string;
   isDone: boolean;
-  /*DateCreated: Date;*/
+  DateCreated: Date;
   pushes: number;
 };
 
