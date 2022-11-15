@@ -12,10 +12,7 @@ import { BulletJournalListingPage } from "../pages/BulletJournalContents/listing
 import { SubscribersPage } from "../pages/Subscribers/subscribers";
 import { EmailNewslettersPage } from "../pages/EmailNewsletter/emailNewsletter";
 import { InventoriesCreatePage } from "../pages/Inventories-page/Inventories-Create";
-import {
-  InventoriesDelete,
-  InventoriesUpdatePage,
-} from "../pages/Inventories-page/Inventories-Update-Page";
+import { InventoriesUpdatePage } from "../pages/Inventories-page/Inventories-Update-Page";
 
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
@@ -27,7 +24,7 @@ export const routes = {
     Inventory: "/inventory",
     InventoryCreate: "/inventory/create",
     InventoryUpdate: "/Inventory/:id",
-    InventoryDelete: "/InventoryDelete/:id",
+    // InventoryDelete: "/InventoryDelete/:id",
   },
 
   bulletJournal: {
@@ -68,9 +65,9 @@ export const Routes = () => {
           <Route path={routes.inventory.InventoryUpdate} exact>
             <InventoriesUpdatePage />
           </Route>
-          <Route path={routes.inventory.InventoryDelete} exact>
+          {/* <Route path={routes.inventory.InventoryDelete} exact>
             <InventoriesDelete />
-          </Route>
+          </Route> */}
           {/* Going to route "localhost:5001/" will go to homepage */}
           <Route path={routes.root} exact>
             <Redirect to={routes.home} />

@@ -6,6 +6,8 @@ import {
   ApiResponse,
   InventoriesUpdateDto,
   InventoriesGetDto,
+  InventoriesDeleteDto,
+  InventoriesCreateDto,
 } from "../../constants/types";
 import { useRouteMatch } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -43,18 +45,24 @@ export const InventoriesUpdatePage = () => {
     }
   };
 
+  const Click = async () => {
+    const response = await axios.delete<ApiResponse<InventoriesGetDto>>(
+      `/api/Inventories/${id}`
+    );
+    if (response.data.hasErrors) {
+      response.data.errors.forEach((err) => {
+        console.log(err.message);
+      });
+    } else {
+      history.push(routes.inventory.Inventory);
+    }
+  };
+
   return (
     <>
       {inventories && (
         <Formik initialValues={inventories} onSubmit={onSubmit}>
           <Form>
-            {/* <div>
-              <Label>Item Name</Label>
-            </div> 
-
-            <Field id="itemName" name="itemName">
-              {({ field }) => <Input {...field} />}
-            </Field> */}
             <div>
               <label htmlFor="itemName">Item Name</label>
             </div>
@@ -100,62 +108,10 @@ export const InventoriesUpdatePage = () => {
             <div>
               <Button type="submit">Submit</Button>
             </div>
-          </Form>
-        </Formik>
-      )}
-    </>
-  );
-};
-
-export const InventoriesDelete = () => {
-  let match = useRouteMatch<{ id: number }>();
-  const id = match.params.id;
-  const history = useHistory();
-  const [inventories, setInventories] = useState<InventoriesGetDto>();
-
-  useEffect(() => {
-    const fetchInvetories = async () => {
-      const response = await axios.get<ApiResponse<InventoriesGetDto>>(
-        `/api/Inventories/${id}`
-      );
-
-      setInventories(response.data.data);
-    };
-
-    fetchInvetories();
-  }, [id]);
-
-  const onSubmit = async () => {
-    const response = await axios.delete<ApiResponse<InventoriesGetDto>>(
-      `/api/Inventories/${id}`
-    );
-    if (response.data.hasErrors) {
-      response.data.errors.forEach((err) => {
-        console.log(err.message);
-      });
-    } else {
-      history.push(routes.inventory.Inventory);
-    }
-  };
-
-  return (
-    <>
-      {inventories && (
-        <Formik initialValues={inventories} onSubmit={onSubmit}>
-          <Form>
-            <Table.Cell>
-              <Button
-                onClick={() => history.push(routes.inventory.Inventory)}
-                type="submit"
-              >
-                Delete?
-              </Button>
-            </Table.Cell>
-            <Table.Cell>
-              <Button onClick={() => history.push(routes.inventory.Inventory)}>
-                Cancel
-              </Button>
-            </Table.Cell>
+            <br></br>
+            <div>
+              <Button onClick={Click}>Delete?</Button>
+            </div>
           </Form>
         </Formik>
       )}

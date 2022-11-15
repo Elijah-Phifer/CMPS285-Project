@@ -69,7 +69,7 @@ export const InventoriesPage = () => {
                         Edit
                       </Button>
                     </Table.Cell>
-                    <Table.Cell>
+                    {/* <Table.Cell>
                       <Button
                         onClick={() =>
                           history.push(
@@ -82,7 +82,7 @@ export const InventoriesPage = () => {
                       >
                         Delete?
                       </Button>
-                    </Table.Cell>
+                    </Table.Cell> */}
                   </Table.Row>
                 );
               })}
