@@ -68,7 +68,6 @@ const DesktopNavigation = () => {
           },
         ],
       },
-
       {
         text: "Bullet Journal Entries",
         children: [
@@ -94,14 +93,23 @@ const DesktopNavigation = () => {
         text: "Subscribers",
         children: [
           {
+
+            text: "Listing",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.Subscribers.listing
+              }
+           },
+           {
             text: "Subscribers",
             icon: "list",
             hide: false,
             nav: {
-              to: routes.Subscribers,
-            },
+              to: routes.Subscribers
+            }
           },
-        ],
+        ]
       },
     ];
   }, []);
