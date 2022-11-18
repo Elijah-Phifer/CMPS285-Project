@@ -75,7 +75,9 @@ export type BulletJournalEntryUpdateDTO = {
   id: number;
   isDone: boolean;
 
+
   //add others from controller later
+
 };
 export type SubscriberGetDto = {
   id: number;

@@ -144,6 +144,32 @@ namespace LearningStarter.Controllers
             return Ok(response);
         }
 
+        [HttpPut("mark-done/{id}")]
+        public IActionResult MarkDone([FromRoute] int id, [FromBody] bool isDone)
+        {
+            var response = new Response();
+
+            var bulletJournalEntry = _dataContext
+                .BulletJournalEntries
+                .FirstOrDefault(bulletJournalEntry => bulletJournalEntry.Id == id);
+
+            bulletJournalEntry.IsDone = isDone;
+
+            _dataContext.SaveChanges();
+
+            var bulletJournalEntryToReturn = new BulletJournalEntryGetDto
+            {
+                Id = bulletJournalEntry.Id,
+                DateCreated = bulletJournalEntry.DateCreated,
+                Contents = bulletJournalEntry.Contents,
+                IsDone = bulletJournalEntry.IsDone,
+                Pushes = bulletJournalEntry.Pushes,
+            };
+
+            response.Data = bulletJournalEntryToReturn;
+            return Ok(response);
+        }
+
         [HttpDelete("{id:int}")]
         public IActionResult Delete([FromRoute] int id)
         {
