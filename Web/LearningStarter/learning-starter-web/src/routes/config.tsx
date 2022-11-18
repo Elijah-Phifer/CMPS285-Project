@@ -7,6 +7,7 @@ import { UserPage } from "../pages/user-page/user-page";
 import { PageWrapper } from "../components/page-wrapper/page-wrapper";
 import { InventoriesPage } from "../pages/Inventories-page/Inventories";
 import { InventoriesCreatePage } from "../pages/Inventories-page/Inventories-Create";
+import { InventoriesUpdatePage } from "../pages/Inventories-page/Inventories-Update-Page";
 import { BulletJournalCreatePage } from "../pages/BulletJournalContents/create-page/bullet-journal-contents-create";
 import { BulletJournalListingPage } from "../pages/BulletJournalContents/listing-page/bullet-journal-listing";
 import { SubscribersPage } from "../pages/Subscribers/subscribers";
@@ -19,8 +20,9 @@ export const routes = {
   user: `/user`,
 
   inventory: {
-    Inventory: "/inventories",
+    Inventory: "/inventory",
     InventoryCreate: "/inventory/create",
+    InventoryUpdate: "/Inventory/:id",
   },
 
   bulletJournal: {
@@ -57,6 +59,9 @@ export const Routes = () => {
           </Route>
           <Route path={routes.inventory.InventoryCreate} exact>
             <InventoriesCreatePage />
+          </Route>
+          <Route path={routes.inventory.InventoryUpdate} exact>
+            <InventoriesUpdatePage />
           </Route>
           {/* Going to route "localhost:5001/" will go to homepage */}
           <Route path={routes.root} exact>

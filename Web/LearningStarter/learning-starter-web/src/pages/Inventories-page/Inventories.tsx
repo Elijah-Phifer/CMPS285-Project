@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Header, Segment, Table, TableBody } from "semantic-ui-react";
+import { Header, Segment, Table, TableBody, Button } from "semantic-ui-react";
 import { ApiResponse, InventoriesGetDto } from "../../constants/types";
-
+import { useHistory } from "react-router-dom";
+import { routes } from "../../routes/config";
 export const InventoriesPage = () => {
+  const history = useHistory();
   const [inventories, setInventories] = useState<InventoriesGetDto[]>();
   useEffect(() => {
     const fetchInvetories = async () => {
@@ -35,6 +37,7 @@ export const InventoriesPage = () => {
                 <Table.HeaderCell>Online Store Id</Table.HeaderCell>
                 <Table.HeaderCell>Site Listing</Table.HeaderCell>
                 <Table.HeaderCell>Date Added</Table.HeaderCell>
+                <Table.HeaderCell></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <TableBody>
@@ -49,6 +52,20 @@ export const InventoriesPage = () => {
                     <Table.Cell>{inventory.onlineStoreId}</Table.Cell>
                     <Table.Cell>{inventory.siteListing}</Table.Cell>
                     <Table.Cell>{inventory.dateAdded}</Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        onClick={() =>
+                          history.push(
+                            routes.inventory.InventoryUpdate.replace(
+                              ":id",
+                              `${inventory.id}`
+                            )
+                          )
+                        }
+                      >
+                        Edit
+                      </Button>
+                    </Table.Cell>
                   </Table.Row>
                 );
               })}
