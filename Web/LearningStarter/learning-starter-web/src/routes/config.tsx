@@ -6,12 +6,13 @@ import { useUser } from "../authentication/use-auth";
 import { UserPage } from "../pages/user-page/user-page";
 import { PageWrapper } from "../components/page-wrapper/page-wrapper";
 import { InventoriesPage } from "../pages/Inventories-page/Inventories";
-import { InventoriesCreatePage } from "../pages/Inventories-page/Inventories-Create";
-import { InventoriesUpdatePage } from "../pages/Inventories-page/Inventories-Update-Page";
+
 import { BulletJournalCreatePage } from "../pages/BulletJournalContents/create-page/bullet-journal-contents-create";
 import { BulletJournalListingPage } from "../pages/BulletJournalContents/listing-page/bullet-journal-listing";
 import { SubscribersPage } from "../pages/Subscribers/subscribers";
 import { EmailNewslettersPage } from "../pages/EmailNewsletter/emailNewsletter";
+import { InventoriesCreatePage } from "../pages/Inventories-page/Inventories-Create";
+import { InventoriesUpdatePage } from "../pages/Inventories-page/Inventories-Update-Page";
 
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
@@ -23,6 +24,7 @@ export const routes = {
     Inventory: "/inventory",
     InventoryCreate: "/inventory/create",
     InventoryUpdate: "/Inventory/:id",
+    // InventoryDelete: "/InventoryDelete/:id",
   },
 
   bulletJournal: {
@@ -63,6 +65,9 @@ export const Routes = () => {
           <Route path={routes.inventory.InventoryUpdate} exact>
             <InventoriesUpdatePage />
           </Route>
+          {/* <Route path={routes.inventory.InventoryDelete} exact>
+            <InventoriesDelete />
+          </Route> */}
           {/* Going to route "localhost:5001/" will go to homepage */}
           <Route path={routes.root} exact>
             <Redirect to={routes.home} />

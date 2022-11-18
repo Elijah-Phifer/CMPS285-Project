@@ -66,14 +66,6 @@ const DesktopNavigation = () => {
               to: routes.inventory.InventoryCreate,
             },
           },
-          {
-            text: "Update a listing",
-            icon: "list",
-            hide: false,
-            nav: {
-              to: routes.inventory.InventoryUpdate,
-            },
-          },
         ],
       },
       {

@@ -55,6 +55,17 @@ export type InventoriesUpdateDto = {
   dateAdded: string;
 };
 
+export type InventoriesDeleteDto = {
+  id: number;
+  itemName: string;
+  productionCost: string;
+  quantity: string;
+  availabilty: string;
+  onlineStoreId: string;
+  siteListing: string;
+  dateAdded: string;
+};
+
 export type BulletJournalEntryCreateDTO = {
   id: number;
   contents: string;
