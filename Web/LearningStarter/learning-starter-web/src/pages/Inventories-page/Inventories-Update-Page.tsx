@@ -105,13 +105,23 @@ export const InventoriesUpdatePage = () => {
             <Field id="dateAdded" name="dateAdded">
               {({ field }) => <Input {...field} />}
             </Field>
-            <div>
-              <Button type="submit">Submit</Button>
-            </div>
+            <div></div>
             <br></br>
-            <div>
-              <Button onClick={Click}>Delete?</Button>
-            </div>
+            <Button inverted color="green" type="submit">
+              Submit
+            </Button>
+            <Button
+              inverted
+              color="orange"
+              onClick={() => {
+                history.push(routes.inventory.Inventory);
+              }}
+            >
+              Return
+            </Button>
+            <Button inverted color="red" onClick={Click}>
+              Delete?
+            </Button>
           </Form>
         </Formik>
       )}
