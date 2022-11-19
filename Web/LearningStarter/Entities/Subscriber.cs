@@ -39,5 +39,13 @@ namespace LearningStarter.Entities
         public string Email { get; set; }
         public DateTimeOffset DateSubscribed { get; set; }
     }
+
+    public class SubscriberDeleteDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public DateTimeOffset DateSubscribed { get; set; }    
+    }
 }
 
