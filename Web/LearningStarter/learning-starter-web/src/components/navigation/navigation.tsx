@@ -1,5 +1,5 @@
 import "./navigation.css";
-import React, { Children, useMemo } from "react";
+import React, { useMemo } from "react";
 import { NavLink, NavLinkProps } from "react-router-dom";
 import { Dropdown, Image, Menu, Icon, SemanticICONS } from "semantic-ui-react";
 import logo from "../../assets/logo.png";
@@ -48,6 +48,7 @@ const DesktopNavigation = () => {
       },
 
       {
+
         text: "Inventory",
         children: [
           {
@@ -64,31 +65,34 @@ const DesktopNavigation = () => {
             hide: false,
             nav: {
               to: routes.inventory.InventoryCreate,
+
             },
           },
         ],
       },
       {
-        text: "Bullet Journal Entries",
+
+        text: "Email Newsletters",
         children: [
           {
-            text: "Listing",
+            text: "listing",
             icon: "list",
             hide: false,
             nav: {
-              to: routes.bulletJournal.listing,
+              to: routes.EmailNewsletters.listing,
             },
           },
           {
-            text: "Create",
+            text: "create",
             icon: "plus",
             hide: false,
             nav: {
-              to: routes.bulletJournal.create,
+              to: routes.EmailNewsletters.create,
             },
           },
         ],
       },
+
       {
         text: "Subscribers",
         children: [
@@ -98,15 +102,15 @@ const DesktopNavigation = () => {
             icon: "list",
             hide: false,
             nav: {
-              to: routes.Subscribers.listing
+              to: routes.Subscribers.listing,
               }
            },
            {
-            text: "Subscribers",
-            icon: "list",
+            text: "create",
+            icon: "plus",
             hide: false,
             nav: {
-              to: routes.Subscribers
+              to: routes.Subscribers.create,
             }
           },
         ]
@@ -120,8 +124,7 @@ const DesktopNavigation = () => {
       secondary
       role="navigation"
       className="desktop-navigation"
-      size="large"
-    >
+      size="large">
       {navigation
         .filter((x) => !x.hide)
         .map((x, i) => {
@@ -136,8 +139,7 @@ const DesktopNavigation = () => {
                   </span>
                 }
                 pointing
-                className="link item"
-              >
+                className="link item">
                 <Dropdown.Menu>
                   {x.children
                     .filter((x) => !x.hide)
@@ -146,8 +148,7 @@ const DesktopNavigation = () => {
                         <Dropdown.Item
                           key={`${y.text}`}
                           as={NavLink}
-                          to={y.nav?.to}
-                        >
+                          to={y.nav?.to}>
                           {y.icon && <Icon size="small" fitted name={y.icon} />}{" "}
                           {y.text}
                         </Dropdown.Item>
@@ -176,8 +177,7 @@ export const PrimaryNavigation: React.FC<PrimaryNavigationProps> = ({
       <Menu.Item
         as={user ? NavLink : ""}
         to={routes.home}
-        className="logo-menu-item"
-      >
+        className="logo-menu-item">
         <Image size="mini" src={logo} alt="logo" className="logo" />
       </Menu.Item>
       {user && (
@@ -190,20 +190,17 @@ export const PrimaryNavigation: React.FC<PrimaryNavigationProps> = ({
               trigger={
                 <span
                   className="user-icon-initial"
-                  title={`${user.firstName} ${user.lastName}`}
-                >
+                  title={`${user.firstName} ${user.lastName}`}>
                   {user.firstName.substring(0, 1).toUpperCase()}
                   {user.lastName.substring(0, 1).toUpperCase()}
                 </span>
               }
-              icon={null}
-            >
+              icon={null}>
               <Dropdown.Menu>
                 <Dropdown.Item
                   onClick={async () => {
                     logoutUser();
-                  }}
-                >
+                  }}>
                   Sign Out
                 </Dropdown.Item>
               </Dropdown.Menu>

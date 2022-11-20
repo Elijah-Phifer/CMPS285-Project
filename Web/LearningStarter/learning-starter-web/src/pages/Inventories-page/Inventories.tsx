@@ -10,7 +10,7 @@ export const InventoriesPage = () => {
   const history = useHistory();
   const [inventories, setInventories] = useState<InventoriesGetDto[]>();
   useEffect(() => {
-    const fetchInvetories = async () => {
+    const fetchInventories = async () => {
       const response = await axios.get<ApiResponse<InventoriesGetDto[]>>(
         "api/Inventories"
       );
@@ -20,7 +20,7 @@ export const InventoriesPage = () => {
       }
       setInventories(response.data.data);
     };
-    fetchInvetories();
+    fetchInventories();
   }, []);
 
   return (
@@ -35,7 +35,7 @@ export const InventoriesPage = () => {
                 <Table.HeaderCell>Item Name</Table.HeaderCell>
                 <Table.HeaderCell>Production Cost</Table.HeaderCell>
                 <Table.HeaderCell>Quantity</Table.HeaderCell>
-                <Table.HeaderCell>Availabilty</Table.HeaderCell>
+                <Table.HeaderCell>Availability</Table.HeaderCell>
                 <Table.HeaderCell>Online Store Id</Table.HeaderCell>
                 <Table.HeaderCell>Site Listing</Table.HeaderCell>
                 <Table.HeaderCell>Date Added</Table.HeaderCell>
@@ -51,7 +51,7 @@ export const InventoriesPage = () => {
                     <Table.Cell>{inventory.itemName}</Table.Cell>
                     <Table.Cell>{inventory.productionCost}</Table.Cell>
                     <Table.Cell>{inventory.quantity}</Table.Cell>
-                    <Table.Cell>{inventory.availabilty}</Table.Cell>
+                    <Table.Cell>{inventory.availability}</Table.Cell>
                     <Table.Cell>{inventory.onlineStoreId}</Table.Cell>
                     <Table.Cell>{inventory.siteListing}</Table.Cell>
                     <Table.Cell>{inventory.dateAdded}</Table.Cell>

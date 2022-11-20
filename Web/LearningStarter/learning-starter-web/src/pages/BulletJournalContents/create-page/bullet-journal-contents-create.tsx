@@ -1,7 +1,12 @@
 import axios from "axios";
 
 import { Field, Form, Formik } from "formik";
+
+import React from "react";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 import React, { useEffect, useState } from "react";
+
 import { useStateWithHistory } from "react-use";
 
 import { BaseUrl } from "../../../constants/ens-vars";
@@ -22,14 +27,21 @@ import {
   TableBody,
 } from "semantic-ui-react";
 
+
+
 import "./bullet-journal-create.css";
+
 
 const initialValues: BulletJournalEntryCreateDTO = {
   contents: " ",
   id: 0,
   //need to add date created
   isDone: false,
+
+  /*DateCreated: Now,*/
+
   DateCreated: new Date(),
+
   pushes: 0,
 };
 
@@ -58,7 +70,11 @@ export const BulletJournalCreatePage = () => {
     <>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form>
+
+          <div>
+
           <div className="input-label">
+
             <label htmlFor="contents">What do you have to do?</label>
           </div>
           {/* <span>
@@ -72,6 +88,14 @@ export const BulletJournalCreatePage = () => {
             id="contents"
             name="contents"
             type="input"
+
+            placeholder="Do Something">
+            {({ field }) => <Input {...field} />}
+          </Field>
+
+          <div>
+            <Button type="submit">Save</Button>
+
             placeholder="Do Something"
           >
             {({ field }) => (
@@ -88,12 +112,15 @@ export const BulletJournalCreatePage = () => {
             <a href="https://localhost:5001/BulletJournal">
               <Button className="ui fluid btn-cancel">Cancel</Button>
             </a>
+
           </div>
         </Form>
       </Formik>
     </>
   );
 };
+
+
 
 //Listings at bottom to fill up the screen, ASTHETICS
 

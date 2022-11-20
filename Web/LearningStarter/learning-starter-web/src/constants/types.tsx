@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 //This type uses a generic (<T>).  For more information on generics see: https://www.typescriptlang.org/docs/handbook/2/generics.html
+
+import internal from "stream";
 
 //You probably wont need this for the scope of this class :)
 export type ApiResponse<T> = {
@@ -26,11 +29,11 @@ export type UserDto = {
 export type InventoriesGetDto = {
   id: number;
   itemName: string;
-  productionCost: string;
-  quantity: string;
-  availabilty: string;
-  onlineStoreId: string;
-  siteListing: string;
+  productionCost: number;
+  quantity: number;
+  availability: string;
+  onlineStoreId: number;
+  siteListing: number;
   dateAdded: string;
 };
 
@@ -99,6 +102,10 @@ export type BulletJournalOptionsResponseDto = {
   effectTypeOptions: BulletJournalOptionsDto[];
 };
 
+
+  //add others from controller later
+};
+
 export type SubscriberGetDto = {
   id: number;
   name: string;
@@ -106,7 +113,42 @@ export type SubscriberGetDto = {
   dateSubscribed: Date;
 };
 
+export type SubscriberCreateDto = {
+  name: string;
+  email: string;
+  dateSubscribed: Date;
+};
+export type SubscriberUpdateDto = {
+  id: number;
+  name: string;
+  email: string;
+  dateSubscribed: Date;
+};
+export type SubscriberDeleteDto = {
+  id: number;
+  name: string;
+  email: string;
+  dateSubscribed: Date;
+};
+export type EmailNewsletterCreateDto = {
+  title: string;
+  message: string;
+  dateSent: Date;
+};
+
+
 export type EmailNewsletterGetDto = {
+  id: number;
+  title: string;
+  message: string;
+  dateSent: Date;
+};
+
+export type EmailNewsletterUpdateDto = {
+  title: string;
+  message: string;
+};
+export type EmailNewsletterDeleteDto = {
   id: number;
   title: string;
   message: string;

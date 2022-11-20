@@ -11,8 +11,11 @@ import {
   BulletJournalCreatePage,
 } from "../pages/BulletJournalContents/create-page/bullet-journal-contents-create";
 import { BulletJournalListingPage } from "../pages/BulletJournalContents/listing-page/bullet-journal-listing";
-import { SubscribersPage } from "../pages/Subscribers/subscribers";
-import { EmailNewslettersPage } from "../pages/EmailNewsletter/emailNewsletter";
+import { EmailNewslettersPage } from "../pages/EmailNewsletter/emailNewsletterListing";
+import { EmailNewsletterCreatePage } from "../pages/EmailNewsletter/EmailNewsletterCreate";
+import { SubscriberCreatePage } from "../pages/Subscribers/subscribersCreate";
+import { SubscriberUpdatePage } from "../pages/Subscribers/subscribersUpdate";
+import { EmailNewsletterUpdatePage } from "../pages/EmailNewsletter/EmailNewsletterUpdate";
 import {
   BulletJournalDeletePage,
   BulletJournalUpdatePage,
@@ -20,11 +23,13 @@ import {
 import { InventoriesCreatePage } from "../pages/Inventories-page/Inventories-Create";
 import { InventoriesUpdatePage } from "../pages/Inventories-page/Inventories-Update-Page";
 
+
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
   root: `/`,
   home: `/home`,
   user: `/user`,
+
   inventory: {
     Inventory: "/inventory",
     InventoryCreate: "/inventory/create",
@@ -35,13 +40,20 @@ export const routes = {
     create: "/BulletJournal/create",
     update: "/BulletJournal/update/:id",
     delete: "/BulletJournal/delete/:id",
+
   },
 
   Subscribers: {
     listing: "/subscribers",
+    create: "/subscribers/create",
+    update: "/subscribers/update/:id",
+  },
+  EmailNewsletters: {
+    listing: "/emailNewsletters",
+    create: "/emailNewsletters/create",
+    update: "/emailNewsletters/update/:id",
   },
 
-  EmailNewsletters: "/emailNewsletters",
 };
 
 //This is where you will tell React Router what to render when the path matches the route specified.
@@ -95,11 +107,24 @@ export const Routes = () => {
             <BulletJournalDeletePage />
           </Route>
 
-          <Route path={routes.EmailNewsletters} exact>
+          <Route path={routes.EmailNewsletters.create} exact>
+            <EmailNewsletterCreatePage />
+          </Route>
+          <Route path={routes.EmailNewsletters.update} exact>
+            <EmailNewsletterUpdatePage />
+          </Route>
+
+          <Route path={routes.EmailNewsletters.listing} exact>
             <EmailNewslettersPage />
           </Route>
           <Route path={routes.Subscribers.listing} exact>
             <SubscribersPage />
+          </Route>
+          <Route path={routes.Subscribers.create} exact>
+            <SubscriberCreatePage />
+          </Route>
+          <Route path={routes.Subscribers.update} exact>
+            <SubscriberUpdatePage />
           </Route>
           {/* This should always come last.  
             If the path has no match, show page not found */}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 import { O_DIRECTORY } from "constants";
 import { Field, Formik, Form } from "formik";
@@ -108,6 +109,21 @@ export const BulletJournalListingPage = () => {
                   <Table.Row key={bulletJournalEntry.id}>
                     <Table.Cell>{bulletJournalEntry.id}</Table.Cell>
                     <Table.Cell>
+
+                      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+                        <Form>
+                          <Field
+                            id="isDone"
+                            name="isDone"
+                            type="input"
+                            class="ui fitted checkbox">
+                            {({ field }) => (
+                              <Input type="checkbox" name="isDone" {...field} />
+                            )}
+                          </Field>
+                        </Form>
+                      </Formik>
+
                       <Checkbox
                         name="isDone"
                         defaultChecked={bulletJournalEntry.isDone}
@@ -118,6 +134,7 @@ export const BulletJournalListingPage = () => {
                           )
                         }
                       />
+
                     </Table.Cell>
                     <Table.Cell>{bulletJournalEntry.contents}</Table.Cell>
                     <Table.Cell>{bulletJournalEntry.DateCreated}</Table.Cell>
