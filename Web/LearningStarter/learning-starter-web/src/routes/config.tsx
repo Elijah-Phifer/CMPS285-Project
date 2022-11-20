@@ -6,11 +6,17 @@ import { useUser } from "../authentication/use-auth";
 import { UserPage } from "../pages/user-page/user-page";
 import { PageWrapper } from "../components/page-wrapper/page-wrapper";
 import { InventoriesPage } from "../pages/Inventories-page/Inventories";
-
-import { BulletJournalCreatePage } from "../pages/BulletJournalContents/create-page/bullet-journal-contents-create";
+import {
+  BulletJournalCreateListing,
+  BulletJournalCreatePage,
+} from "../pages/BulletJournalContents/create-page/bullet-journal-contents-create";
 import { BulletJournalListingPage } from "../pages/BulletJournalContents/listing-page/bullet-journal-listing";
 import { SubscribersPage } from "../pages/Subscribers/subscribers";
 import { EmailNewslettersPage } from "../pages/EmailNewsletter/emailNewsletter";
+import {
+  BulletJournalDeletePage,
+  BulletJournalUpdatePage,
+} from "../pages/BulletJournalContents/update-page/bullet-journal-update";
 import { InventoriesCreatePage } from "../pages/Inventories-page/Inventories-Create";
 import { InventoriesUpdatePage } from "../pages/Inventories-page/Inventories-Update-Page";
 
@@ -19,17 +25,16 @@ export const routes = {
   root: `/`,
   home: `/home`,
   user: `/user`,
-
   inventory: {
     Inventory: "/inventory",
     InventoryCreate: "/inventory/create",
     InventoryUpdate: "/Inventory/:id",
-    // InventoryDelete: "/InventoryDelete/:id",
   },
-
   bulletJournal: {
     listing: "/BulletJournal",
     create: "/BulletJournal/create",
+    update: "/BulletJournal/update/:id",
+    delete: "/BulletJournal/delete/:id",
   },
 
   Subscribers: {
@@ -79,6 +84,15 @@ export const Routes = () => {
 
           <Route path={routes.bulletJournal.create} exact>
             <BulletJournalCreatePage />
+            <BulletJournalCreateListing />
+          </Route>
+
+          <Route path={routes.bulletJournal.update} exact>
+            <BulletJournalUpdatePage />
+          </Route>
+
+          <Route path={routes.bulletJournal.delete} exact>
+            <BulletJournalDeletePage />
           </Route>
 
           <Route path={routes.EmailNewsletters} exact>
