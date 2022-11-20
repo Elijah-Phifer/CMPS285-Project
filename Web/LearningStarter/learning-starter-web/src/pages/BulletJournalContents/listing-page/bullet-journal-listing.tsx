@@ -46,6 +46,25 @@ export const BulletJournalListingPage = () => {
     fetchBulletJournal();
   }, []);
 
+  const markBulletJournalEntryAsDone = async (id: number, isDone: Boolean) => {
+    console.log("debug", { isDone });
+    const response = await axios.put(
+      `${BaseUrl}/api/BulletJournal/mark-done/${id}`,
+      isDone,
+      {
+        headers: {
+          "Content-Type": "application/json;charset=UTF-8",
+        },
+      }
+    );
+
+    if (response.data.hasErrors) {
+      response.data.errors.forEach((err) => {
+        console.log(err.message);
+      });
+    }
+  };
+
   //try going in back end and make controller for mark-done
 
   const markBulletJournalEntryAsDone = async (id: number, isDone: Boolean) => {

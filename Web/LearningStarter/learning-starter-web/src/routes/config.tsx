@@ -30,9 +30,16 @@ export const routes = {
     update: "/BulletJournal/update/:id",
     delete: "/BulletJournal/delete/:id",
   },
+
+  bulletJournal: {
+    listing: "/BulletJournal",
+    create: "/BulletJournal/create",
+  },
+
   Subscribers: {
     listing: "/subscribers",
   },
+
   EmailNewsletters: "/emailNewsletters",
 };
 
@@ -53,9 +60,18 @@ export const Routes = () => {
           <Route path={routes.user} exact>
             <UserPage />
           </Route>
-          <Route path={routes.inventory} exact>
+          <Route path={routes.inventory.Inventory} exact>
             <InventoriesPage />
           </Route>
+          <Route path={routes.inventory.InventoryCreate} exact>
+            <InventoriesCreatePage />
+          </Route>
+          <Route path={routes.inventory.InventoryUpdate} exact>
+            <InventoriesUpdatePage />
+          </Route>
+          {/* <Route path={routes.inventory.InventoryDelete} exact>
+            <InventoriesDelete />
+          </Route> */}
           {/* Going to route "localhost:5001/" will go to homepage */}
           <Route path={routes.root} exact>
             <Redirect to={routes.home} />
