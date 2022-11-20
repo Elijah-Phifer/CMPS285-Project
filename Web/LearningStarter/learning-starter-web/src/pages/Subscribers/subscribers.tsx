@@ -69,20 +69,6 @@ export const SubscribersPage = () => {
                           <i className="pencil alternate icon"></i>
                         </Button>
                       </Table.Cell>
-                      <Table.Cell>
-                        <Button
-                          className="ui icon button"
-                          onClick={() =>
-                            history.push(
-                              routes.Subscribers.delete.replace(
-                                ":id",
-                                `${subscriber.id}`
-                              )
-                            )
-                          }>
-                          <i className="trash icon"></i>
-                        </Button>
-                      </Table.Cell>
                     </Table.Row>
                   </>
                 );

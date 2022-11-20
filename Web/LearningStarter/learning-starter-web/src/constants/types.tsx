@@ -36,6 +36,25 @@ export type InventoriesGetDto = {
   siteListing: number;
   dateAdded: string;
 };
+export type InventoriesUpdateDto = {
+  itemName: string;
+  productionCost: number;
+  quantity: number;
+  availability: string;
+  onlineStoreId: number;
+  siteListing: number;
+  dateAdded: string;
+};
+export type InventoriesCreateDto = {
+  itemName: string;
+  productionCost: number;
+  quantity: number;
+  availability: string;
+  onlineStoreId: number;
+  siteListing: number;
+  dateAdded: string;
+};
+
 export type BulletJournalEntryCreateDTO = {
   id: number;
   contents: string;

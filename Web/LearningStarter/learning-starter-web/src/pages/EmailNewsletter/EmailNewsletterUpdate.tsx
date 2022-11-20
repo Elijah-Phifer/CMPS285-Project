@@ -48,6 +48,19 @@ export const EmailNewsletterUpdatePage = () => {
     }
   };
 
+  const Click = async () => {
+    const response = await axios.delete<ApiResponse<EmailNewsletterGetDto>>(
+      `/api/email-newsletter/${id}`
+    );
+    if (response.data.hasErrors) {
+      response.data.errors.forEach((err) => {
+        console.log(err.message);
+      });
+    } else {
+      history.push(routes.EmailNewsletters.listing);
+    }
+  };
+
   return (
     <>
       {emailNewsletter && (
@@ -71,64 +84,21 @@ export const EmailNewsletterUpdatePage = () => {
             <Field id="message" name="message">
               {({ field }) => <Input {...field} />}
             </Field>
-            <div>
-              <Button type="submit">Update</Button>
-            </div>
-            <div />
-          </Form>
-        </Formik>
-      )}
-    </>
-  );
-};
-
-export const EmailNewsletterDeletePage = () => {
-  const history = useHistory();
-  let match = useRouteMatch<{ id: string }>();
-  const id = match.params.id;
-
-  const [emailNewsletters, setEmailNewsletters] =
-    useState<EmailNewsletterGetDto>();
-
-  useEffect(() => {
-    const fetchEmailNewsletters = async () => {
-      const response = await axios.get<ApiResponse<EmailNewsletterGetDto>>(
-        `/api/email-newsletter/${id}`
-      );
-
-      setEmailNewsletters(response.data.data);
-    };
-
-    fetchEmailNewsletters();
-  }, [id]);
-
-  const onSubmit1 = async () => {
-    const response = await axios.delete<ApiResponse<EmailNewsletterGetDto>>(
-      `/api/email-newsletter/${id}`
-    );
-
-    if (response.data.hasErrors) {
-      response.data.errors.forEach((err) => {
-        console.log(err.message);
-      });
-    } else {
-      history.push(routes.EmailNewsletters.listing);
-    }
-  };
-
-  return (
-    <>
-      {emailNewsletters && (
-        <Formik initialValues={emailNewsletters} onSubmit={onSubmit1}>
-          <Form>
-            <Table.Cell>
-              <Button type="submit">Delete</Button>
-            </Table.Cell>
-            <Table.Cell>
-              <Button onClick={() => history.push(routes.Subscribers.listing)}>
-                Cancel
+            <div></div>
+            <br></br>
+            <div className="ui large buttons">
+              <Button
+                className="ui button"
+                onClick={() => {
+                  history.push(routes.EmailNewsletters.listing);
+                }}>
+                Update
               </Button>
-            </Table.Cell>
+              <div className="or"></div>
+              <Button className="ui button" onClick={Click}>
+                Delete
+              </Button>
+            </div>
           </Form>
         </Formik>
       )}

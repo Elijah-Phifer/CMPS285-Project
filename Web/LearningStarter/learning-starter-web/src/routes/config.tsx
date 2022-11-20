@@ -29,13 +29,11 @@ export const routes = {
     listing: "/subscribers",
     create: "/subscribers/create",
     update: "/subscribers/update/:id",
-    delete: "/subscribers/delete/:id",
   },
   EmailNewsletters: {
     listing: "/emailNewsletters",
     create: "/emailNewsletters/create",
     update: "/emailNewsletters/update/:id",
-    delete: "/emailNewsletter/delete/:id",
   },
 };
 

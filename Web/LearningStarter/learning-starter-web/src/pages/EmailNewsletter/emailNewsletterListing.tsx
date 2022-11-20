@@ -8,8 +8,9 @@ import {
   EmailNewsletterDeleteDto,
 } from "../../constants/types";
 import { Button, Header, Segment, Table, TableRow } from "semantic-ui-react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import { routes } from "../../routes/config";
+import { Form, Formik } from "formik";
 
 export const EmailNewslettersPage = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -63,20 +64,6 @@ export const EmailNewslettersPage = () => {
                           onClick={() =>
                             history.push(
                               routes.EmailNewsletters.update.replace(
-                                ":id",
-                                `${emailNewsletter.id}`
-                              )
-                            )
-                          }>
-                          <i className="pencil alternate icon"></i>
-                        </Button>
-                      </Table.Cell>
-                      <Table.Cell>
-                        <Button
-                          className="ui icon button"
-                          onClick={() =>
-                            history.push(
-                              routes.EmailNewsletters.delete.replace(
                                 ":id",
                                 `${emailNewsletter.id}`
                               )

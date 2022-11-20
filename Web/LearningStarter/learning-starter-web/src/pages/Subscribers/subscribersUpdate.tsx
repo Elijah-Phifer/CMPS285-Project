@@ -8,11 +8,15 @@ import {
   SubscriberGetDto,
   SubscriberUpdateDto,
   SubscriberDeleteDto,
+  SubscriberCreateDto,
 } from "../../constants/types";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import { routes } from "../../routes/config";
 import { BaseUrl } from "../../constants/ens-vars";
 import { FormikBag } from "formik";
+import { useStateWithHistory } from "react-use";
+import { Routes } from "../../routes/config";
+import { O_NOFOLLOW } from "constants";
 
 export const SubscriberUpdatePage = () => {
   const history = useHistory;
@@ -46,6 +50,18 @@ export const SubscriberUpdatePage = () => {
       history.push(routes.Subscribers.listing);
     }
   };
+  const Click = async () => {
+    const response = await axios.delete<ApiResponse<SubscriberGetDto>>(
+      `/api/subscriber/${id}`
+    );
+    if (response.data.hasErrors) {
+      response.data.errors.forEach((err) => {
+        console.log(err.message);
+      });
+    } else {
+      history.push(routes.Subscribers.listing);
+    }
+  };
 
   return (
     <>
@@ -64,63 +80,21 @@ export const SubscriberUpdatePage = () => {
             <Field id="email" name="email">
               {({ field }) => <Input {...field} />}
             </Field>
-            <div>
-              <Button type="submit">Update</Button>
-            </div>
-            <div />
-          </Form>
-        </Formik>
-      )}
-    </>
-  );
-};
-
-export const SubscriberDeletePage = () => {
-  const history = useHistory();
-  let match = useRouteMatch<{ id: string }>();
-  const id = match.params.id;
-
-  const [subscriber, setSubscriber] = useState<SubscriberGetDto>();
-
-  useEffect(() => {
-    const fetchSubscribers = async () => {
-      const response = await axios.get<ApiResponse<SubscriberGetDto>>(
-        `/api/subscriber/${id}`
-      );
-
-      setSubscriber(response.data.data);
-    };
-
-    fetchSubscribers();
-  }, [id]);
-
-  const onSubmit1 = async () => {
-    const response = await axios.delete<ApiResponse<SubscriberGetDto>>(
-      `/api/subscriber/${id}`
-    );
-
-    if (response.data.hasErrors) {
-      response.data.errors.forEach((err) => {
-        console.log(err.message);
-      });
-    } else {
-      history.push(routes.Subscribers.listing);
-    }
-  };
-
-  return (
-    <>
-      {subscriber && (
-        <Formik initialValues={subscriber} onSubmit={onSubmit1}>
-          <Form>
-            <Table.Cell>
-              <Button type="submit">Delete</Button>
-            </Table.Cell>
-            <Table.Cell>
-              <Button onClick={() => history.push(routes.Subscribers.listing)}>
-                Cancel
+            <div></div>
+            <br></br>
+            <div className="ui large buttons">
+              <Button
+                className="ui button"
+                onClick={() => {
+                  history.push(routes.Subscribers.listing);
+                }}>
+                Update
               </Button>
-            </Table.Cell>
+              <div className="or"></div>
+              <Button className="ui button" onClick={Click}>
+                Delete
+              </Button>
+            </div>
           </Form>
         </Formik>
       )}
