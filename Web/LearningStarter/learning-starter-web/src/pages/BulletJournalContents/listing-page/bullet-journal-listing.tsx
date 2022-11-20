@@ -84,14 +84,12 @@ export const BulletJournalListingPage = () => {
           </div>
           <Header>Entries</Header>
           <div>
-            <a
-              href="https://localhost:5001/BulletJournal/create"
-              /* onClick={() => {
-          alert("Redirecting to create page");
-        }}*/
+            <Button
+              className="ui fluid button"
+              onClick={() => history.push(routes.bulletJournal.create)}
             >
-              <Button className="ui fluid button">Create An Entry</Button>
-            </a>
+              Create An Entry
+            </Button>
           </div>
           <Table>
             <Table.Header>

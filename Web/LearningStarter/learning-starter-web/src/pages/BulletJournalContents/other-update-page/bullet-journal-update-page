@@ -4,7 +4,6 @@ import { Button, Input } from "semantic-ui-react";
 import {
   ApiResponse,
   BulletJournalEntryGetDTO,
-  BulletJournalEntryUpdateDTO,
 } from "../../../constants/types";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import { routes } from "../../../routes/config";
@@ -34,7 +33,7 @@ export const BulletJournalEntryUpdatePage = () => {
         fetchBulletJournal();
     }, [id]);
 
-    const onSubmit = async(values: BulletJournalEntryUpdateDTO) => {
+    const onSubmit = async(values: BulletJournalEntryGetDTO) => {
         const response = await axios.put<ApiResponse<BulletJournalEntryGetDTO>>(
             `/api/BulletJournal/${id}`, 
             values
