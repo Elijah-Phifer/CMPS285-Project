@@ -17,23 +17,24 @@ import {
   BulletJournalDeletePage,
   BulletJournalUpdatePage,
 } from "../pages/BulletJournalContents/update-page/bullet-journal-update";
+import { InventoriesCreatePage } from "../pages/Inventories-page/Inventories-Create";
+import { InventoriesUpdatePage } from "../pages/Inventories-page/Inventories-Update-Page";
 
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
   root: `/`,
   home: `/home`,
   user: `/user`,
-  inventory: "/inventories",
+  inventory: {
+    Inventory: "/inventory",
+    InventoryCreate: "/inventory/create",
+    InventoryUpdate: "/Inventory/:id",
+  },
   bulletJournal: {
     listing: "/BulletJournal",
     create: "/BulletJournal/create",
     update: "/BulletJournal/update/:id",
     delete: "/BulletJournal/delete/:id",
-  },
-
-  bulletJournal: {
-    listing: "/BulletJournal",
-    create: "/BulletJournal/create",
   },
 
   Subscribers: {
