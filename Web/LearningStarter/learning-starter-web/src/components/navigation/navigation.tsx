@@ -46,28 +46,32 @@ const DesktopNavigation = () => {
           to: routes.user,
         },
       },
+
       {
-        text: "Subscribers",
+
+        text: "Inventory",
         children: [
           {
-            text: "listing",
-            icon: "users",
+            text: "Inventory",
+            icon: "user",
             hide: false,
             nav: {
-              to: routes.Subscribers.listing,
+              to: routes.inventory.Inventory,
             },
           },
           {
-            text: "create",
-            icon: "plus",
+            text: "Create a listing",
+            icon: "list",
             hide: false,
             nav: {
-              to: routes.Subscribers.create,
+              to: routes.inventory.InventoryCreate,
+
             },
           },
         ],
       },
       {
+
         text: "Email Newsletters",
         children: [
           {
@@ -87,6 +91,29 @@ const DesktopNavigation = () => {
             },
           },
         ],
+      },
+
+      {
+        text: "Subscribers",
+        children: [
+          {
+
+            text: "Listing",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.Subscribers.listing,
+              }
+           },
+           {
+            text: "create",
+            icon: "plus",
+            hide: false,
+            nav: {
+              to: routes.Subscribers.create,
+            }
+          },
+        ]
       },
     ];
   }, []);

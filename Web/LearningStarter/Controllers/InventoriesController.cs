@@ -77,7 +77,7 @@ namespace LearningStarter.Controllers
         public IActionResult Create([FromBody] InventoriesCreateDto inventoriesCreateDto)
         {
             var response = new Response();
-
+/*
             if(string.IsNullOrEmpty(inventoriesCreateDto.ItemName))
             {
                 response.AddError("ItemName", "Item Name cannot be empty");
@@ -110,7 +110,7 @@ namespace LearningStarter.Controllers
                 response.AddError("OnlineStoreId", "Online Store Id Added cannot be less than zero");
 
             }
-            
+ */           
 
             if (response.HasErrors)
                 { 

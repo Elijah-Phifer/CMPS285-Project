@@ -36,22 +36,36 @@ export type InventoriesGetDto = {
   siteListing: number;
   dateAdded: string;
 };
-export type InventoriesUpdateDto = {
+
+export type InventoriesCreateDto = {
+  id: number;
   itemName: string;
-  productionCost: number;
-  quantity: number;
-  availability: string;
-  onlineStoreId: number;
-  siteListing: number;
+  productionCost: string;
+  quantity: string;
+  availabilty: string;
+  onlineStoreId: string;
+  siteListing: string;
   dateAdded: string;
 };
-export type InventoriesCreateDto = {
+
+export type InventoriesUpdateDto = {
   itemName: string;
-  productionCost: number;
-  quantity: number;
-  availability: string;
-  onlineStoreId: number;
-  siteListing: number;
+  productionCost: string;
+  quantity: string;
+  availabilty: string;
+  onlineStoreId: string;
+  siteListing: string;
+  dateAdded: string;
+};
+
+export type InventoriesDeleteDto = {
+  id: number;
+  itemName: string;
+  productionCost: string;
+  quantity: string;
+  availabilty: string;
+  onlineStoreId: string;
+  siteListing: string;
   dateAdded: string;
 };
 
@@ -59,7 +73,7 @@ export type BulletJournalEntryCreateDTO = {
   id: number;
   contents: string;
   isDone: boolean;
-  /*DateCreated: Date;*/
+  DateCreated: Date;
   pushes: number;
 };
 
@@ -71,18 +85,34 @@ export type BulletJournalEntryGetDTO = {
   //add others from controller later
 };
 
-export type BulletJournalEntryUpdateDTO = {
-  id: number;
-  isDone: boolean;
+export type BulletJournalEntryUpdateDto = {
+  // isDone: boolean;
+  contents: string;
+
+  //add others from controller later nkjhlkjhlk
+};
+
+export type BulletJournalOptionsDto = {
+  text: string;
+  values: number;
+};
+
+export type BulletJournalOptionsResponseDto = {
+  itemTypeOptions: BulletJournalOptionsDto[];
+  effectTypeOptions: BulletJournalOptionsDto[];
+};
+
 
   //add others from controller later
 };
+
 export type SubscriberGetDto = {
   id: number;
   name: string;
   email: string;
   dateSubscribed: Date;
 };
+
 export type SubscriberCreateDto = {
   name: string;
   email: string;
@@ -105,12 +135,15 @@ export type EmailNewsletterCreateDto = {
   message: string;
   dateSent: Date;
 };
+
+
 export type EmailNewsletterGetDto = {
   id: number;
   title: string;
   message: string;
   dateSent: Date;
 };
+
 export type EmailNewsletterUpdateDto = {
   title: string;
   message: string;

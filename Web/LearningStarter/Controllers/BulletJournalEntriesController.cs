@@ -3,6 +3,7 @@ using LearningStarter.Data;
 using LearningStarter.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace LearningStarter.Controllers
@@ -11,7 +12,14 @@ namespace LearningStarter.Controllers
     [Route("api/BulletJournal")]
     public class BulletJournalEntriesController : ControllerBase
     {
+        private class BulletJournalOptionsResponseDto
+        {
+            public List<BulletJournalOptionsDto> ItemTypeOptions { get; set; }
+            public List<BulletJournalOptionsDto> EffectTypeOptions { get; set; }
+        }
+
         private readonly DataContext _dataContext;
+
         public BulletJournalEntriesController(DataContext dataContext)
         {
             _dataContext = dataContext;
@@ -38,7 +46,7 @@ namespace LearningStarter.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{id}")]
         public IActionResult GetById([FromRoute] int id)
         {
             var response = new Response();
@@ -125,10 +133,7 @@ namespace LearningStarter.Controllers
                 return BadRequest(response);
             }
 
-            bulletJournalEntryToUpdate.DateCreated = bulletJournalEntryUpdateDto.DateCreated;
             bulletJournalEntryToUpdate.Contents = bulletJournalEntryUpdateDto.Contents;
-            bulletJournalEntryToUpdate.IsDone = bulletJournalEntryUpdateDto.IsDone;
-            bulletJournalEntryToUpdate.Pushes = bulletJournalEntryUpdateDto.Pushes;
             _dataContext.SaveChanges();
 
             var bulletJournalEntryToReturn = new BulletJournalEntryGetDto
@@ -138,6 +143,32 @@ namespace LearningStarter.Controllers
                 Contents = bulletJournalEntryToUpdate.Contents,
                 IsDone = bulletJournalEntryToUpdate.IsDone,
                 Pushes = bulletJournalEntryToUpdate.Pushes,
+            };
+
+            response.Data = bulletJournalEntryToReturn;
+            return Ok(response);
+        }
+
+        [HttpPut("mark-done/{id}")]
+        public IActionResult MarkDone([FromRoute] int id, [FromBody] bool isDone)
+        {
+            var response = new Response();
+
+            var bulletJournalEntry = _dataContext
+                .BulletJournalEntries
+                .FirstOrDefault(bulletJournalEntry => bulletJournalEntry.Id == id);
+
+            bulletJournalEntry.IsDone = isDone;
+
+            _dataContext.SaveChanges();
+
+            var bulletJournalEntryToReturn = new BulletJournalEntryGetDto
+            {
+                Id = bulletJournalEntry.Id,
+                DateCreated = bulletJournalEntry.DateCreated,
+                Contents = bulletJournalEntry.Contents,
+                IsDone = bulletJournalEntry.IsDone,
+                Pushes = bulletJournalEntry.Pushes,
             };
 
             response.Data = bulletJournalEntryToReturn;
@@ -163,6 +194,25 @@ namespace LearningStarter.Controllers
             _dataContext.SaveChanges();
 
             response.Data = true;
+            return Ok(response);
+        }
+
+        [HttpGet ("options")]
+
+        public IActionResult GetBulletJournalOptions()
+        {
+            var response = new Response();
+            var responseData = new BulletJournalOptionsResponseDto();
+            var bulletJournalEntries = _dataContext.BulletJournalEntries
+                .Select(x => new BulletJournalOptionsDto
+                {
+                    Text = x.Contents,
+                    Value = x.Id    
+                })
+                .ToList();
+
+            responseData.ItemTypeOptions = bulletJournalEntries;
+            response.Data = responseData;
             return Ok(response);
         }
     }

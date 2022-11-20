@@ -8,12 +8,12 @@ namespace LearningStarter.Entities
         {
             public int Id { get; set; }
             public string ItemName { get; set; }
-            public int ProductionCost { get; set; }
-            public int Quantity { get; set; }
+            public string ProductionCost { get; set; }
+            public string Quantity { get; set; }
             public string Availabilty { get; set; }
-            public int SiteListing { get; set; }
+            public string SiteListing { get; set; }
             public string DateAdded { get; set; }
-            public int OnlineStoreId { get; set; }    
+            public string OnlineStoreId { get; set; }    
             public OnlineStores OnlineStores { get; set; }
             public List<OnlineStores> OnlineStoresList { get; set; } = new List<OnlineStores>();
     }
@@ -21,34 +21,33 @@ namespace LearningStarter.Entities
     public class InventoriesCreateDto
     {
         public string ItemName { get; set; }
-        public int ProductionCost { get; set; }
-        public int Quantity { get; set; }
+        public string ProductionCost { get; set; }
+        public string Quantity { get; set; }
         public string Availabilty { get; set; }
-        public int OnlineStoreId { get; set; }
-        public int SiteListing { get; set; }
+        public string OnlineStoreId { get; set; }
+        public string SiteListing { get; set; }
         public string DateAdded { get; set; }
-        public int OnlineStores {get; set;}
     }
     public class InventoriesGetDto
         {
             public int Id { get; set; }
             public string ItemName { get; set; }
-            public int ProductionCost { get; set; }
-            public int Quantity { get; set; }
+            public string ProductionCost { get; set; }
+            public string Quantity { get; set; }
             public string Availabilty { get; set; }
-            public int OnlineStoreId { get; set; }
-            public int SiteListing { get; set; }
+            public string OnlineStoreId { get; set; }
+            public string SiteListing { get; set; }
             public string DateAdded { get; set; }
         }
 
         public class InventoriesUpdateDto
         {
             public string ItemName { get; set; }
-            public int ProductionCost { get; set; }
-            public int Quantity { get; set; }
+            public string ProductionCost { get; set; }
+            public string Quantity { get; set; }
             public string Availabilty { get; set; }
-            public int OnlineStoreId { get; set; }
-            public int SiteListing { get; set; }
+            public string OnlineStoreId { get; set; }
+            public string SiteListing { get; set; }
             public string DateAdded { get; set; }
         }
     }

@@ -6,7 +6,6 @@ namespace LearningStarter.Entities
     public class EmailNewsletter
     {
         public int Id { get; set; }
-        public int SubscriberId { get; set; }
         public string Title { get; set; }
         public string Message { get; set; }
         public DateTimeOffset DateSent { get; set; }
@@ -15,7 +14,6 @@ namespace LearningStarter.Entities
     public class EmailNewsletterGetDto
     {
         public int Id { get; set; }
-        public int SubscriberId { get; set; }
         public string Title { get; set; }
         public string Message { get; set; }
         public DateTimeOffset DateSent { get; set; }
@@ -36,7 +34,7 @@ namespace LearningStarter.Entities
     }
     public class EmailNewsletterListingDto
     {
-        public int SubscriberId { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Message { get; set; }
         public DateTimeOffset DateSent { get; set; }

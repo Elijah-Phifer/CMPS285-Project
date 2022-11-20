@@ -162,7 +162,37 @@ namespace LearningStarter
                 dataContext.SaveChanges();
             }
         }
-         private void SeedEmailNewsletters(DataContext dataContext)
+        private void SeedSubscribers1(DataContext dataContext)
+        {
+            if (!dataContext.Subscribers.Any())
+            {
+                var seededSubscriber = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "Kearney Butler",
+                    Email = "email@gmail.com"
+                };
+                dataContext.Subscribers.Add(seededSubscriber);
+                dataContext.SaveChanges();
+            }
+        }
+
+        private void SeedSubscribers2(DataContext dataContext)
+        {
+            if (!dataContext.Subscribers.Any())
+            {
+                var seededSubscriber = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "John soe",
+                    Email = "Johnsoe.aol"
+                };
+                dataContext.Subscribers.Add(seededSubscriber);
+                dataContext.SaveChanges();
+            }
+        }
+
+        private void SeedEmailNewsletters(DataContext dataContext)
         {
             if (!dataContext.EmailNewsletters.Any())
             {
@@ -207,51 +237,51 @@ namespace LearningStarter
                 var seededInventory = new Inventories 
                 {
                     ItemName = "Blue Dress",
-                    ProductionCost = 12,
-                    Quantity = 4, 
+                    ProductionCost = "12",
+                    Quantity = "4", 
                     Availabilty = "Yes",
-                    OnlineStoreId = 1,
-                    SiteListing = 43,
+                    OnlineStoreId = "1",
+                    SiteListing = "43",
                     DateAdded = "2/3/12",
                 };
                 var seededInventory1 = new Inventories
                 {
                     ItemName = "Red Heels",
-                    ProductionCost = 2,
-                    Quantity = 12,
+                    ProductionCost = "2",
+                    Quantity = "12",
                     Availabilty = "Yes",
-                    OnlineStoreId = 1,
-                    SiteListing = 99,
+                    OnlineStoreId = "1",
+                    SiteListing = "99",
                     DateAdded = "2/3/12",
                 };
                 var seededInventory2 = new Inventories
                 {
                     ItemName = "Pokemon Socks",
-                    ProductionCost = 5,
-                    Quantity = 30,
+                    ProductionCost = "5",
+                    Quantity = "30",
                     Availabilty = "Yes, only if your cool",
-                    OnlineStoreId = 2,
-                    SiteListing = 9,
+                    OnlineStoreId = "2",
+                    SiteListing = "9",
                     DateAdded = "5/23/20",
                 };
                 var seededInventory3 = new Inventories
                 {
                     ItemName = "The One Ring",
-                    ProductionCost = 25,
-                    Quantity = 1,
+                    ProductionCost = "25",
+                    Quantity = "1",
                     Availabilty = "No",
-                    OnlineStoreId = 2,
-                    SiteListing = 1000,
+                    OnlineStoreId = "2",
+                    SiteListing = "1000",
                     DateAdded = "2/3/01",
                 };
                 var seededInventory4 = new Inventories
                 {
-                    ItemName = "Hitch Hiker's guide book",
-                    ProductionCost = 99999999,
-                    Quantity = 1,
+                    ItemName = "Hitch Hiker's guide to the galaxy",
+                    ProductionCost = "99999999",
+                    Quantity = "1",
                     Availabilty = "Yes",
-                    OnlineStoreId = 1,
-                    SiteListing = 42,
+                    OnlineStoreId = "1",
+                    SiteListing = "42",
                     DateAdded = "1/5/81",
                 };
                 dataContext.Inventories.Add(seededInventory);

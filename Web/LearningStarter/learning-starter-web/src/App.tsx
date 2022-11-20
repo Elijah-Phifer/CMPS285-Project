@@ -5,15 +5,17 @@ import "./styles/global.css";
 import { Routes } from "./routes/config";
 import { GlobalStyles } from "./styles/index";
 import { AuthProvider } from "./authentication/use-auth";
-import { Button, Header, Input } from "semantic-ui-react";
+/*import { Button, Header, Input } from "semantic-ui-react";
 import { Link, Route, Switch } from "react-router-dom";
 import { BulletJournalCreatePage } from "./pages/BulletJournalContents/create-page/bullet-journal-contents-create";
 // import { ListingExample } from "./components/ListingExample";
 
 //This is almost the base level of your app.  You can also put global things here.
 
-import { SubscribersPage } from "./pages/Subscribers/subscribers";
-import { EmailNewslettersPage } from "./pages/EmailNewsletter/emailNewsletterListing";
+
+
+
+
 
 //This is almost the base level of your app.  You can also put global things here.
 function App() {

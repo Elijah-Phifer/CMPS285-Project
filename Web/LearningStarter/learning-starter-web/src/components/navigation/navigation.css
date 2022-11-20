@@ -71,7 +71,7 @@
 
 .top-navigation.ui.secondary.menu
   .ui.secondary.menu.desktop-navigation
-  .item.dropdown
+  .item.dropdown 
   .item.active,
 .item.active:hover {
   border: none;
