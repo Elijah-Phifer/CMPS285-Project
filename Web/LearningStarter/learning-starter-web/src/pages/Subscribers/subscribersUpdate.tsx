@@ -19,7 +19,7 @@ import { Routes } from "../../routes/config";
 import { O_NOFOLLOW } from "constants";
 
 export const SubscriberUpdatePage = () => {
-  const history = useHistory;
+  const history = useHistory();
   let match = useRouteMatch<{ id: string }>();
   const id = match.params.id;
   const [subscriber, setSubscriber] = useState<SubscriberGetDto>();
@@ -83,11 +83,7 @@ export const SubscriberUpdatePage = () => {
             <div></div>
             <br></br>
             <div className="ui large buttons">
-              <Button
-                className="ui button"
-                onClick={() => {
-                  history.push(routes.Subscribers.listing);
-                }}>
+              <Button className="ui button" type="submit">
                 Update
               </Button>
               <div className="or"></div>

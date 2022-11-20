@@ -15,7 +15,7 @@ import { BaseUrl } from "../../constants/ens-vars";
 import { FormikBag } from "formik";
 
 export const EmailNewsletterUpdatePage = () => {
-  const history = useHistory;
+  const history = useHistory();
   let match = useRouteMatch<{ id: string }>();
   const id = match.params.id;
   const [emailNewsletter, setEmailNewsletter] =
@@ -67,12 +67,6 @@ export const EmailNewsletterUpdatePage = () => {
         <Formik initialValues={emailNewsletter} onSubmit={onSubmit}>
           <Form>
             <div>
-              <label htmlFor="id">Id</label>
-            </div>
-            <Field id="id" name="id">
-              {({ field }) => <Input {...field} />}
-            </Field>
-            <div>
               <label htmlFor="title">Title</label>
             </div>
             <Field id="title" name="title">
@@ -87,11 +81,7 @@ export const EmailNewsletterUpdatePage = () => {
             <div></div>
             <br></br>
             <div className="ui large buttons">
-              <Button
-                className="ui button"
-                onClick={() => {
-                  history.push(routes.EmailNewsletters.listing);
-                }}>
+              <Button className="ui button" type="submit">
                 Update
               </Button>
               <div className="or"></div>
