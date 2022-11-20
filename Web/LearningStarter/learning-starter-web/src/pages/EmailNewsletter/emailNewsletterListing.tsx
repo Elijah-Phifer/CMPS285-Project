@@ -1,13 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { ApiResponse, EmailNewsletterGetDto } from "../../constants/types";
-import { Header, Segment, Table, TableRow } from "semantic-ui-react";
+import {
+  ApiResponse,
+  EmailNewsletterGetDto,
+  EmailNewsletterUpdateDto,
+  EmailNewsletterDeleteDto,
+} from "../../constants/types";
+import { Button, Header, Segment, Table, TableRow } from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
+import { routes } from "../../routes/config";
 
 export const EmailNewslettersPage = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [emailNewsletters, setEmailNewsletters] =
     useState<EmailNewsletterGetDto[]>();
+
+  const history = useHistory();
 
   useEffect(() => {
     const fetchEmailNewsletters = async () => {
@@ -36,6 +45,7 @@ export const EmailNewslettersPage = () => {
                 <Table.HeaderCell>Title</Table.HeaderCell>
                 <Table.HeaderCell>Message</Table.HeaderCell>
                 <Table.HeaderCell>Date Sent</Table.HeaderCell>
+                <Table.HeaderCell></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -47,6 +57,34 @@ export const EmailNewslettersPage = () => {
                       <Table.Cell>{emailNewsletter.title} </Table.Cell>
                       <Table.Cell>{emailNewsletter.message}</Table.Cell>
                       <Table.Cell>{emailNewsletter.dateSent}</Table.Cell>
+                      <Table.Cell>
+                        <Button
+                          className="ui icon button"
+                          onClick={() =>
+                            history.push(
+                              routes.EmailNewsletters.update.replace(
+                                ":id",
+                                `${emailNewsletter.id}`
+                              )
+                            )
+                          }>
+                          <i className="pencil alternate icon"></i>
+                        </Button>
+                      </Table.Cell>
+                      <Table.Cell>
+                        <Button
+                          className="ui icon button"
+                          onClick={() =>
+                            history.push(
+                              routes.EmailNewsletters.delete.replace(
+                                ":id",
+                                `${emailNewsletter.id}`
+                              )
+                            )
+                          }>
+                          <i className="trash icon"></i>
+                        </Button>
+                      </Table.Cell>
                     </Table.Row>
                   </>
                 );

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 import { O_DIRECTORY } from "constants";
 import { Field, Formik, Form } from "formik";
@@ -88,8 +89,7 @@ export const BulletJournalListingPage = () => {
                             id="isDone"
                             name="isDone"
                             type="input"
-                            class="ui fitted checkbox"
-                          >
+                            class="ui fitted checkbox">
                             {({ field }) => (
                               <Input type="checkbox" name="isDone" {...field} />
                             )}

@@ -9,22 +9,34 @@ import { InventoriesPage } from "../pages/Inventories-page/Inventories";
 import { BulletJournalCreatePage } from "../pages/BulletJournalContents/create-page/bullet-journal-contents-create";
 import { BulletJournalListingPage } from "../pages/BulletJournalContents/listing-page/bullet-journal-listing";
 import { SubscribersPage } from "../pages/Subscribers/subscribers";
-import { EmailNewslettersPage } from "../pages/EmailNewsletter/emailNewsletter";
+import { EmailNewslettersPage } from "../pages/EmailNewsletter/emailNewsletterListing";
+import { EmailNewsletterCreatePage } from "../pages/EmailNewsletter/EmailNewsletterCreate";
+import { SubscriberCreatePage } from "../pages/Subscribers/subscribersCreate";
+import { SubscriberUpdatePage } from "../pages/Subscribers/subscribersUpdate";
+import { EmailNewsletterUpdatePage } from "../pages/EmailNewsletter/EmailNewsletterUpdate";
 
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
   root: `/`,
   home: `/home`,
   user: `/user`,
-  inventory: '/inventories',
+  inventory: "/inventories",
   bulletJournal: {
-    listing: '/BulletJournal',
-    create: '/BulletJournal/create'
+    listing: "/BulletJournal",
+    create: "/BulletJournal/create",
   },
   Subscribers: {
     listing: "/subscribers",
+    create: "/subscribers/create",
+    update: "/subscribers/update/:id",
+    delete: "/subscribers/delete/:id",
   },
-  EmailNewsletters: "/emailNewsletters",
+  EmailNewsletters: {
+    listing: "/emailNewsletters",
+    create: "/emailNewsletters/create",
+    update: "/emailNewsletters/update/:id",
+    delete: "/emailNewsletter/delete/:id",
+  },
 };
 
 //This is where you will tell React Router what to render when the path matches the route specified.
@@ -60,11 +72,24 @@ export const Routes = () => {
             <BulletJournalCreatePage />
           </Route>
 
-          <Route path={routes.EmailNewsletters} exact>
+          <Route path={routes.EmailNewsletters.create} exact>
+            <EmailNewsletterCreatePage />
+          </Route>
+          <Route path={routes.EmailNewsletters.update} exact>
+            <EmailNewsletterUpdatePage />
+          </Route>
+
+          <Route path={routes.EmailNewsletters.listing} exact>
             <EmailNewslettersPage />
           </Route>
           <Route path={routes.Subscribers.listing} exact>
             <SubscribersPage />
+          </Route>
+          <Route path={routes.Subscribers.create} exact>
+            <SubscriberCreatePage />
+          </Route>
+          <Route path={routes.Subscribers.update} exact>
+            <SubscriberUpdatePage />
           </Route>
           {/* This should always come last.  
             If the path has no match, show page not found */}

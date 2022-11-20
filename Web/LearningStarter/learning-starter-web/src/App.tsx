@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
 import "./App.css";
 import "./styles/global.css";
@@ -12,7 +13,7 @@ import { BulletJournalCreatePage } from "./pages/BulletJournalContents/create-pa
 //This is almost the base level of your app.  You can also put global things here.
 
 import { SubscribersPage } from "./pages/Subscribers/subscribers";
-import { EmailNewslettersPage } from "./pages/EmailNewsletter/emailNewsletter";
+import { EmailNewslettersPage } from "./pages/EmailNewsletter/emailNewsletterListing";
 
 //This is almost the base level of your app.  You can also put global things here.
 function App() {
@@ -20,8 +21,7 @@ function App() {
     <div className="App">
       <GlobalStyles />
       <AuthProvider>
-        <Routes/>
-
+        <Routes />
       </AuthProvider>
     </div>
   );
