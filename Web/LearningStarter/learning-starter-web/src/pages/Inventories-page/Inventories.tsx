@@ -51,7 +51,7 @@ export const InventoriesPage = () => {
                     <Table.Cell>{inventory.itemName}</Table.Cell>
                     <Table.Cell>{inventory.productionCost}</Table.Cell>
                     <Table.Cell>{inventory.quantity}</Table.Cell>
-                    <Table.Cell>{inventory.availability}</Table.Cell>
+                    <Table.Cell>{inventory.availabilty}</Table.Cell>
                     <Table.Cell>{inventory.onlineStoreId}</Table.Cell>
                     <Table.Cell>{inventory.siteListing}</Table.Cell>
                     <Table.Cell>{inventory.dateAdded}</Table.Cell>

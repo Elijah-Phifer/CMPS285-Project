@@ -29,11 +29,11 @@ export type UserDto = {
 export type InventoriesGetDto = {
   id: number;
   itemName: string;
-  productionCost: number;
-  quantity: number;
-  availability: string;
-  onlineStoreId: number;
-  siteListing: number;
+  productionCost: string;
+  quantity: string;
+  availabilty: string;
+  onlineStoreId: string;
+  siteListing: string;
   dateAdded: string;
 };
 
