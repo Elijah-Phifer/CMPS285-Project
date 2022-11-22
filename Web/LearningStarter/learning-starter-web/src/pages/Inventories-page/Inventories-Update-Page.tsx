@@ -21,7 +21,6 @@ export const InventoriesUpdatePage = () => {
 
   useEffect(() => {
     const fetchInventories = async () => {
-
       const response = await axios.get<ApiResponse<InventoriesGetDto>>(
         `/api/Inventories/${id}`
       );
@@ -29,9 +28,7 @@ export const InventoriesUpdatePage = () => {
       setInventories(response.data.data);
     };
 
-
     fetchInventories();
-
   }, []);
 
   const onSubmit = async (values: InventoriesUpdateDto) => {
@@ -88,7 +85,6 @@ export const InventoriesUpdatePage = () => {
               <label htmlFor="availability">availability</label>
             </div>
             <Field id="availability" name="availability">
-
               {({ field }) => <Input {...field} />}
             </Field>
             <div>
@@ -119,10 +115,8 @@ export const InventoriesUpdatePage = () => {
               color="orange"
               onClick={() => {
                 history.push(routes.inventory.Inventory);
-
               }}
             >
-
               Return
             </Button>
             <Button inverted color="red" onClick={Click}>
