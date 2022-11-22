@@ -152,25 +152,44 @@ export const BulletJournalCreateListing = () => {
   return (
     <>
       {bulletJournalEntries && (
-        <Segment>
-          <Header>Entries</Header>
-          <Table>
+        <Segment className="background">
+          <Header className="thing-tsb-white">Entries</Header>
+          <Table className="table-format">
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Id</Table.HeaderCell>
-                <Table.HeaderCell>isDone</Table.HeaderCell>
-                <Table.HeaderCell>Contents</Table.HeaderCell>
-                <Table.HeaderCell>Date Created</Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Id
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  isDone
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Contents
+                </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <TableBody>
               {bulletJournalEntries.map((bulletJournalEntry) => {
                 return (
-                  <Table.Row key={bulletJournalEntry.id}>
-                    <Table.Cell>{bulletJournalEntry.id}</Table.Cell>
+                  <Table.Row
+                    key={bulletJournalEntry.id}
+                    style={{
+                      borderColor: "black",
+                    }}
+                  >
+                    <Table.Cell style={{ color: "white" }}>
+                      {bulletJournalEntry.id}
+                    </Table.Cell>
                     <Table.Cell>
                       <Checkbox
                         name="isDone"
+                        className="ui radio checkbox"
                         defaultChecked={bulletJournalEntry.isDone}
                         onChange={(e, data) =>
                           markBulletJournalEntryAsDone(
@@ -181,7 +200,6 @@ export const BulletJournalCreateListing = () => {
                       />
                     </Table.Cell>
                     <Table.Cell>{bulletJournalEntry.contents}</Table.Cell>
-                    <Table.Cell>{bulletJournalEntry.DateCreated}</Table.Cell>
                   </Table.Row>
                 );
               })}
