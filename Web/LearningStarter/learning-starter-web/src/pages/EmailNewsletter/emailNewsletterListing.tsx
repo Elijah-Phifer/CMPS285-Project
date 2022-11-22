@@ -12,6 +12,8 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 import { routes } from "../../routes/config";
 import { Form, Formik } from "formik";
 
+import "./email-listing.css";
+
 export const EmailNewslettersPage = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [emailNewsletters, setEmailNewsletters] =
@@ -37,16 +39,34 @@ export const EmailNewslettersPage = () => {
   return (
     <>
       {emailNewsletters && (
-        <Segment>
-          <Header>Email Newsletters</Header>
-          <Table>
+        <Segment className="background">
+          <Header className="thing-tsb-white">Email Newsletters</Header>
+          <Table className="table-format">
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Id</Table.HeaderCell>
-                <Table.HeaderCell>Title</Table.HeaderCell>
-                <Table.HeaderCell>Message</Table.HeaderCell>
-                <Table.HeaderCell>Date Sent</Table.HeaderCell>
-                <Table.HeaderCell></Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Id
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Title
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Message
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Date Sent
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                ></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -68,7 +88,8 @@ export const EmailNewslettersPage = () => {
                                 `${emailNewsletter.id}`
                               )
                             )
-                          }>
+                          }
+                        >
                           <i className="trash icon"></i>
                         </Button>
                       </Table.Cell>

@@ -6,6 +6,8 @@ import { Button, Header, Segment, Table, Input } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import { routes } from "../../routes/config";
 
+import "./subscriber-listing.css";
+
 export const SubscribersPage = () => {
   const [subscribers, setSubscribers] = useState<SubscriberGetDto[]>();
 
@@ -29,24 +31,41 @@ export const SubscribersPage = () => {
   return (
     <>
       {subscribers && (
-        <Segment>
+        <Segment className="background">
           <div>
             <span>
               <Input
                 type="text"
                 placeholder="Search Subscribers..."
                 className="ui left icon input loading"
-                id="abId0.6393624643593341"></Input>
+                id="abId0.6393624643593341"
+              ></Input>
             </span>
           </div>
 
-          <Header>Subscribers</Header>
-          <Table>
+          <Header className="thing-tsb-white">Subscribers</Header>
+          <Table className="table-format">
             <Table.Header>
-              <Table.HeaderCell>Id</Table.HeaderCell>
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Email</Table.HeaderCell>
-              <Table.HeaderCell>Date Subscribed</Table.HeaderCell>
+              <Table.HeaderCell
+                style={{ backgroundColor: "#44444c", color: "white" }}
+              >
+                Id
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                style={{ backgroundColor: "#44444c", color: "white" }}
+              >
+                Name
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                style={{ backgroundColor: "#44444c", color: "white" }}
+              >
+                Email
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                style={{ backgroundColor: "#44444c", color: "white" }}
+              >
+                Date Subscribed
+              </Table.HeaderCell>
             </Table.Header>
             <Table.Body>
               {subscribers.map((subscriber) => {
@@ -67,7 +86,8 @@ export const SubscribersPage = () => {
                                 `${subscriber.id}`
                               )
                             )
-                          }>
+                          }
+                        >
                           <i className="pencil alternate icon"></i>
                         </Button>
                       </Table.Cell>
