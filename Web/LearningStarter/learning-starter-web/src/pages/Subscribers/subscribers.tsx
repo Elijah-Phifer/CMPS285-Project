@@ -36,8 +36,7 @@ export const SubscribersPage = () => {
                 type="text"
                 placeholder="Search Subscribers..."
                 className="ui left icon input loading"
-                id="abId0.6393624643593341"
-              ></Input>
+                id="abId0.6393624643593341"></Input>
             </span>
           </div>
 
@@ -68,17 +67,11 @@ export const SubscribersPage = () => {
                                 `${subscriber.id}`
                               )
                             )
-                          }
-                        >
+                          }>
                           <i className="pencil alternate icon"></i>
                         </Button>
                       </Table.Cell>
                     </Table.Row>
-
-                    <Table.Cell>{subscriber.id}</Table.Cell>
-                    <Table.Cell>{subscriber.name} </Table.Cell>
-                    <Table.Cell>{subscriber.email}</Table.Cell>
-                    <Table.Cell>{subscriber.dateSubscribed}</Table.Cell>
                   </>
                 );
               })}
