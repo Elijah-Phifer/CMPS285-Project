@@ -19,3 +19,8 @@
   font-size: large;
   padding: 1em;
 }
+
+.btn-border{
+  border-radius: 1em;
+
+}

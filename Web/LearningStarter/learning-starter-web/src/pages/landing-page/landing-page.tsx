@@ -10,15 +10,40 @@ export const LandingPage = () => {
   const history = useHistory();
   return (
     <div className="background">
-      {/* <div className="home-page-container">
-        <Header className="head">Home Page</Header>
+      <div className="home-page-container">
+        <Header className="head">Dash Board</Header>
       </div>
-      <Button
-        className="ui fluid button"
-        onClick={() => history.push(routes.bulletJournal.create)}
-      >
-        Create An Entry
-  </Button> */}
+      <div className="ui  vertical buttons">
+        <div>
+          <Button
+            className="ui left labeled icon button"
+            onClick={() => history.push(routes.bulletJournal.create)}
+          >
+            <i className="list ul icon"></i>
+            Add to your bullet journal!
+          </Button>
+        </div>
+
+        <div>
+          <Button
+            className="ui left labeled icon button btn-border"
+            onClick={() => history.push(routes.EmailNewsletters.create)}
+          >
+            <i className="newspaper icon"></i>
+            Send out a newsletter!
+          </Button>
+        </div>
+
+        <div>
+          <Button
+            className="ui left labeled icon button"
+            onClick={() => history.push(routes.inventory.InventoryCreate)}
+          >
+            <i className="shop icon"></i>
+            Create a new inventory item!
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
