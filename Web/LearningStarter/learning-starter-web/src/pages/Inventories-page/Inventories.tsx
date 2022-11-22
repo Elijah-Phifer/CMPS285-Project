@@ -6,6 +6,8 @@ import { useHistory } from "react-router-dom";
 import { routes } from "../../routes/config";
 import { Form, Formik } from "formik";
 
+import "./inventory-listing.css";
+
 export const InventoriesPage = () => {
   const history = useHistory();
   const [inventories, setInventories] = useState<InventoriesGetDto[]>();
@@ -26,21 +28,57 @@ export const InventoriesPage = () => {
   return (
     <>
       {inventories && (
-        <Segment>
-          <Header>Inventories</Header>
-          <Table>
+        <Segment className="background">
+          <Header className="thing-tsb-white">Inventories</Header>
+          <Table className="table-format">
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Id</Table.HeaderCell>
-                <Table.HeaderCell>Item Name</Table.HeaderCell>
-                <Table.HeaderCell>Production Cost</Table.HeaderCell>
-                <Table.HeaderCell>Quantity</Table.HeaderCell>
-                <Table.HeaderCell>Availability</Table.HeaderCell>
-                <Table.HeaderCell>Online Store Id</Table.HeaderCell>
-                <Table.HeaderCell>Site Listing</Table.HeaderCell>
-                <Table.HeaderCell>Date Added</Table.HeaderCell>
-                <Table.HeaderCell></Table.HeaderCell>
-                <Table.HeaderCell></Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Id
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Item Name
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Production Cost
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Quantity
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Availability
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Online Store Id
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Site Listing
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Date Added
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                ></Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                ></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <TableBody>

@@ -89,7 +89,7 @@ export const BulletJournalListingPage = () => {
           <Header className="thing-tsb-white">Entries</Header>
           <div>
             <Button
-              className="ui fluid button thing-tsb-white"
+              className="ui button thing-tsb-white"
               onClick={() => history.push(routes.bulletJournal.create)}
             >
               Create An Entry
