@@ -78,13 +78,13 @@ export const BulletJournalListingPage = () => {
       {bulletJournalEntries && (
         <Segment className="background">
           <div>
-            <span>
+            {/* <span>
               <Input
                 type="text"
                 placeholder="Search..."
                 className="ui right input"
               ></Input>
-            </span>
+            </span> */}
           </div>
           <Header className="thing-tsb-white">Entries</Header>
           <div>
@@ -99,17 +99,17 @@ export const BulletJournalListingPage = () => {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "#44444c" }}
+                  style={{ backgroundColor: "#44444c", color: "white" }}
                 >
                   Id
                 </Table.HeaderCell>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "#44444c" }}
+                  style={{ backgroundColor: "#44444c", color: "white" }}
                 >
                   isDone
                 </Table.HeaderCell>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "#44444c" }}
+                  style={{ backgroundColor: "#44444c", color: "white" }}
                 >
                   Contents
                 </Table.HeaderCell>
@@ -128,8 +128,13 @@ export const BulletJournalListingPage = () => {
             </Table.Header>
             <TableBody>
               {bulletJournalEntries.map((bulletJournalEntry) => (
-                <Table.Row key={bulletJournalEntry.id}>
-                  <Table.Cell style={{ color: "#44444c" }}>
+                <Table.Row
+                  key={bulletJournalEntry.id}
+                  style={{
+                    borderColor: "black",
+                  }}
+                >
+                  <Table.Cell style={{ color: "white" }}>
                     {bulletJournalEntry.id}
                   </Table.Cell>
                   <Table.Cell>

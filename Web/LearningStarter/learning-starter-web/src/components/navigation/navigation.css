@@ -29,7 +29,7 @@
 .top-navigation.ui.secondary.menu .ui.secondary.menu.desktop-navigation .item {
   transition: background-color 0.5s ease;
   transition: color 0.5s ease;
-  color: black; 
+  color: white; 
   cursor: pointer;
   text-align: left;
   border-bottom-color: #44444c;

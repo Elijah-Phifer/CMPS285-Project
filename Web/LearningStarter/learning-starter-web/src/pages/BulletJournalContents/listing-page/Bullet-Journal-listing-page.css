@@ -14,9 +14,10 @@
 .table-format.ui.table{
     background-color: #44444c;
     color: white;
-    border-color: #44444c;
+    border-color: black;
 }
 
 .table-header-format.ui.headercell.table{
     background-color: #44444c;
+    border-color: black;
 }
