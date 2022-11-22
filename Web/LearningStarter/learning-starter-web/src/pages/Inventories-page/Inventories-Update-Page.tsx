@@ -82,13 +82,13 @@ export const InventoriesUpdatePage = () => {
               {({ field }) => <Input {...field} />}
             </Field>
             <div>
-              <label htmlFor="availability">availability</label>
+              <label htmlFor="availabilty">availabilty</label>
             </div>
-            <Field id="availability" name="availability">
+            <Field id="availabilty" name="availabilty">
               {({ field }) => <Input {...field} />}
             </Field>
             <div>
-              <label htmlFor="onlineStoreId">onlineStoreId</label>
+              <label htmlFor="onlineStoreId">Store Listed at</label>
             </div>
             <Field id="onlineStoreId" name="onlineStoreId">
               {({ field }) => <Input {...field} />}
