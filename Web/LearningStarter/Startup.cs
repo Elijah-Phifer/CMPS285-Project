@@ -225,7 +225,7 @@ namespace LearningStarter
                     ProductionCost = "12",
                     Quantity = "4", 
                     Availabilty = "Yes",
-                    OnlineStoreId = "1",
+                    OnlineStoreId = "Ebay",
                     SiteListing = "43",
                     DateAdded = "2/3/12",
                 };
@@ -235,7 +235,7 @@ namespace LearningStarter
                     ProductionCost = "2",
                     Quantity = "12",
                     Availabilty = "Yes",
-                    OnlineStoreId = "1",
+                    OnlineStoreId = "Etsy",
                     SiteListing = "99",
                     DateAdded = "2/3/12",
                 };
@@ -245,7 +245,7 @@ namespace LearningStarter
                     ProductionCost = "5",
                     Quantity = "30",
                     Availabilty = "Yes, only if your cool",
-                    OnlineStoreId = "2",
+                    OnlineStoreId = "Ebay",
                     SiteListing = "9",
                     DateAdded = "5/23/20",
                 };
@@ -255,7 +255,7 @@ namespace LearningStarter
                     ProductionCost = "25",
                     Quantity = "1",
                     Availabilty = "No",
-                    OnlineStoreId = "2",
+                    OnlineStoreId = "Ebay",
                     SiteListing = "1000",
                     DateAdded = "2/3/01",
                 };
@@ -265,7 +265,7 @@ namespace LearningStarter
                     ProductionCost = "99999999",
                     Quantity = "1",
                     Availabilty = "Yes",
-                    OnlineStoreId = "1",
+                    OnlineStoreId = "Amazon",
                     SiteListing = "42",
                     DateAdded = "1/5/81",
                 };
