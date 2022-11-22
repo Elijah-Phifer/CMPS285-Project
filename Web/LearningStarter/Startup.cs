@@ -158,40 +158,25 @@ namespace LearningStarter
                     Name = "First Last",
                     Email = "email.aol" 
                 };
-                dataContext.Subscribers.Add(seededSubscriber);
-                dataContext.SaveChanges();
-            }
-        }
-        private void SeedSubscribers1(DataContext dataContext)
-        {
-            if (!dataContext.Subscribers.Any())
-            {
-                var seededSubscriber = new Subscriber
+                var seededSubscriber1 = new Subscriber
                 {
                     DateSubscribed = DateTimeOffset.Now,
                     Name = "Kearney Butler",
-                    Email = "email@gmail.com"
+                    Email = "kearneybutler@gmail.com"
                 };
-                dataContext.Subscribers.Add(seededSubscriber);
-                dataContext.SaveChanges();
-            }
-        }
-
-        private void SeedSubscribers2(DataContext dataContext)
-        {
-            if (!dataContext.Subscribers.Any())
-            {
-                var seededSubscriber = new Subscriber
+                var seededSubscriber2 = new Subscriber
                 {
                     DateSubscribed = DateTimeOffset.Now,
                     Name = "John soe",
-                    Email = "Johnsoe.aol"
+                    Email = "Johnsoe@aol.net"
                 };
                 dataContext.Subscribers.Add(seededSubscriber);
+                dataContext.Subscribers.Add(seededSubscriber1);
+                dataContext.Subscribers.Add(seededSubscriber2);
                 dataContext.SaveChanges();
             }
         }
-
+    
         private void SeedEmailNewsletters(DataContext dataContext)
         {
             if (!dataContext.EmailNewsletters.Any())
