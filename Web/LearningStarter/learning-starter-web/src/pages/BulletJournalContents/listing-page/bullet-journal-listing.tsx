@@ -13,12 +13,15 @@ import {
   Tab,
   Table,
   TableBody,
+  TableHeader,
 } from "semantic-ui-react";
 import { BaseUrl } from "../../../constants/ens-vars";
 import {
   ApiResponse,
   BulletJournalEntryGetDTO,
 } from "../../../constants/types";
+
+import "./Bullet-Journal-listing-page.css";
 
 import { useHistory } from "react-router-dom";
 import { routes } from "../../../routes/config";
@@ -73,7 +76,7 @@ export const BulletJournalListingPage = () => {
   return (
     <>
       {bulletJournalEntries && (
-        <Segment>
+        <Segment className="background">
           <div>
             <span>
               <Input
@@ -83,94 +86,99 @@ export const BulletJournalListingPage = () => {
               ></Input>
             </span>
           </div>
-          <Header>Entries</Header>
+          <Header className="thing-tsb-white">Entries</Header>
           <div>
             <Button
-              className="ui fluid button"
+              className="ui fluid button thing-tsb-white"
               onClick={() => history.push(routes.bulletJournal.create)}
             >
               Create An Entry
             </Button>
           </div>
-          <Table>
+          <Table className="table-format">
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Id</Table.HeaderCell>
-                <Table.HeaderCell>isDone</Table.HeaderCell>
-                <Table.HeaderCell>Contents</Table.HeaderCell>
-                <Table.HeaderCell>Date Created</Table.HeaderCell>
-                <Table.HeaderCell></Table.HeaderCell>
-                <Table.HeaderCell></Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "#44444c" }}
+                >
+                  Id
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "#44444c" }}
+                >
+                  isDone
+                </Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "#44444c" }}
+                >
+                  Contents
+                </Table.HeaderCell>
+                {/* <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Date Created
+      </Table.HeaderCell> */}
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c" }}
+                ></Table.HeaderCell>
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c" }}
+                ></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <TableBody>
-              {bulletJournalEntries.map((bulletJournalEntry) => {
-                return (
-                  <Table.Row key={bulletJournalEntry.id}>
-                    <Table.Cell>{bulletJournalEntry.id}</Table.Cell>
-                    <Table.Cell>
-
-                      <Formik initialValues={initialValues} onSubmit={onSubmit}>
-                        <Form>
-                          <Field
-                            id="isDone"
-                            name="isDone"
-                            type="input"
-                            class="ui fitted checkbox">
-                            {({ field }) => (
-                              <Input type="checkbox" name="isDone" {...field} />
-                            )}
-                          </Field>
-                        </Form>
-                      </Formik>
-
-                      <Checkbox
-                        name="isDone"
-                        defaultChecked={bulletJournalEntry.isDone}
-                        onChange={(e, data) =>
-                          markBulletJournalEntryAsDone(
-                            bulletJournalEntry.id,
-                            data.checked ?? false
+              {bulletJournalEntries.map((bulletJournalEntry) => (
+                <Table.Row key={bulletJournalEntry.id}>
+                  <Table.Cell style={{ color: "#44444c" }}>
+                    {bulletJournalEntry.id}
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Checkbox
+                      name="isDone"
+                      className="ui radio checkbox"
+                      defaultChecked={bulletJournalEntry.isDone}
+                      onChange={(e, data) =>
+                        markBulletJournalEntryAsDone(
+                          bulletJournalEntry.id,
+                          data.checked ?? false
+                        )
+                      }
+                    />
+                  </Table.Cell>
+                  <Table.Cell>{bulletJournalEntry.contents}</Table.Cell>
+                  {/*<Table.Cell>{bulletJournalEntry.DateCreated}</Table.Cell>*/}
+                  <Table.Cell>
+                    <Button
+                      className="ui icon button"
+                      onClick={() =>
+                        history.push(
+                          routes.bulletJournal.update.replace(
+                            ":id",
+                            `${bulletJournalEntry.id}`
                           )
-                        }
-                      />
-
-                    </Table.Cell>
-                    <Table.Cell>{bulletJournalEntry.contents}</Table.Cell>
-                    <Table.Cell>{bulletJournalEntry.DateCreated}</Table.Cell>
-                    <Table.Cell>
-                      <Button
-                        className="ui icon button"
-                        onClick={() =>
-                          history.push(
-                            routes.bulletJournal.update.replace(
-                              ":id",
-                              `${bulletJournalEntry.id}`
-                            )
+                        )
+                      }
+                    >
+                      <i className="pencil icon"></i>
+                    </Button>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Button
+                      className="ui icon button"
+                      onClick={() =>
+                        history.push(
+                          routes.bulletJournal.delete.replace(
+                            ":id",
+                            `${bulletJournalEntry.id}`
                           )
-                        }
-                      >
-                        <i className="pencil icon"></i>
-                      </Button>
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Button
-                        className="ui icon button"
-                        onClick={() =>
-                          history.push(
-                            routes.bulletJournal.delete.replace(
-                              ":id",
-                              `${bulletJournalEntry.id}`
-                            )
-                          )
-                        }
-                      >
-                        <i className="eraser icon"></i>
-                      </Button>
-                    </Table.Cell>
-                  </Table.Row>
-                );
-              })}
+                        )
+                      }
+                    >
+                      <i className="eraser icon"></i>
+                    </Button>
+                  </Table.Cell>
+                </Table.Row>
+              ))}
             </TableBody>
           </Table>
         </Segment>

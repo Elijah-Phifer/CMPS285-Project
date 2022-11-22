@@ -6,15 +6,10 @@ import { Button, Header, Segment, Table, Input } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import { routes } from "../../routes/config";
 
-import { Header, Segment, Table } from "semantic-ui-react";
-import { ApiResponse, SubscriberGetDto } from "../../constants/types";
-
-
 export const SubscribersPage = () => {
   const [subscribers, setSubscribers] = useState<SubscriberGetDto[]>();
 
   const history = useHistory();
-
 
   useEffect(() => {
     const fetchSubscribers = async () => {
@@ -35,14 +30,14 @@ export const SubscribersPage = () => {
     <>
       {subscribers && (
         <Segment>
-
           <div>
             <span>
               <Input
                 type="text"
                 placeholder="Search Subscribers..."
                 className="ui left icon input loading"
-                id="abId0.6393624643593341"></Input>
+                id="abId0.6393624643593341"
+              ></Input>
             </span>
           </div>
 
@@ -58,7 +53,6 @@ export const SubscribersPage = () => {
               {subscribers.map((subscriber) => {
                 return (
                   <>
-
                     <Table.Row>
                       <Table.Cell>{subscriber.id}</Table.Cell>
                       <Table.Cell>{subscriber.name} </Table.Cell>
@@ -74,7 +68,8 @@ export const SubscribersPage = () => {
                                 `${subscriber.id}`
                               )
                             )
-                          }>
+                          }
+                        >
                           <i className="pencil alternate icon"></i>
                         </Button>
                       </Table.Cell>
@@ -84,7 +79,6 @@ export const SubscribersPage = () => {
                     <Table.Cell>{subscriber.name} </Table.Cell>
                     <Table.Cell>{subscriber.email}</Table.Cell>
                     <Table.Cell>{subscriber.dateSubscribed}</Table.Cell>
-
                   </>
                 );
               })}

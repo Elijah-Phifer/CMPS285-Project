@@ -102,10 +102,6 @@ export type BulletJournalOptionsResponseDto = {
   effectTypeOptions: BulletJournalOptionsDto[];
 };
 
-
-  //add others from controller later
-};
-
 export type SubscriberGetDto = {
   id: number;
   name: string;
@@ -135,7 +131,6 @@ export type EmailNewsletterCreateDto = {
   message: string;
   dateSent: Date;
 };
-
 
 export type EmailNewsletterGetDto = {
   id: number;
