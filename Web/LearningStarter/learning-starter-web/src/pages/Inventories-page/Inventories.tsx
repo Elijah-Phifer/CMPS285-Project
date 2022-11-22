@@ -31,12 +31,12 @@ export const InventoriesPage = () => {
           <Table>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Id</Table.HeaderCell>
+                {/* <Table.HeaderCell>Id</Table.HeaderCell> */}
                 <Table.HeaderCell>Item Name</Table.HeaderCell>
                 <Table.HeaderCell>Production Cost</Table.HeaderCell>
                 <Table.HeaderCell>Quantity</Table.HeaderCell>
                 <Table.HeaderCell>Availability</Table.HeaderCell>
-                <Table.HeaderCell>Online Store Id</Table.HeaderCell>
+                <Table.HeaderCell>Store Listed at</Table.HeaderCell>
                 <Table.HeaderCell>Site Listing</Table.HeaderCell>
                 <Table.HeaderCell>Date Added</Table.HeaderCell>
                 <Table.HeaderCell></Table.HeaderCell>
@@ -47,7 +47,7 @@ export const InventoriesPage = () => {
               {inventories.map((inventory) => {
                 return (
                   <Table.Row key={inventory.id}>
-                    <Table.Cell>{inventory.id}</Table.Cell>
+                    {/* <Table.Cell>{inventory.id}</Table.Cell> */}
                     <Table.Cell>{inventory.itemName}</Table.Cell>
                     <Table.Cell>{inventory.productionCost}</Table.Cell>
                     <Table.Cell>{inventory.quantity}</Table.Cell>

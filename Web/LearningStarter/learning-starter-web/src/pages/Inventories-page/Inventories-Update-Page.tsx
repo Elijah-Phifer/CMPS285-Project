@@ -107,8 +107,9 @@ export const InventoriesUpdatePage = () => {
             </Field>
             <div></div>
             <br></br>
-            <Button inverted color="green" type="submit">
-              Submit
+
+            <Button inverted color="red" onClick={Click}>
+              Delete?
             </Button>
             <Button
               inverted
@@ -119,8 +120,8 @@ export const InventoriesUpdatePage = () => {
             >
               Return
             </Button>
-            <Button inverted color="red" onClick={Click}>
-              Delete?
+            <Button inverted color="green" type="submit">
+              Submit
             </Button>
           </Form>
         </Formik>

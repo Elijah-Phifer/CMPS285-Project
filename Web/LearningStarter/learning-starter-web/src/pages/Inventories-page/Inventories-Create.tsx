@@ -68,7 +68,7 @@ export const InventoriesCreatePage = () => {
             {({ field }) => <Input {...field} />}
           </Field>
           <div>
-            <label htmlFor="onlineStoreId">onlineStoreId</label>
+            <label htmlFor="onlineStoreId">Store Listed at</label>
           </div>
           <Field id="onlineStoreId" name="onlineStoreId">
             {({ field }) => <Input {...field} />}
@@ -86,7 +86,19 @@ export const InventoriesCreatePage = () => {
             {({ field }) => <Input {...field} />}
           </Field>
           <div>
-            <Button type="submit">Create</Button>
+            <br></br>
+            <Button
+              inverted
+              color="orange"
+              onClick={() => {
+                history.push(routes.inventory.Inventory);
+              }}
+            >
+              Return
+            </Button>
+            <Button inverted color="green" type="submit">
+              Create
+            </Button>
           </div>
         </Form>
       </Formik>
