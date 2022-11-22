@@ -2,7 +2,7 @@
   z-index: 3;
   margin: 0;
   padding: 0 25px 0 10px;
-  border-bottom: solid 1px #d7d6d4;
+  border-bottom: solid 0px #d7d6d4;
   height: 60px !important;
 }
 
@@ -21,16 +21,18 @@
 }
 
 .top-navigation.ui.secondary.menu .ui.secondary.menu.desktop-navigation {
-  border-bottom-color: #fff !important;
+  border-bottom-color: #44444c !important;
 }
+
+/* color in the bottom function changes text color of dropdowns*/
 
 .top-navigation.ui.secondary.menu .ui.secondary.menu.desktop-navigation .item {
   transition: background-color 0.5s ease;
   transition: color 0.5s ease;
-  color: black;
+  color: black; 
   cursor: pointer;
   text-align: left;
-  border-bottom-color: #fff;
+  border-bottom-color: #44444c;
   padding-bottom: 1rem;
 }
 .top-navigation.ui.secondary.menu
@@ -45,7 +47,7 @@
 .top-navigation.ui.secondary.menu
   .ui.secondary.menu.desktop-navigation
   .item:hover:not(.header) {
-  color: #1b1c1d;
+  color: #edf1f4;
   background: rgba(0, 0, 0, 0.05);
 }
 
@@ -55,7 +57,7 @@
 .top-navigation.ui.secondary.menu
   .ui.secondary.menu.desktop-navigation
   .item.active:hover {
-  background-color: #d7d6d4;
+  background-color: lighten(0.05, #1b1c1d);
 }
 
 .top-navigation.ui.secondary.menu
@@ -65,7 +67,7 @@
   .ui.secondary.menu.desktop-navigation
   .item.active:hover
   > .label {
-  background-color: #ecebea;
+  background-color: #44444c;
   color: lighten(0.05, #1b1c1d);
 }
 
@@ -136,3 +138,4 @@
   padding-left: 1px;
   font-size: 1.5rem;
 }
+

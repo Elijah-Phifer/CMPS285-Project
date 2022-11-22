@@ -22,7 +22,7 @@ import {
 } from "../pages/BulletJournalContents/update-page/bullet-journal-update";
 import { InventoriesCreatePage } from "../pages/Inventories-page/Inventories-Create";
 import { InventoriesUpdatePage } from "../pages/Inventories-page/Inventories-Update-Page";
-
+import { SubscribersPage } from "../pages/Subscribers/subscribers";
 
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
@@ -40,7 +40,6 @@ export const routes = {
     create: "/BulletJournal/create",
     update: "/BulletJournal/update/:id",
     delete: "/BulletJournal/delete/:id",
-
   },
 
   Subscribers: {
@@ -53,7 +52,6 @@ export const routes = {
     create: "/emailNewsletters/create",
     update: "/emailNewsletters/update/:id",
   },
-
 };
 
 //This is where you will tell React Router what to render when the path matches the route specified.
