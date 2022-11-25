@@ -7,8 +7,10 @@ import {
   Button,
   Checkbox,
   Header,
+  Icon,
   Input,
   List,
+  Modal,
   Segment,
   Tab,
   Table,
@@ -18,15 +20,32 @@ import {
 import { BaseUrl } from "../../../constants/ens-vars";
 import {
   ApiResponse,
+  BulletJournalEntryCreateDTO,
   BulletJournalEntryGetDTO,
 } from "../../../constants/types";
 
 import "./Bullet-Journal-listing-page.css";
 
 import { useHistory } from "react-router-dom";
+
 import { routes } from "../../../routes/config";
 
+const initialValues: BulletJournalEntryCreateDTO = {
+  contents: " ",
+  id: 0,
+  //need to add date created
+  isDone: false,
+
+  /*DateCreated: Now,*/
+
+  DateCreated: new Date(),
+
+  pushes: 0,
+};
+
 export const BulletJournalListingPage = () => {
+  const [open, setOpen] = React.useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false);
   const history = useHistory();
   const [bulletJournalEntries, setBulletJournalEntries] =
     useState<BulletJournalEntryGetDTO[]>();
@@ -50,6 +69,21 @@ export const BulletJournalListingPage = () => {
     fetchBulletJournal();
   }, []);
 
+  const fetchBulletJournal = async () => {
+    const response = await axios.get<ApiResponse<BulletJournalEntryGetDTO[]>>(
+      `${BaseUrl}/api/BulletJournal`
+    );
+    if (response.data.hasErrors) {
+      alert("Something went wrong!");
+      return;
+      /*response.data.errors.forEach(err => {
+                console.log(err.message);
+            });*/
+    } else {
+      setBulletJournalEntries(response.data.data);
+    }
+  };
+
   const markBulletJournalEntryAsDone = async (id: number, isDone: Boolean) => {
     console.log("debug", { isDone });
     const response = await axios.put(
@@ -69,6 +103,33 @@ export const BulletJournalListingPage = () => {
     }
   };
 
+  const onSubmit = async (values: BulletJournalEntryCreateDTO) => {
+    setSubmitLoading(true);
+    const response = await axios.post<ApiResponse<BulletJournalEntryGetDTO>>(
+      `${BaseUrl}/api/BulletJournal`,
+      values,
+      { validateStatus: () => true }
+    );
+
+    if (response.data.hasErrors) {
+      response.data.errors.forEach((err) => {
+        console.log(err.message);
+      });
+      setSubmitLoading(false);
+      return;
+    }
+
+    await fetchBulletJournal();
+    setSubmitLoading(false);
+    setOpen(false);
+
+    /*else {
+      
+
+     // history.push(routes.bulletJournal.listing); //probably needs to go to listing page
+    }*/
+  };
+
   //try going in back end and make controller for mark-done
 
   //possibly animate button to change what it says when hovered over
@@ -77,24 +138,54 @@ export const BulletJournalListingPage = () => {
     <>
       {bulletJournalEntries && (
         <Segment className="background">
-          <div>
-            {/* <span>
-              <Input
-                type="text"
-                placeholder="Search..."
-                className="ui right input"
-              ></Input>
-            </span> */}
-          </div>
           <Header className="thing-tsb-white">Entries</Header>
-          <div>
-            <Button
-              className="ui button thing-tsb-white"
-              onClick={() => history.push(routes.bulletJournal.create)}
+          <Formik initialValues={initialValues} onSubmit={onSubmit}>
+            <Modal
+              trigger={
+                <Button className="ui button thing-tsb-white">
+                  <Icon name="add" />
+                  Create An Entry
+                </Button>
+              }
+              as={Form}
+              onOpen={() => setOpen(true)}
+              onClose={() => setOpen(false)}
+              open={open}
             >
-              Create An Entry
-            </Button>
-          </div>
+              <Modal.Header>Create An Entry</Modal.Header>
+              <Modal.Content>
+                <Form>
+                  <div className="input-label">
+                    <label htmlFor="contents">What do you have to do?</label>
+                  </div>
+                  <Field
+                    id="contents"
+                    name="contents"
+                    type="input"
+                    placeHolder="Do Something"
+                  >
+                    {({ field }) => (
+                      <Input className="ui fluid input" {...field} />
+                    )}
+                  </Field>
+                </Form>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button type="submit" className="ui btn thing-tsb-white">
+                  Save
+                </Button>
+
+                <Button
+                  type="button"
+                  className="ui btn-cancel"
+                  onClick={() => setOpen(false)}
+                >
+                  Cancel
+                </Button>
+              </Modal.Actions>
+            </Modal>
+          </Formik>
+
           <Table className="table-format">
             <Table.Header>
               <Table.Row>
@@ -114,10 +205,10 @@ export const BulletJournalListingPage = () => {
                   Contents
                 </Table.HeaderCell>
                 {/* <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                >
-                  Date Created
-      </Table.HeaderCell> */}
+      style={{ backgroundColor: "#44444c", color: "white" }}
+    >
+      Date Created
+</Table.HeaderCell> */}
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c" }}
                 ></Table.HeaderCell>

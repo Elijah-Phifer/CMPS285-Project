@@ -82,7 +82,7 @@ export const BulletJournalCreatePage = () => {
           >
             {({ field }) => <Input className="ui fluid input" {...field} />}
           </Field>
-          <div>
+          {/*  <div>
             <Button type="submit" className="ui fluid btn">
               Save
             </Button>
@@ -94,7 +94,7 @@ export const BulletJournalCreatePage = () => {
             >
               Cancel
             </Button>
-          </div>
+                  </div> */}
         </Form>
       </Formik>
     </>

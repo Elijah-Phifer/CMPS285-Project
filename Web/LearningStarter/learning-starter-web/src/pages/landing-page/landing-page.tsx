@@ -17,10 +17,10 @@ export const LandingPage = () => {
         <div>
           <Button
             className="ui left labeled icon button"
-            onClick={() => history.push(routes.bulletJournal.create)}
+            onClick={() => history.push(routes.bulletJournal.listing)}
           >
             <i className="list ul icon"></i>
-            Add to your bullet journal!
+            Check your bullet journal!
           </Button>
         </div>
 

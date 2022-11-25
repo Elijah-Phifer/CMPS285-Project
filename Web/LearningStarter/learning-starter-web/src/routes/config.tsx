@@ -94,7 +94,6 @@ export const Routes = () => {
 
           <Route path={routes.bulletJournal.create} exact>
             <BulletJournalCreatePage />
-            <BulletJournalCreateListing />
           </Route>
 
           <Route path={routes.bulletJournal.update} exact>
