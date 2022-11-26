@@ -34,7 +34,7 @@ export const LandingPage = () => {
       <div className="home-page-container">
         <Header className="head">Dash Board</Header>
       </div>
-      <div className="ui  vertical buttons">
+      <div className="ui vertical buttons">
         <div>
           <Button
             className="ui left labeled icon button"

@@ -39,8 +39,6 @@ const initialValues: BulletJournalEntryCreateDTO = {
   /*DateCreated: Now,*/
 
   DateCreated: new Date(),
-
-  pushes: 0,
 };
 
 export const BulletJournalListingPage = () => {
@@ -122,7 +120,6 @@ export const BulletJournalListingPage = () => {
     await fetchBulletJournal();
     setSubmitLoading(false);
     setOpen(false);
-
     /*else {
       
 
@@ -141,6 +138,7 @@ export const BulletJournalListingPage = () => {
           <Header className="thing-tsb-white">Entries</Header>
           <Formik initialValues={initialValues} onSubmit={onSubmit}>
             <Modal
+              basic
               trigger={
                 <Button className="ui button thing-tsb-white">
                   <Icon name="add" />
@@ -171,17 +169,19 @@ export const BulletJournalListingPage = () => {
                 </Form>
               </Modal.Content>
               <Modal.Actions>
-                <Button type="submit" className="ui btn thing-tsb-white">
-                  Save
-                </Button>
+                <div className="ui large buttons">
+                  <Button type="submit" className="ui btn thing-tsb-white">
+                    Save
+                  </Button>
 
-                <Button
-                  type="button"
-                  className="ui btn-cancel"
-                  onClick={() => setOpen(false)}
-                >
-                  Cancel
-                </Button>
+                  <Button
+                    type="button"
+                    className="ui btn-cancel"
+                    onClick={() => setOpen(false)}
+                  >
+                    Cancel
+                  </Button>
+                </div>
               </Modal.Actions>
             </Modal>
           </Formik>
@@ -209,9 +209,6 @@ export const BulletJournalListingPage = () => {
     >
       Date Created
 </Table.HeaderCell> */}
-                <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c" }}
-                ></Table.HeaderCell>
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c" }}
                 ></Table.HeaderCell>
@@ -256,21 +253,6 @@ export const BulletJournalListingPage = () => {
                       }
                     >
                       <i className="pencil icon"></i>
-                    </Button>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <Button
-                      className="ui icon button"
-                      onClick={() =>
-                        history.push(
-                          routes.bulletJournal.delete.replace(
-                            ":id",
-                            `${bulletJournalEntry.id}`
-                          )
-                        )
-                      }
-                    >
-                      <i className="eraser icon"></i>
                     </Button>
                   </Table.Cell>
                 </Table.Row>
