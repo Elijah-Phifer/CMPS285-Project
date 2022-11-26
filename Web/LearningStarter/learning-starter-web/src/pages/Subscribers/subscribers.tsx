@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 import { ApiResponse, SubscriberGetDto } from "../../constants/types";
-import { Button, Header, Segment, Table, Input } from "semantic-ui-react";
+import { Button, Header, Segment, Table, Input, Icon } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import { routes } from "../../routes/config";
 
@@ -44,6 +44,13 @@ export const SubscribersPage = () => {
           </div>
 
           <Header className="thing-tsb-white">Subscribers</Header>
+          <Button
+            className="ui button thing-tsb-white"
+            onClick={() => history.push(routes.Subscribers.create)}
+          >
+            <Icon name="add" />
+            Add a new subscriber
+          </Button>
           <Table className="table-format">
             <Table.Header>
               <Table.HeaderCell

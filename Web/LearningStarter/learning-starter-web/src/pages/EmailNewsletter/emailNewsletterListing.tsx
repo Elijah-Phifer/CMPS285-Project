@@ -7,7 +7,14 @@ import {
   EmailNewsletterUpdateDto,
   EmailNewsletterDeleteDto,
 } from "../../constants/types";
-import { Button, Header, Segment, Table, TableRow } from "semantic-ui-react";
+import {
+  Button,
+  Header,
+  Icon,
+  Segment,
+  Table,
+  TableRow,
+} from "semantic-ui-react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { routes } from "../../routes/config";
 import { Form, Formik } from "formik";
@@ -41,6 +48,13 @@ export const EmailNewslettersPage = () => {
       {emailNewsletters && (
         <Segment className="background">
           <Header className="thing-tsb-white">Email Newsletters</Header>
+          <Button
+            className="ui button thing-tsb-white"
+            onClick={() => history.push(routes.EmailNewsletters.create)}
+          >
+            <Icon name="add" />
+            Draft a newsletter
+          </Button>
           <Table className="table-format">
             <Table.Header>
               <Table.Row>
@@ -90,7 +104,7 @@ export const EmailNewslettersPage = () => {
                             )
                           }
                         >
-                          <i className="trash icon"></i>
+                          <i className="pencil icon"></i>
                         </Button>
                       </Table.Cell>
                     </Table.Row>

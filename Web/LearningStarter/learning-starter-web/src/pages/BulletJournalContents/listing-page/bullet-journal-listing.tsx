@@ -7,8 +7,10 @@ import {
   Button,
   Checkbox,
   Header,
+  Icon,
   Input,
   List,
+  Modal,
   Segment,
   Tab,
   Table,
@@ -18,15 +20,30 @@ import {
 import { BaseUrl } from "../../../constants/ens-vars";
 import {
   ApiResponse,
+  BulletJournalEntryCreateDTO,
   BulletJournalEntryGetDTO,
 } from "../../../constants/types";
 
 import "./Bullet-Journal-listing-page.css";
 
 import { useHistory } from "react-router-dom";
+
 import { routes } from "../../../routes/config";
 
+const initialValues: BulletJournalEntryCreateDTO = {
+  contents: " ",
+  id: 0,
+  //need to add date created
+  isDone: false,
+
+  /*DateCreated: Now,*/
+
+  DateCreated: new Date(),
+};
+
 export const BulletJournalListingPage = () => {
+  const [open, setOpen] = React.useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false);
   const history = useHistory();
   const [bulletJournalEntries, setBulletJournalEntries] =
     useState<BulletJournalEntryGetDTO[]>();
@@ -77,24 +94,16 @@ export const BulletJournalListingPage = () => {
     <>
       {bulletJournalEntries && (
         <Segment className="background">
-          <div>
-            {/* <span>
-              <Input
-                type="text"
-                placeholder="Search..."
-                className="ui right input"
-              ></Input>
-            </span> */}
-          </div>
           <Header className="thing-tsb-white">Entries</Header>
-          <div>
-            <Button
-              className="ui button thing-tsb-white"
-              onClick={() => history.push(routes.bulletJournal.create)}
-            >
-              Create An Entry
-            </Button>
-          </div>
+
+          <Button
+            className="ui button thing-tsb-white"
+            onClick={() => history.push(routes.bulletJournal.create)}
+          >
+            <Icon name="add" />
+            Create An Entry
+          </Button>
+
           <Table className="table-format">
             <Table.Header>
               <Table.Row>
@@ -114,13 +123,10 @@ export const BulletJournalListingPage = () => {
                   Contents
                 </Table.HeaderCell>
                 {/* <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                >
-                  Date Created
-      </Table.HeaderCell> */}
-                <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c" }}
-                ></Table.HeaderCell>
+      style={{ backgroundColor: "#44444c", color: "white" }}
+    >
+      Date Created
+</Table.HeaderCell> */}
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c" }}
                 ></Table.HeaderCell>
@@ -165,21 +171,6 @@ export const BulletJournalListingPage = () => {
                       }
                     >
                       <i className="pencil icon"></i>
-                    </Button>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <Button
-                      className="ui icon button"
-                      onClick={() =>
-                        history.push(
-                          routes.bulletJournal.delete.replace(
-                            ":id",
-                            `${bulletJournalEntry.id}`
-                          )
-                        )
-                      }
-                    >
-                      <i className="eraser icon"></i>
                     </Button>
                   </Table.Cell>
                 </Table.Row>

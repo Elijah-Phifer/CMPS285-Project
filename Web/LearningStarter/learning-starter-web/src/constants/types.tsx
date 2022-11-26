@@ -74,7 +74,7 @@ export type BulletJournalEntryCreateDTO = {
   contents: string;
   isDone: boolean;
   DateCreated: Date;
-  pushes: number;
+  //pushes: number;
 };
 
 export type BulletJournalEntryGetDTO = {
