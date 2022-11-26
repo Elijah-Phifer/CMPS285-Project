@@ -55,11 +55,24 @@ export const EmailNewsletterCreatePage = () => {
           <div>
             <label htmlFor="message">Message</label>
           </div>
-          <Field id="message" name="message">
-            {({ field }) => <Input {...field} />}
-          </Field>
-          <div>
-            <Button type="submit">Create</Button>
+          <div className="ui form"></div>
+          <div className="field">
+            <textarea spellCheck="false" data-ms-editor="true"></textarea>
+          </div>
+          <br></br>
+          <div className="ui large buttons">
+            <Button className="ui button" type="submit">
+              Create
+            </Button>
+            <div className="or"></div>
+            <Button
+              className="ui button"
+              type="submit"
+              onClick={() => {
+                history.push(routes.EmailNewsletters.listing);
+              }}>
+              Cancel
+            </Button>
           </div>
         </Form>
       </Formik>

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -38,32 +39,26 @@ export const SubscribersPage = () => {
                 type="text"
                 placeholder="Search Subscribers..."
                 className="ui left icon input loading"
-                id="abId0.6393624643593341"
-              ></Input>
+                id="abId0.6393624643593341"></Input>
             </span>
           </div>
-
           <Header className="thing-tsb-white">Subscribers</Header>
           <Table className="table-format">
             <Table.Header>
               <Table.HeaderCell
-                style={{ backgroundColor: "#44444c", color: "white" }}
-              >
+                style={{ backgroundColor: "#44444c", color: "white" }}>
                 Id
               </Table.HeaderCell>
               <Table.HeaderCell
-                style={{ backgroundColor: "#44444c", color: "white" }}
-              >
+                style={{ backgroundColor: "#44444c", color: "white" }}>
                 Name
               </Table.HeaderCell>
               <Table.HeaderCell
-                style={{ backgroundColor: "#44444c", color: "white" }}
-              >
+                style={{ backgroundColor: "#44444c", color: "white" }}>
                 Email
               </Table.HeaderCell>
               <Table.HeaderCell
-                style={{ backgroundColor: "#44444c", color: "white" }}
-              >
+                style={{ backgroundColor: "#44444c", color: "white" }}>
                 Date Subscribed
               </Table.HeaderCell>
             </Table.Header>
@@ -86,8 +81,7 @@ export const SubscribersPage = () => {
                                 `${subscriber.id}`
                               )
                             )
-                          }
-                        >
+                          }>
                           <i className="pencil alternate icon"></i>
                         </Button>
                       </Table.Cell>

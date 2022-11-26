@@ -56,10 +56,21 @@ export const SubscriberCreatePage = () => {
           <Field id="email" name="email">
             {({ field }) => <Input {...field} />}
           </Field>
-          <div className="ui bottom attached buttons">
-            <Button class="ui red button">Cancel</Button>
+          <div></div>
+          <br></br>
+          <div className="ui large buttons">
+            <Button className="ui button" type="submit">
+              Create
+            </Button>
             <div className="or"></div>
-            <Button class="ui green button">Create</Button>
+            <Button
+              className="ui button"
+              type="submit"
+              onClick={() => {
+                history.push(routes.Subscribers.listing);
+              }}>
+              Cancel
+            </Button>
           </div>
         </Form>
       </Formik>

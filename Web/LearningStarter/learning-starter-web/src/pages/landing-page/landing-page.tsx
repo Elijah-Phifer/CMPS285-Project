@@ -17,8 +17,7 @@ export const LandingPage = () => {
         <div>
           <Button
             className="ui left labeled icon button"
-            onClick={() => history.push(routes.bulletJournal.create)}
-          >
+            onClick={() => history.push(routes.bulletJournal.create)}>
             <i className="list ul icon"></i>
             Add to your bullet journal!
           </Button>
@@ -27,18 +26,16 @@ export const LandingPage = () => {
         <div>
           <Button
             className="ui left labeled icon button btn-border"
-            onClick={() => history.push(routes.EmailNewsletters.create)}
-          >
+            onClick={() => history.push(routes.EmailNewsletters.create)}>
             <i className="newspaper icon"></i>
-            Send out a newsletter!
+            Draft up a Newsletter!
           </Button>
         </div>
 
         <div>
           <Button
             className="ui left labeled icon button"
-            onClick={() => history.push(routes.inventory.InventoryCreate)}
-          >
+            onClick={() => history.push(routes.inventory.InventoryCreate)}>
             <i className="shop icon"></i>
             Create a new inventory item!
           </Button>
