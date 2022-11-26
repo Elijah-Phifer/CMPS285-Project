@@ -128,7 +128,6 @@ export const InventoriesCreatePage = () => {
               <Button type="submit" className="ui btn thing-tsb-white">
                 Save
               </Button>
-
               <Button type="button" className="ui btn-cancel" onClick={onClick}>
                 Cancel
               </Button>

@@ -67,21 +67,6 @@ export const BulletJournalListingPage = () => {
     fetchBulletJournal();
   }, []);
 
-  const fetchBulletJournal = async () => {
-    const response = await axios.get<ApiResponse<BulletJournalEntryGetDTO[]>>(
-      `${BaseUrl}/api/BulletJournal`
-    );
-    if (response.data.hasErrors) {
-      alert("Something went wrong!");
-      return;
-      /*response.data.errors.forEach(err => {
-                console.log(err.message);
-            });*/
-    } else {
-      setBulletJournalEntries(response.data.data);
-    }
-  };
-
   const markBulletJournalEntryAsDone = async (id: number, isDone: Boolean) => {
     console.log("debug", { isDone });
     const response = await axios.put(
@@ -101,32 +86,6 @@ export const BulletJournalListingPage = () => {
     }
   };
 
-  const onSubmit = async (values: BulletJournalEntryCreateDTO) => {
-    setSubmitLoading(true);
-    const response = await axios.post<ApiResponse<BulletJournalEntryGetDTO>>(
-      `${BaseUrl}/api/BulletJournal`,
-      values,
-      { validateStatus: () => true }
-    );
-
-    if (response.data.hasErrors) {
-      response.data.errors.forEach((err) => {
-        console.log(err.message);
-      });
-      setSubmitLoading(false);
-      return;
-    }
-
-    await fetchBulletJournal();
-    setSubmitLoading(false);
-    setOpen(false);
-    /*else {
-      
-
-     // history.push(routes.bulletJournal.listing); //probably needs to go to listing page
-    }*/
-  };
-
   //try going in back end and make controller for mark-done
 
   //possibly animate button to change what it says when hovered over
@@ -136,55 +95,14 @@ export const BulletJournalListingPage = () => {
       {bulletJournalEntries && (
         <Segment className="background">
           <Header className="thing-tsb-white">Entries</Header>
-          <Formik initialValues={initialValues} onSubmit={onSubmit}>
-            <Modal
-              basic
-              trigger={
-                <Button className="ui button thing-tsb-white">
-                  <Icon name="add" />
-                  Create An Entry
-                </Button>
-              }
-              as={Form}
-              onOpen={() => setOpen(true)}
-              onClose={() => setOpen(false)}
-              open={open}
-            >
-              <Modal.Header>Create An Entry</Modal.Header>
-              <Modal.Content>
-                <Form>
-                  <div className="input-label">
-                    <label htmlFor="contents">What do you have to do?</label>
-                  </div>
-                  <Field
-                    id="contents"
-                    name="contents"
-                    type="input"
-                    placeHolder="Do Something"
-                  >
-                    {({ field }) => (
-                      <Input className="ui fluid input" {...field} />
-                    )}
-                  </Field>
-                </Form>
-              </Modal.Content>
-              <Modal.Actions>
-                <div className="ui large buttons">
-                  <Button type="submit" className="ui btn thing-tsb-white">
-                    Save
-                  </Button>
 
-                  <Button
-                    type="button"
-                    className="ui btn-cancel"
-                    onClick={() => setOpen(false)}
-                  >
-                    Cancel
-                  </Button>
-                </div>
-              </Modal.Actions>
-            </Modal>
-          </Formik>
+          <Button
+            className="ui button thing-tsb-white"
+            onClick={() => history.push(routes.bulletJournal.create)}
+          >
+            <Icon name="add" />
+            Create An Entry
+          </Button>
 
           <Table className="table-format">
             <Table.Header>
