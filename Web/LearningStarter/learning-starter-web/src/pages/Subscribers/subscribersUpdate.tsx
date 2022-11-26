@@ -2,7 +2,7 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { Button, Input, Table } from "semantic-ui-react";
+import { Button, Input, Modal, Table } from "semantic-ui-react";
 import {
   ApiResponse,
   SubscriberGetDto,
@@ -23,6 +23,8 @@ export const SubscriberUpdatePage = () => {
   let match = useRouteMatch<{ id: string }>();
   const id = match.params.id;
   const [subscriber, setSubscriber] = useState<SubscriberGetDto>();
+  const [open, setOpen] = React.useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   useEffect(() => {
     const fetchSubscribers = async () => {
@@ -50,7 +52,7 @@ export const SubscriberUpdatePage = () => {
       history.push(routes.Subscribers.listing);
     }
   };
-  const Click = async () => {
+  const Click1 = async () => {
     const response = await axios.delete<ApiResponse<SubscriberGetDto>>(
       `/api/subscriber/${id}`
     );
@@ -63,35 +65,52 @@ export const SubscriberUpdatePage = () => {
     }
   };
 
+  const Click2 = async () => {
+    setOpen(false);
+    history.push(routes.Subscribers.listing);
+  };
+
   return (
     <>
       {subscriber && (
         <Formik initialValues={subscriber} onSubmit={onSubmit}>
-          <Form>
-            <div>
-              <label htmlFor="name">Name</label>
-            </div>
-            <Field id="name" name="name">
-              {({ field }) => <Input {...field} />}
-            </Field>
-            <div>
-              <label htmlFor="email">Email</label>
-            </div>
-            <Field id="email" name="email">
-              {({ field }) => <Input {...field} />}
-            </Field>
-            <div></div>
-            <br></br>
-            <div className="ui large buttons">
-              <Button className="ui button" type="submit">
-                Update
+          <Modal
+            basic
+            trigger={<Button color="grey"></Button>}
+            as={Form}
+            onOpen={() => setOpen(true)}
+            onClose={() => setOpen(false)}
+            open={true}
+          >
+            <Modal.Header>Edit your inventory</Modal.Header>
+            <Modal.Content>
+              <Form>
+                <div>
+                  <label htmlFor="name">Name</label>
+                </div>
+                <Field id="name" name="name">
+                  {({ field }) => <Input {...field} />}
+                </Field>
+                <div>
+                  <label htmlFor="email">Email</label>
+                </div>
+                <Field id="email" name="email">
+                  {({ field }) => <Input {...field} />}
+                </Field>
+              </Form>
+            </Modal.Content>
+            <Modal.Actions>
+              <Button inverted color="green" type="submit">
+                Submit
               </Button>
-              <div className="or"></div>
-              <Button className="ui button" onClick={Click}>
-                Delete
+              <Button inverted color="orange" onClick={Click2}>
+                Return
               </Button>
-            </div>
-          </Form>
+              <Button inverted color="red" onClick={Click1}>
+                Delete?
+              </Button>
+            </Modal.Actions>
+          </Modal>
         </Formik>
       )}
     </>

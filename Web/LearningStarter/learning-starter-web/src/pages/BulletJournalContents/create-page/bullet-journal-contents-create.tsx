@@ -18,7 +18,9 @@ import {
   Button,
   Checkbox,
   Header,
+  Icon,
   Input,
+  Modal,
   Segment,
   Table,
   TableBody,
@@ -35,67 +37,99 @@ const initialValues: BulletJournalEntryCreateDTO = {
   /*DateCreated: Now,*/
 
   DateCreated: new Date(),
-
-  pushes: 0,
 };
 
 export const BulletJournalCreatePage = () => {
   const history = useHistory();
+  const [open, setOpen] = React.useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false);
+  const [bulletJournalEntries, setBulletJournalEntries] =
+    useState<BulletJournalEntryGetDTO[]>();
+
+  const fetchBulletJournal = async () => {
+    const response = await axios.get<ApiResponse<BulletJournalEntryGetDTO[]>>(
+      `${BaseUrl}/api/BulletJournal`
+    );
+    if (response.data.hasErrors) {
+      alert("Something went wrong!");
+      return;
+      /*response.data.errors.forEach(err => {
+                  console.log(err.message);
+              });*/
+    } else {
+      setBulletJournalEntries(response.data.data);
+    }
+  };
 
   const onSubmit = async (values: BulletJournalEntryCreateDTO) => {
+    setSubmitLoading(true);
     const response = await axios.post<ApiResponse<BulletJournalEntryGetDTO>>(
       `${BaseUrl}/api/BulletJournal`,
-      values
+      values,
+      { validateStatus: () => true }
     );
 
     if (response.data.hasErrors) {
       response.data.errors.forEach((err) => {
         console.log(err.message);
       });
-    } else {
-      /* alert(JSON.stringify(values, null, 2));
-                console.log(values); */
-
-      history.push(routes.bulletJournal.listing); //probably needs to go to listing page
+      setSubmitLoading(false);
+      return;
     }
+    setOpen(false);
+    history.push(routes.bulletJournal.listing);
+    await fetchBulletJournal();
+    setSubmitLoading(false);
+    setOpen(false);
+    /*else {
+      
+
+     // history.push(routes.bulletJournal.listing); //probably needs to go to listing page
+    }*/
+  };
+
+  const onClick = async () => {
+    setOpen(false);
+    history.push(routes.bulletJournal.listing);
   };
 
   return (
     <>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Form>
-          <div className="input-label">
-            <label htmlFor="contents">What do you have to do?</label>
-          </div>
-          {/* <span>
-                    <Field id ='isDone' name='isDone' type='input' class="ui fitted checkbox">
-                        {({ field }) => <Input type="checkbox" name="isDone" {...field}/>}
-                    </Field>
-                    
-                    </span>
-                    */}
-          <Field
-            id="contents"
-            name="contents"
-            type="input"
-            placeholder="Do Something"
-          >
-            {({ field }) => <Input className="ui fluid input" {...field} />}
-          </Field>
-          <div>
-            <Button type="submit" className="ui fluid btn">
-              Save
-            </Button>
-          </div>
-          <div>
-            <Button
-              className="ui fluid btn-cancel"
-              onClick={() => history.push(routes.bulletJournal.listing)}
-            >
-              Cancel
-            </Button>
-          </div>
-        </Form>
+        <Modal
+          basic
+          as={Form}
+          onOpen={() => setOpen(true)}
+          onClose={() => setOpen(false)}
+          open={true}
+        >
+          <Modal.Header>Create An Entry</Modal.Header>
+          <Modal.Content>
+            <Form>
+              <div className="input-label">
+                <label htmlFor="contents">What do you have to do?</label>
+              </div>
+              <Field
+                id="contents"
+                name="contents"
+                type="input"
+                placeHolder="Do Something"
+              >
+                {({ field }) => <Input className="ui fluid input" {...field} />}
+              </Field>
+            </Form>
+          </Modal.Content>
+          <Modal.Actions>
+            <div className="ui large buttons">
+              <Button type="submit" className="ui btn thing-tsb-white">
+                Save
+              </Button>
+              <Button type="button" className="ui btn-cancel" onClick={onClick}>
+                Cancel
+              </Button>
+            </div>
+          </Modal.Actions>
+        </Modal>
       </Formik>
     </>
   );
