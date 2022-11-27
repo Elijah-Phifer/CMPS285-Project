@@ -53,7 +53,7 @@ export const EmailNewslettersPage = () => {
             onClick={() => history.push(routes.EmailNewsletters.create)}
           >
             <Icon name="add" />
-            Draft a newsletter
+            Draft A Newsletter
           </Button>
           <Table className="table-format">
             <Table.Header>

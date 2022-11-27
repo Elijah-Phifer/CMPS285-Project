@@ -70,14 +70,15 @@ export const InventoriesCreatePage = () => {
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Modal
           basic
-          trigger={<Button styles={{ backgroundColor: "#44444c" }}></Button>}
           as={Form}
           onOpen={() => setOpen(true)}
           onClose={() => setOpen(false)}
           open={true}
         >
-          <Modal.Header>Create an entry</Modal.Header>
-          <Modal.Content>
+          <Modal.Header style={{ textAlign: "center" }}>
+            Create An Inventory Item
+          </Modal.Header>
+          <Modal.Content style={{ textAlign: "center" }}>
             <Form>
               <div>
                 <label htmlFor="itemName">Item Name</label>
@@ -98,19 +99,19 @@ export const InventoriesCreatePage = () => {
                 {({ field }) => <Input {...field} />}
               </Field>
               <div>
-                <label htmlFor="availabilty">availabilty</label>
+                <label htmlFor="availabilty">Availabilty</label>
               </div>
               <Field id="availabilty" name="availabilty">
                 {({ field }) => <Input {...field} />}
               </Field>
               <div>
-                <label htmlFor="onlineStoreId">onlineStoreId</label>
+                <label htmlFor="onlineStoreId">Store Listed at</label>
               </div>
               <Field id="onlineStoreId" name="onlineStoreId">
                 {({ field }) => <Input {...field} />}
               </Field>
               <div>
-                <label htmlFor="siteListing">Site Listing</label>
+                <label htmlFor="siteListing">Selling Price</label>
               </div>
               <Field id="siteListing" name="siteListing">
                 {({ field }) => <Input {...field} />}
@@ -123,11 +124,12 @@ export const InventoriesCreatePage = () => {
               </Field>
             </Form>
           </Modal.Content>
-          <Modal.Actions>
+          <Modal.Actions style={{ textAlign: "center" }}>
             <div className="ui large buttons">
               <Button type="submit" className="ui btn thing-tsb-white">
                 Save
               </Button>
+              <div className="or"></div>
               <Button type="button" className="ui btn-cancel" onClick={onClick}>
                 Cancel
               </Button>

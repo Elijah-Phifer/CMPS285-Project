@@ -13,6 +13,8 @@ import { useRouteMatch } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { routes } from "../../routes/config";
 
+import "./Inventories-Update-Page.css";
+
 export const InventoriesUpdatePage = () => {
   const [open, setOpen] = React.useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
@@ -71,14 +73,15 @@ export const InventoriesUpdatePage = () => {
         <Formik initialValues={inventories} onSubmit={onSubmit}>
           <Modal
             basic
-            trigger={<Button color="grey"></Button>}
             as={Form}
             onOpen={() => setOpen(true)}
             onClose={() => setOpen(false)}
             open={true}
           >
-            <Modal.Header>Edit your inventory</Modal.Header>
-            <Modal.Content>
+            <Modal.Header style={{ textAlign: "center" }}>
+              Edit Your Inventory Item
+            </Modal.Header>
+            <Modal.Content style={{ textAlign: "center" }}>
               <Form>
                 <div>
                   <label htmlFor="itemName">Item Name</label>
@@ -87,7 +90,7 @@ export const InventoriesUpdatePage = () => {
                   {({ field }) => <Input {...field} />}
                 </Field>
                 <div>
-                  <label htmlFor="productionCost">production Cost</label>
+                  <label htmlFor="productionCost">Production Cost</label>
                 </div>
                 <Field id="productionCost" name="productionCost">
                   {({ field }) => <Input {...field} />}
@@ -99,7 +102,7 @@ export const InventoriesUpdatePage = () => {
                   {({ field }) => <Input {...field} />}
                 </Field>
                 <div>
-                  <label htmlFor="availabilty">availabilty</label>
+                  <label htmlFor="availabilty">Availabilty</label>
                 </div>
                 <Field id="availabilty" name="availabilty">
                   {({ field }) => <Input {...field} />}
@@ -111,7 +114,7 @@ export const InventoriesUpdatePage = () => {
                   {({ field }) => <Input {...field} />}
                 </Field>
                 <div>
-                  <label htmlFor="siteListing">Site Listing</label>
+                  <label htmlFor="siteListing">Selling Price</label>
                 </div>
                 <Field id="siteListing" name="siteListing">
                   {({ field }) => <Input {...field} />}
@@ -124,15 +127,20 @@ export const InventoriesUpdatePage = () => {
                 </Field>
               </Form>
             </Modal.Content>
-            <Modal.Actions>
-              <Button inverted color="green" type="submit">
-                Submit
-              </Button>
-              <Button inverted color="orange" onClick={Click2}>
+            <Modal.Actions style={{ textAlign: "center" }}>
+              <div className="ui large buttons">
+                <Button className="ui btn thing-tsb-white" type="submit">
+                  Update
+                </Button>
+                <div style={{ textAlign: "center" }} className="or"></div>
+                <Button className="ui btn-cancel" onClick={Click1}>
+                  Delete
+                </Button>
+              </div>
+              <br />
+              <br />
+              <Button className="ui large button" onClick={Click2}>
                 Return
-              </Button>
-              <Button inverted color="red" onClick={Click1}>
-                Delete?
               </Button>
             </Modal.Actions>
           </Modal>
