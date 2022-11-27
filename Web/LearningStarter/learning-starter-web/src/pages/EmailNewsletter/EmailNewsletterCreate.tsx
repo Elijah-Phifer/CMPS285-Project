@@ -77,8 +77,10 @@ export const EmailNewsletterCreatePage = () => {
           as={Form}
           onOpen={() => setOpen(true)}
           onClose={() => setOpen(false)}
+
           open={true}
         >
+
           <Modal.Header style={{ textAlign: "center" }}>
             Draft A Newsletter
           </Modal.Header>
@@ -93,9 +95,13 @@ export const EmailNewsletterCreatePage = () => {
               <div>
                 <label htmlFor="message">Message</label>
               </div>
-              <Field id="message" name="message">
-                {({ field }) => <Input {...field} />}
-              </Field>
+
+              <div className="ui form"></div>
+              <div className="field">
+                <textarea spellCheck="false" data-ms-editor="true"></textarea>
+              </div>
+              <br></br>
+
             </Form>
           </Modal.Content>
           <Modal.Actions style={{ textAlign: "center" }}>

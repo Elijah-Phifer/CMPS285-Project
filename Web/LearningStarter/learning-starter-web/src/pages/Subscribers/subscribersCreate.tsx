@@ -68,6 +68,7 @@ export const SubscriberCreatePage = () => {
   return (
     <>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
+
         <Modal
           basic
           as={Form}
@@ -106,6 +107,7 @@ export const SubscriberCreatePage = () => {
             </div>
           </Modal.Actions>
         </Modal>
+
       </Formik>
     </>
   );
