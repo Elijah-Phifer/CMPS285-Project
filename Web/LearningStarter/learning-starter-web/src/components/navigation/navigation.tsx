@@ -44,7 +44,7 @@ const DesktopNavigation = () => {
         icon: "user",
         hide: false,
         nav: {
-          to: routes.user,
+          to: routes.user.user,
         },
       },
 
@@ -142,7 +142,8 @@ const DesktopNavigation = () => {
       secondary
       role="navigation"
       className="desktop-navigation nav-pack"
-      size="large">
+      size="large"
+    >
       {navigation
         .filter((x) => !x.hide)
         .map((x, i) => {
@@ -157,7 +158,8 @@ const DesktopNavigation = () => {
                   </span>
                 }
                 pointing
-                className="link item">
+                className="link item"
+              >
                 <Dropdown.Menu>
                   {x.children
                     .filter((x) => !x.hide)
@@ -166,7 +168,8 @@ const DesktopNavigation = () => {
                         <Dropdown.Item
                           key={`${y.text}`}
                           as={NavLink}
-                          to={y.nav?.to}>
+                          to={y.nav?.to}
+                        >
                           {y.icon && <Icon size="small" fitted name={y.icon} />}{" "}
                           {y.text}
                         </Dropdown.Item>
@@ -195,7 +198,8 @@ export const PrimaryNavigation: React.FC<PrimaryNavigationProps> = ({
       <Menu.Item
         as={user ? NavLink : ""}
         to={routes.home}
-        className="logo-menu-item">
+        className="logo-menu-item"
+      >
         <Image size="mini" src={logo} alt="logo" className="logo" />
       </Menu.Item>
       {user && (
@@ -208,17 +212,20 @@ export const PrimaryNavigation: React.FC<PrimaryNavigationProps> = ({
               trigger={
                 <span
                   className="user-icon-initial"
-                  title={`${user.firstName} ${user.lastName}`}>
+                  title={`${user.firstName} ${user.lastName}`}
+                >
                   {user.firstName.substring(0, 1).toUpperCase()}
                   {user.lastName.substring(0, 1).toUpperCase()}
                 </span>
               }
-              icon={null}>
+              icon={null}
+            >
               <Dropdown.Menu>
                 <Dropdown.Item
                   onClick={async () => {
                     logoutUser();
-                  }}>
+                  }}
+                >
                   Sign Out
                 </Dropdown.Item>
               </Dropdown.Menu>
