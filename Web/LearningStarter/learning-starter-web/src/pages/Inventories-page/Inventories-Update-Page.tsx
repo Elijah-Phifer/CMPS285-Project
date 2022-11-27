@@ -90,7 +90,7 @@ export const InventoriesUpdatePage = () => {
                   {({ field }) => <Input {...field} />}
                 </Field>
                 <div>
-                  <label htmlFor="productionCost">production Cost</label>
+                  <label htmlFor="productionCost">Production Cost</label>
                 </div>
                 <Field id="productionCost" name="productionCost">
                   {({ field }) => <Input {...field} />}
@@ -102,7 +102,7 @@ export const InventoriesUpdatePage = () => {
                   {({ field }) => <Input {...field} />}
                 </Field>
                 <div>
-                  <label htmlFor="availabilty">availabilty</label>
+                  <label htmlFor="availabilty">Availabilty</label>
                 </div>
                 <Field id="availabilty" name="availabilty">
                   {({ field }) => <Input {...field} />}
@@ -114,7 +114,7 @@ export const InventoriesUpdatePage = () => {
                   {({ field }) => <Input {...field} />}
                 </Field>
                 <div>
-                  <label htmlFor="siteListing">Site Listing</label>
+                  <label htmlFor="siteListing">Selling Price</label>
                 </div>
                 <Field id="siteListing" name="siteListing">
                   {({ field }) => <Input {...field} />}

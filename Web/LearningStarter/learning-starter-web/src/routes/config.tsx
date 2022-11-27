@@ -25,7 +25,7 @@ import { SubscribersPage } from "../pages/Subscribers/subscribers";
 export const routes = {
   root: `/`,
   home: `/home`,
-  user: `/user`,
+  user: { user: `/user`, create: "/usercreate" },
 
   inventory: {
     Inventory: "/inventory",
@@ -65,9 +65,14 @@ export const Routes = () => {
             <LandingPage />
           </Route>
           {/* When path === /user render UserPage */}
-          <Route path={routes.user} exact>
+          <Route path={routes.user.user} exact>
             <UserPage />
           </Route>
+
+          <Route path={routes.user.create} exact>
+            <InventoriesCreatePage />
+          </Route>
+
           <Route path={routes.inventory.Inventory} exact>
             <InventoriesPage />
           </Route>

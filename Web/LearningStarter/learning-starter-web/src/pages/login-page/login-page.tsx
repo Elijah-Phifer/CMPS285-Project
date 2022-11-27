@@ -3,10 +3,12 @@ import axios from "axios";
 import React, { useMemo } from "react";
 import { ApiResponse } from "../../constants/types";
 import { Formik, Form, Field } from "formik";
-import { Button, Input } from "semantic-ui-react";
+import { Button, Header, Input, Modal } from "semantic-ui-react";
 import { useAsyncFn } from "react-use";
 import { PageWrapper } from "../../components/page-wrapper/page-wrapper";
 import { loginUser } from "../../authentication/authentication-services";
+import { routes } from "../../routes/config";
+import { useHistory } from "react-router-dom";
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
@@ -23,6 +25,7 @@ type FormValues = LoginRequest;
 //The css used in here is a good example of how flexbox works in css
 //For more info on flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 export const LoginPage = () => {
+  const history = useHistory();
   const initialValues = useMemo<FormValues>(
     () => ({
       userName: "",
@@ -55,7 +58,7 @@ export const LoginPage = () => {
               <div>
                 <div>
                   <div className="field-label">
-                    <label htmlFor="userName">UserName</label>
+                    <label htmlFor="userName">User Name</label>
                   </div>
                   <Field className="field" id="username" name="username">
                     {({ field }) => <Input {...field} />}
@@ -72,6 +75,10 @@ export const LoginPage = () => {
                 <div className="button-container-login-page">
                   <Button className="login-button" type="submit">
                     Login
+                  </Button>
+                  <br></br>
+                  <Button onClick={() => history.push(routes.user.create)}>
+                    Register
                   </Button>
                 </div>
               </div>

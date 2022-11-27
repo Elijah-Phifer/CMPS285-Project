@@ -19,11 +19,29 @@ export type AnyObject = {
   [index: string]: any;
 };
 
+export type UserCreateDto = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  userName: string;
+  password: string;
+  email: string;
+};
+
 export type UserDto = {
   id: number;
   firstName: string;
   lastName: string;
   userName: string;
+};
+
+export type UserGetDto = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  userName: string;
+  password: string;
+  email: string;
 };
 
 export type InventoriesGetDto = {

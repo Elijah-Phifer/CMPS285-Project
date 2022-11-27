@@ -75,12 +75,12 @@ export const InventoriesPage = () => {
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
                 >
-                  Online Store Id
+                  Store Listed at
                 </Table.HeaderCell>
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
                 >
-                  Site Listing
+                  Selling Price
                 </Table.HeaderCell>
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
@@ -99,7 +99,7 @@ export const InventoriesPage = () => {
               {inventories.map((inventory) => {
                 return (
                   <Table.Row key={inventory.id}>
-                    <Table.Cell>{inventory.id}</Table.Cell>
+                    {/* <Table.Cell>{inventory.id}</Table.Cell> */}
                     <Table.Cell>{inventory.itemName}</Table.Cell>
                     <Table.Cell>{inventory.productionCost}</Table.Cell>
                     <Table.Cell>{inventory.quantity}</Table.Cell>
