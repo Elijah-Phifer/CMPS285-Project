@@ -1,6 +1,7 @@
 .content {
   max-height: 100vh;
   background-color: #44444c;
+  
 }
 
 .main-content {
@@ -18,4 +19,5 @@
   height: calc(100vh - 60px) !important;
   overflow-y: auto;
   color: white;
+  
 }

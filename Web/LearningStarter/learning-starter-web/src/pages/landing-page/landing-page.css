@@ -4,13 +4,15 @@
 }
 
 .background{
-    background-image: url("../../assets/Listy website background.png");
-    background-size: "cover";
-    height: 100vh;
-    margin-top: -5px;
-    border-color: black;
-    border-top: 10px;
-    background-repeat:no-repeat;
+  background-image: url("../../assets/Listy website background.png");
+  background-repeat:no-repeat;
+  background-position-x: center;
+  background-size: cover;   
+  height: 100vh;
+  margin-top: -5px;
+  border-color: black;
+  border-top: 10px;
+    
     
 }
 
