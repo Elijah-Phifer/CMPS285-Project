@@ -42,7 +42,7 @@ export const InventoriesPage = () => {
             onClick={() => history.push(routes.inventory.InventoryCreate)}
           >
             <Icon name="add" />
-            Create An Entry
+            Create An Inventory Item
           </Button>
           <Table className="table-format">
             <Table.Header>

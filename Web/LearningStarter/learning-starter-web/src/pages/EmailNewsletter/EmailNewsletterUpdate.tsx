@@ -14,6 +14,8 @@ import { routes } from "../../routes/config";
 import { BaseUrl } from "../../constants/ens-vars";
 import { FormikBag } from "formik";
 
+import "./email-listing.css";
+
 export const EmailNewsletterUpdatePage = () => {
   const [open, setOpen] = React.useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
@@ -74,14 +76,15 @@ export const EmailNewsletterUpdatePage = () => {
         <Formik initialValues={emailNewsletter} onSubmit={onSubmit}>
           <Modal
             basic
-            trigger={<Button color="grey"></Button>}
             as={Form}
             onOpen={() => setOpen(true)}
             onClose={() => setOpen(false)}
             open={true}
           >
-            <Modal.Header>Edit your inventory</Modal.Header>
-            <Modal.Content>
+            <Modal.Header style={{ textAlign: "center" }}>
+              Edit Your Draft
+            </Modal.Header>
+            <Modal.Content style={{ textAlign: "center" }}>
               <Form>
                 <div>
                   <label htmlFor="title">Title</label>
@@ -97,15 +100,20 @@ export const EmailNewsletterUpdatePage = () => {
                 </Field>
               </Form>
             </Modal.Content>
-            <Modal.Actions>
-              <Button inverted color="green" type="submit">
-                Submit
-              </Button>
-              <Button inverted color="orange" onClick={Click2}>
+            <Modal.Actions style={{ textAlign: "center" }}>
+              <div className="ui large buttons">
+                <Button className="ui btn thing-tsb-white" type="submit">
+                  Update
+                </Button>
+                <div style={{ textAlign: "center" }} className="or"></div>
+                <Button className="ui btn-cancel" onClick={Click1}>
+                  Delete
+                </Button>
+              </div>
+              <br />
+              <br />
+              <Button className="ui large button" onClick={Click2}>
                 Return
-              </Button>
-              <Button inverted color="red" onClick={Click1}>
-                Delete?
               </Button>
             </Modal.Actions>
           </Modal>

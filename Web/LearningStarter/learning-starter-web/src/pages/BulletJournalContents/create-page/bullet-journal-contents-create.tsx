@@ -103,12 +103,14 @@ export const BulletJournalCreatePage = () => {
           onClose={() => setOpen(false)}
           open={true}
         >
-          <Modal.Header>Create An Entry</Modal.Header>
+          <Modal.Header style={{ textAlign: "center" }}>
+            Create An Entry
+          </Modal.Header>
           <Modal.Content>
             <Form>
-              <div className="input-label">
+              {/* <div className="input-label">
                 <label htmlFor="contents">What do you have to do?</label>
-              </div>
+  </div> */}
               <Field
                 id="contents"
                 name="contents"
@@ -119,11 +121,12 @@ export const BulletJournalCreatePage = () => {
               </Field>
             </Form>
           </Modal.Content>
-          <Modal.Actions>
+          <Modal.Actions style={{ textAlign: "center" }}>
             <div className="ui large buttons">
               <Button type="submit" className="ui btn thing-tsb-white">
                 Save
               </Button>
+              <div className="or"></div>
               <Button type="button" className="ui btn-cancel" onClick={onClick}>
                 Cancel
               </Button>
