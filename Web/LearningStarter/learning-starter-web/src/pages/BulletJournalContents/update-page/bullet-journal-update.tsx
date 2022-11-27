@@ -11,6 +11,8 @@ import { useRouteMatch, useHistory } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import { BaseUrl } from "../../../constants/ens-vars";
 
+import "./BJupdate.css";
+
 export const BulletJournalUpdatePage = () => {
   const [open, setOpen] = React.useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
@@ -78,14 +80,15 @@ export const BulletJournalUpdatePage = () => {
         <Formik initialValues={bulletJournalEntries} onSubmit={onClick1}>
           <Modal
             basic
-            trigger={<Button styles={{ backgroundColor: "#44444c" }}></Button>}
             as={Form}
             onOpen={() => setOpen(true)}
             onClose={() => setOpen(false)}
             open={true}
           >
-            <Modal.Header>Edit your entry</Modal.Header>
-            <Modal.Content>
+            <Modal.Header style={{ textAlign: "center" }}>
+              Edit Your Entry
+            </Modal.Header>
+            <Modal.Content style={{ textAlign: "center" }}>
               <Form>
                 {/*<div>
                   <label htmlFor="contents">Contents</label>
@@ -97,21 +100,23 @@ export const BulletJournalUpdatePage = () => {
                 </Field>
               </Form>
             </Modal.Content>
-            <Modal.Actions>
+            <Modal.Actions style={{ textAlign: "center" }}>
               <span style={{ textAlign: "center" }}>
                 <div className="ui large buttons center">
-                  <Button center className="ui button" type="submit">
+                  <Button className="ui btn thing-tsb-white" type="submit">
                     Update
                   </Button>
+                  <div style={{ textAlign: "center" }} className="or"></div>
 
-                  <Button className="ui button" onClick={onClick2}>
+                  <Button className="ui btn-cancel" onClick={onClick2}>
                     Delete
                   </Button>
-
-                  <Button className="ui button" onClick={onClick3}>
-                    Cancel
-                  </Button>
                 </div>
+                <br />
+                <br />
+                <Button className="ui large button" onClick={onClick3}>
+                  Return
+                </Button>
               </span>
             </Modal.Actions>
           </Modal>
