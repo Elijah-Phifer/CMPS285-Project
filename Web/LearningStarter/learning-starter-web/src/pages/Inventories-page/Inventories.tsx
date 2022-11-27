@@ -1,6 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Header, Segment, Table, TableBody, Button } from "semantic-ui-react";
+import {
+  Header,
+  Segment,
+  Table,
+  TableBody,
+  Button,
+  Icon,
+} from "semantic-ui-react";
 import { ApiResponse, InventoriesGetDto } from "../../constants/types";
 import { useHistory } from "react-router-dom";
 import { routes } from "../../routes/config";
@@ -30,6 +37,13 @@ export const InventoriesPage = () => {
       {inventories && (
         <Segment className="background">
           <Header className="thing-tsb-white">Inventories</Header>
+          <Button
+            className="ui button thing-tsb-white"
+            onClick={() => history.push(routes.inventory.InventoryCreate)}
+          >
+            <Icon name="add" />
+            Create An Inventory Item
+          </Button>
           <Table className="table-format">
             <Table.Header>
               <Table.Row>
@@ -95,6 +109,7 @@ export const InventoriesPage = () => {
                     <Table.Cell>{inventory.dateAdded}</Table.Cell>
                     <Table.Cell>
                       <Button
+                        className="ui icon button"
                         onClick={() =>
                           history.push(
                             routes.inventory.InventoryUpdate.replace(
@@ -104,7 +119,7 @@ export const InventoriesPage = () => {
                           )
                         }
                       >
-                        Edit
+                        <Icon name="pencil" />
                       </Button>
                     </Table.Cell>
                     {/* <Table.Cell>

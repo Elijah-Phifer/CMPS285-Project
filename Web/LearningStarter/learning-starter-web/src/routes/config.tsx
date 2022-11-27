@@ -16,10 +16,7 @@ import { EmailNewsletterCreatePage } from "../pages/EmailNewsletter/EmailNewslet
 import { SubscriberCreatePage } from "../pages/Subscribers/subscribersCreate";
 import { SubscriberUpdatePage } from "../pages/Subscribers/subscribersUpdate";
 import { EmailNewsletterUpdatePage } from "../pages/EmailNewsletter/EmailNewsletterUpdate";
-import {
-  BulletJournalDeletePage,
-  BulletJournalUpdatePage,
-} from "../pages/BulletJournalContents/update-page/bullet-journal-update";
+import { BulletJournalUpdatePage } from "../pages/BulletJournalContents/update-page/bullet-journal-update";
 import { InventoriesCreatePage } from "../pages/Inventories-page/Inventories-Create";
 import { InventoriesUpdatePage } from "../pages/Inventories-page/Inventories-Update-Page";
 import { SubscribersPage } from "../pages/Subscribers/subscribers";
@@ -94,16 +91,15 @@ export const Routes = () => {
 
           <Route path={routes.bulletJournal.create} exact>
             <BulletJournalCreatePage />
-            <BulletJournalCreateListing />
           </Route>
 
           <Route path={routes.bulletJournal.update} exact>
             <BulletJournalUpdatePage />
           </Route>
 
-          <Route path={routes.bulletJournal.delete} exact>
+          {/*<Route path={routes.bulletJournal.delete} exact>
             <BulletJournalDeletePage />
-          </Route>
+          </Route>*/}
 
           <Route path={routes.EmailNewsletters.create} exact>
             <EmailNewsletterCreatePage />

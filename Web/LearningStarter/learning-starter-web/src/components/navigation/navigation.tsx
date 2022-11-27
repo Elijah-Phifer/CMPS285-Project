@@ -75,13 +75,13 @@ const DesktopNavigation = () => {
           {
             text: "Create",
             icon: "plus",
-            hide: false,
+            hide: true,
             nav: {
               to: routes.bulletJournal.create,
             },
           },
           {
-            text: "Listing",
+            text: "View Your Bullet Journal",
             icon: "list",
             hide: false,
             nav: {

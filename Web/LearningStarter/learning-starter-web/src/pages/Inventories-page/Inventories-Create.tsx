@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Field, Form, Formik } from "formik";
-import { Button, Input } from "semantic-ui-react";
+import { Button, Input, Modal } from "semantic-ui-react";
 import {
   ApiResponse,
   InventoriesCreateDto,
@@ -23,72 +23,119 @@ const initialValues: InventoriesCreateDto = {
 };
 
 export const InventoriesCreatePage = () => {
+  const [open, setOpen] = React.useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false);
   const history = useHistory();
+  const [inventories, setInventories] = useState<InventoriesGetDto[]>();
+
+  const fetchInventories = async () => {
+    const response = await axios.get<ApiResponse<InventoriesGetDto[]>>(
+      "api/Inventories"
+    );
+    if (response.data.hasErrors) {
+      alert("Something went wrong.");
+      return;
+    }
+    setInventories(response.data.data);
+  };
+
   const onSubmit = async (values: InventoriesCreateDto) => {
     const response = await axios.post<ApiResponse<InventoriesGetDto>>(
       `${BaseUrl}/api/Inventories`,
-      values
+      values,
+      { validateStatus: () => true }
     );
 
     if (response.data.hasErrors) {
       response.data.errors.forEach((err) => {
         console.log(err.message);
       });
-    } else {
-      history.push(routes.inventory.Inventory);
+      setSubmitLoading(false);
+      return;
     }
+
+    setOpen(false);
+    history.push(routes.inventory.Inventory);
+    await fetchInventories();
+    setSubmitLoading(false);
+  };
+
+  const onClick = async () => {
+    setOpen(false);
+    history.push(routes.inventory.Inventory);
   };
 
   return (
     <>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Form>
-          <div>
-            <label htmlFor="itemName">Item Name</label>
-          </div>
-          <Field id="itemName" name="itemName">
-            {({ field }) => <Input {...field} />}
-          </Field>
-          <div>
-            <label htmlFor="productionCost">production Cost</label>
-          </div>
-          <Field id="productionCost" name="productionCost">
-            {({ field }) => <Input {...field} />}
-          </Field>
-          <div>
-            <label htmlFor="quantity">Quantity</label>
-          </div>
-          <Field id="quantity" name="quantity">
-            {({ field }) => <Input {...field} />}
-          </Field>
-          <div>
-            <label htmlFor="availabilty">availabilty</label>
-          </div>
-          <Field id="availabilty" name="availabilty">
-            {({ field }) => <Input {...field} />}
-          </Field>
-          <div>
-            <label htmlFor="onlineStoreId">onlineStoreId</label>
-          </div>
-          <Field id="onlineStoreId" name="onlineStoreId">
-            {({ field }) => <Input {...field} />}
-          </Field>
-          <div>
-            <label htmlFor="siteListing">Site Listing</label>
-          </div>
-          <Field id="siteListing" name="siteListing">
-            {({ field }) => <Input {...field} />}
-          </Field>
-          <div>
-            <label htmlFor="dateAdded">Date Added</label>
-          </div>
-          <Field id="dateAdded" name="dateAdded">
-            {({ field }) => <Input {...field} />}
-          </Field>
-          <div>
-            <Button type="submit">Create</Button>
-          </div>
-        </Form>
+        <Modal
+          basic
+          as={Form}
+          onOpen={() => setOpen(true)}
+          onClose={() => setOpen(false)}
+          open={true}
+        >
+          <Modal.Header style={{ textAlign: "center" }}>
+            Create An Inventory Item
+          </Modal.Header>
+          <Modal.Content style={{ textAlign: "center" }}>
+            <Form>
+              <div>
+                <label htmlFor="itemName">Item Name</label>
+              </div>
+              <Field id="itemName" name="itemName">
+                {({ field }) => <Input {...field} />}
+              </Field>
+              <div>
+                <label htmlFor="productionCost">production Cost</label>
+              </div>
+              <Field id="productionCost" name="productionCost">
+                {({ field }) => <Input {...field} />}
+              </Field>
+              <div>
+                <label htmlFor="quantity">Quantity</label>
+              </div>
+              <Field id="quantity" name="quantity">
+                {({ field }) => <Input {...field} />}
+              </Field>
+              <div>
+                <label htmlFor="availabilty">availabilty</label>
+              </div>
+              <Field id="availabilty" name="availabilty">
+                {({ field }) => <Input {...field} />}
+              </Field>
+              <div>
+                <label htmlFor="onlineStoreId">onlineStoreId</label>
+              </div>
+              <Field id="onlineStoreId" name="onlineStoreId">
+                {({ field }) => <Input {...field} />}
+              </Field>
+              <div>
+                <label htmlFor="siteListing">Site Listing</label>
+              </div>
+              <Field id="siteListing" name="siteListing">
+                {({ field }) => <Input {...field} />}
+              </Field>
+              <div>
+                <label htmlFor="dateAdded">Date Added</label>
+              </div>
+              <Field id="dateAdded" name="dateAdded">
+                {({ field }) => <Input {...field} />}
+              </Field>
+            </Form>
+          </Modal.Content>
+          <Modal.Actions style={{ textAlign: "center" }}>
+            <div className="ui large buttons">
+              <Button type="submit" className="ui btn thing-tsb-white">
+                Save
+              </Button>
+              <div className="or"></div>
+              <Button type="button" className="ui btn-cancel" onClick={onClick}>
+                Cancel
+              </Button>
+            </div>
+          </Modal.Actions>
+        </Modal>
       </Formik>
     </>
   );
