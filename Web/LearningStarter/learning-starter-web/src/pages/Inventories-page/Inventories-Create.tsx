@@ -98,19 +98,19 @@ export const InventoriesCreatePage = () => {
                 {({ field }) => <Input {...field} />}
               </Field>
               <div>
-                <label htmlFor="availabilty">availabilty</label>
+                <label htmlFor="availabilty">Availabilty</label>
               </div>
               <Field id="availabilty" name="availabilty">
                 {({ field }) => <Input {...field} />}
               </Field>
               <div>
-                <label htmlFor="onlineStoreId">onlineStoreId</label>
+                <label htmlFor="onlineStoreId">Store Listed at</label>
               </div>
               <Field id="onlineStoreId" name="onlineStoreId">
                 {({ field }) => <Input {...field} />}
               </Field>
               <div>
-                <label htmlFor="siteListing">Site Listing</label>
+                <label htmlFor="siteListing">Selling Price</label>
               </div>
               <Field id="siteListing" name="siteListing">
                 {({ field }) => <Input {...field} />}

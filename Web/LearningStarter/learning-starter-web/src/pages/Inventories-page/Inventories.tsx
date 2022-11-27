@@ -75,12 +75,12 @@ export const InventoriesPage = () => {
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
                 >
-                  Online Store Id
+                  Store Listed at
                 </Table.HeaderCell>
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
                 >
-                  Site Listing
+                  Selling Price
                 </Table.HeaderCell>
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
