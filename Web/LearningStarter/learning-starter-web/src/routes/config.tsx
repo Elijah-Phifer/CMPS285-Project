@@ -20,6 +20,7 @@ import { BulletJournalUpdatePage } from "../pages/BulletJournalContents/update-p
 import { InventoriesCreatePage } from "../pages/Inventories-page/Inventories-Create";
 import { InventoriesUpdatePage } from "../pages/Inventories-page/Inventories-Update-Page";
 import { SubscribersPage } from "../pages/Subscribers/subscribers";
+import { UserCreatePage } from "../pages/login-page/login-create-page";
 
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
@@ -70,7 +71,7 @@ export const Routes = () => {
           </Route>
 
           <Route path={routes.user.create} exact>
-            <InventoriesCreatePage />
+            <UserCreatePage />
           </Route>
 
           <Route path={routes.inventory.Inventory} exact>
