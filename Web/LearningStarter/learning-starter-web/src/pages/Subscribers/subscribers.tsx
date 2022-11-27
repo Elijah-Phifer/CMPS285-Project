@@ -49,7 +49,7 @@ export const SubscribersPage = () => {
             onClick={() => history.push(routes.Subscribers.create)}
           >
             <Icon name="add" />
-            Add a new subscriber
+            Add A New Subscriber
           </Button>
           <Table className="table-format">
             <Table.Header>
