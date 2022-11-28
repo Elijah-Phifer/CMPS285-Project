@@ -19,7 +19,7 @@ const initialValues: InventoriesCreateDto = {
   quantity: "",
   availabilty: "",
   onlineStoreId: "",
-  siteListing: "",
+  siteListing: "$",
   dateAdded: "",
 };
 

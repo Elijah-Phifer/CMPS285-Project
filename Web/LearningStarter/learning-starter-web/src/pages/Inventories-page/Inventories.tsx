@@ -47,10 +47,11 @@ export const InventoriesPage = () => {
           <Table className="table-format">
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}>
+                {/* <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
                   Id
-                </Table.HeaderCell>
+                </Table.HeaderCell> */}
 
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}>
