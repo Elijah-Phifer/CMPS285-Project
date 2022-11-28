@@ -52,6 +52,7 @@ export const InventoriesPage = () => {
                 >
                   Id
                 </Table.HeaderCell>
+
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
                 >
