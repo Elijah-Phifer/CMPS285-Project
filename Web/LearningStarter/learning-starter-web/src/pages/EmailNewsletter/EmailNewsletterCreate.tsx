@@ -77,8 +77,7 @@ export const EmailNewsletterCreatePage = () => {
           as={Form}
           onOpen={() => setOpen(true)}
           onClose={() => setOpen(false)}
-          open={true}
-        >
+          open={true}>
           <Modal.Header style={{ textAlign: "center" }}>
             Draft A Newsletter
           </Modal.Header>

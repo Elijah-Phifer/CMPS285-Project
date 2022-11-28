@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import "./login-page.css";
 import axios from "axios";
 import React, { useMemo, useState } from "react";
@@ -133,9 +134,8 @@ export const LoginPage = () => {
             trigger={<Button onClick={() => setOpen(true)}>Register</Button>}
             onOpen={() => setOpen(true)}
             onClose={() => setOpen(false)}
-            open={open}
-          >
-            <Modal.Header>Create an entry</Modal.Header>
+            open={open}>
+            <Modal.Header>Create an Entry</Modal.Header>
 
             <Modal.Content>
               <Formik initialValues={initialValues1} onSubmit={onSubmit}>
@@ -159,13 +159,13 @@ export const LoginPage = () => {
                     {({ field }) => <Input {...field} />}
                   </Field>
                   <div>
-                    <label htmlFor="password">password</label>
+                    <label htmlFor="password">Password</label>
                   </div>
                   <Field id="password" name="password">
                     {({ field }) => <Input {...field} />}
                   </Field>
                   <div>
-                    <label htmlFor="email">emailt</label>
+                    <label htmlFor="email">Email</label>
                   </div>
                   <Field id="email" name="email">
                     {({ field }) => <Input {...field} />}
