@@ -60,6 +60,7 @@ export const LoginPage = () => {
     if (response.data.data) {
       console.log("Successfully Logged In!");
       loginUser();
+      history.push(routes.home);
     }
   }, []);
 
@@ -84,7 +85,7 @@ export const LoginPage = () => {
         console.log(err.message);
       });
     } else {
-      history.push(routes.user.user);
+      history.push(routes.home);
     }
 
     setOpen(false);
@@ -134,7 +135,8 @@ export const LoginPage = () => {
             trigger={<Button onClick={() => setOpen(true)}>Register</Button>}
             onOpen={() => setOpen(true)}
             onClose={() => setOpen(false)}
-            open={open}>
+            open={open}
+          >
             <Modal.Header>Create an Entry</Modal.Header>
 
             <Modal.Content>
