@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
 import { Button, Card, Header, Icon } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
@@ -38,30 +39,27 @@ export const LandingPage = () => {
         <div>
           <Button
             className="ui left labeled icon button"
-            onClick={() => history.push(routes.bulletJournal.listing)}
-          >
+            onClick={() => history.push(routes.bulletJournal.listing)}>
             <i className="list ul icon"></i>
-            Check your bullet journal!
+            Check Your Bullet Journal!
           </Button>
         </div>
 
         <div>
           <Button
             className="ui left labeled icon button btn-border"
-            onClick={() => history.push(routes.EmailNewsletters.listing)}
-          >
+            onClick={() => history.push(routes.EmailNewsletters.listing)}>
             <i className="newspaper icon"></i>
-            Draft up a Newsletter!
+            Draft Up a Newsletter!
           </Button>
         </div>
 
         <div>
           <Button
             className="ui left labeled icon button"
-            onClick={() => history.push(routes.inventory.Inventory)}
-          >
+            onClick={() => history.push(routes.inventory.Inventory)}>
             <i className="shop icon"></i>
-            Check your inventory!
+            Check Your Inventory!
           </Button>
         </div>
       </div>
