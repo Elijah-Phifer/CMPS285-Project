@@ -107,7 +107,7 @@ export const LoginPage = () => {
                   <div className="field-label">
                     <label htmlFor="userName">User Name</label>
                   </div>
-                  <Field className="field" id="username" name="username">
+                  <Field className="field" id="userName" name="userName">
                     {({ field }) => <Input {...field} />}
                   </Field>
                 </div>
@@ -175,7 +175,7 @@ export const LoginPage = () => {
                   <Button
                     className="login-button"
                     type="submit"
-                    onClick={() => setOpen(false)}
+                    //onClick={() => setOpen(false)}
                   >
                     Create Account
                   </Button>

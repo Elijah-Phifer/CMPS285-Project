@@ -15,6 +15,9 @@ export const UserPage = () => {
           <Divider />
           <Header size="small">Last Name</Header>
           <p>{user.lastName}</p>
+          <Divider />
+          <Header size="small">User Name</Header>
+          <p>{user.userName}</p>
         </Container>
       </div>
     </div>
