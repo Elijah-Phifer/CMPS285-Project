@@ -39,14 +39,14 @@ const DesktopNavigation = () => {
           to: routes.home,
         },
       },
-      {
-        text: "User",
-        icon: "user",
-        hide: false,
-        nav: {
-          to: routes.user.user,
-        },
-      },
+      // {
+      //   text: "User",
+      //   icon: "user",
+      //   hide: false,
+      //   nav: {
+      //     to: routes.user.user,
+      //   },
+      // },
 
       {
         text: "Inventory",

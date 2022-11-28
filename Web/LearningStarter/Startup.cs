@@ -222,52 +222,52 @@ namespace LearningStarter
                 var seededInventory = new Inventories 
                 {
                     ItemName = "Blue Dress",
-                    ProductionCost = "12",
+                    ProductionCost = "$12.32",
                     Quantity = "4", 
                     Availabilty = "Yes",
                     OnlineStoreId = "Ebay",
-                    SiteListing = "43",
-                    DateAdded = "2/3/12",
+                    SiteListing = "$43.64",
+                    DateAdded = "2/3/20",
                 };
                 var seededInventory1 = new Inventories
                 {
                     ItemName = "Red Heels",
-                    ProductionCost = "2",
+                    ProductionCost = "$2.00",
                     Quantity = "12",
-                    Availabilty = "Yes",
+                    Availabilty = "No, waiting for inventory recount",
                     OnlineStoreId = "Etsy",
-                    SiteListing = "99",
-                    DateAdded = "2/3/12",
+                    SiteListing = "$35.23",
+                    DateAdded = "2/3/22",
                 };
                 var seededInventory2 = new Inventories
                 {
-                    ItemName = "Pokemon Socks",
-                    ProductionCost = "5",
-                    Quantity = "30",
-                    Availabilty = "Yes, only if your cool",
+                    ItemName = "Pokemon Socks-pikachu",
+                    ProductionCost = "$5.00",
+                    Quantity = "3",
+                    Availabilty = "On Sale",
                     OnlineStoreId = "Ebay",
-                    SiteListing = "9",
+                    SiteListing = "$9.00",
                     DateAdded = "5/23/20",
                 };
                 var seededInventory3 = new Inventories
                 {
-                    ItemName = "The One Ring",
-                    ProductionCost = "25",
+                    ItemName = "False Dimond Ring",
+                    ProductionCost = "$3.76",
                     Quantity = "1",
-                    Availabilty = "No",
+                    Availabilty = "On hold for a friend",
                     OnlineStoreId = "Ebay",
-                    SiteListing = "1000",
-                    DateAdded = "2/3/01",
+                    SiteListing = "$26.32",
+                    DateAdded = "2/3/21",
                 };
                 var seededInventory4 = new Inventories
                 {
-                    ItemName = "Hitch Hiker's guide to the galaxy",
-                    ProductionCost = "99999999",
+                    ItemName = "Hitch Hiker's guide to the galaxy - the book",
+                    ProductionCost = "Free",
                     Quantity = "1",
                     Availabilty = "Yes",
                     OnlineStoreId = "Amazon",
-                    SiteListing = "42",
-                    DateAdded = "1/5/81",
+                    SiteListing = "$42.00",
+                    DateAdded = "8/1/22",
                 };
                 dataContext.Inventories.Add(seededInventory);
                 dataContext.Inventories.Add(seededInventory1);
