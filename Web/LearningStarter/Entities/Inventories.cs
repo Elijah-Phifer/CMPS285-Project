@@ -1,4 +1,5 @@
 ﻿using LearningStarter.Entities.LearningStarter.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,7 +11,7 @@ namespace LearningStarter.Entities
             public string ItemName { get; set; }
             public string ProductionCost { get; set; }
             public string Quantity { get; set; }
-            public string Availabilty { get; set; }
+            public Boolean Availabilty { get; set; }
             public string SiteListing { get; set; }
             public string DateAdded { get; set; }
             public string OnlineStoreId { get; set; }    
@@ -23,7 +24,7 @@ namespace LearningStarter.Entities
         public string ItemName { get; set; }
         public string ProductionCost { get; set; }
         public string Quantity { get; set; }
-        public string Availabilty { get; set; }
+        public Boolean Availabilty { get; set; }
         public string OnlineStoreId { get; set; }
         public string SiteListing { get; set; }
         public string DateAdded { get; set; }
@@ -34,7 +35,7 @@ namespace LearningStarter.Entities
             public string ItemName { get; set; }
             public string ProductionCost { get; set; }
             public string Quantity { get; set; }
-            public string Availabilty { get; set; }
+            public Boolean Availabilty { get; set; }
             public string OnlineStoreId { get; set; }
             public string SiteListing { get; set; }
             public string DateAdded { get; set; }
@@ -45,7 +46,7 @@ namespace LearningStarter.Entities
             public string ItemName { get; set; }
             public string ProductionCost { get; set; }
             public string Quantity { get; set; }
-            public string Availabilty { get; set; }
+            public Boolean Availabilty { get; set; }
             public string OnlineStoreId { get; set; }
             public string SiteListing { get; set; }
             public string DateAdded { get; set; }
