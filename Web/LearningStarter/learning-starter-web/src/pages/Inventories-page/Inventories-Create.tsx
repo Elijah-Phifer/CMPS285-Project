@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
 import { Field, Form, Formik } from "formik";
-import { Button, Input, Modal } from "semantic-ui-react";
+import { Button, Input, Modal, TextArea } from "semantic-ui-react";
 import {
   ApiResponse,
   InventoriesCreateDto,
@@ -17,7 +17,8 @@ const initialValues: InventoriesCreateDto = {
   itemName: "",
   productionCost: "",
   quantity: "",
-  availabilty: "",
+  availabilty: true,
+  comments: "",
   onlineStoreId: "",
   siteListing: "$",
   dateAdded: "",
@@ -74,7 +75,8 @@ export const InventoriesCreatePage = () => {
           as={Form}
           onOpen={() => setOpen(true)}
           onClose={() => setOpen(false)}
-          open={true}>
+          open={true}
+        >
           <Modal.Header style={{ textAlign: "center" }}>
             Create An Inventory Item
           </Modal.Header>
@@ -98,12 +100,7 @@ export const InventoriesCreatePage = () => {
               <Field id="quantity" name="quantity">
                 {({ field }) => <Input {...field} />}
               </Field>
-              <div>
-                <label htmlFor="availabilty">Availabilty</label>
-              </div>
-              <Field id="availabilty" name="availabilty">
-                {({ field }) => <Input {...field} />}
-              </Field>
+
               <div>
                 <label htmlFor="onlineStoreId">Store Listed at</label>
               </div>
@@ -121,6 +118,12 @@ export const InventoriesCreatePage = () => {
               </div>
               <Field id="dateAdded" name="dateAdded">
                 {({ field }) => <Input {...field} />}
+              </Field>
+              <div>
+                <label htmlFor="comments">Comments</label>
+              </div>
+              <Field id="comments" name="comments">
+                {({ field }) => <TextArea {...field} />}
               </Field>
             </Form>
           </Modal.Content>

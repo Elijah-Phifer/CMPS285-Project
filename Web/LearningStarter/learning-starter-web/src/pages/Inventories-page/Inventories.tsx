@@ -153,8 +153,15 @@ export const InventoriesPage = () => {
                     >
                       <Modal.Header>Comments</Modal.Header>
 
-                      <Modal.Content name="comments" key={inventory.id}>
-                        <Table.Cell> {inventory.comments}</Table.Cell>
+                      <Modal.Content
+                        name="comments"
+                        key={inventory.id}
+                        style={{ textAlign: "center" }}
+                      >
+                        <Table.Cell style={{ textAlign: "center" }}>
+                          {" "}
+                          {inventory.comments}
+                        </Table.Cell>
                       </Modal.Content>
 
                       <Modal.Actions style={{ textAlign: "center" }}>
