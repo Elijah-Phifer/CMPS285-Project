@@ -14,7 +14,8 @@ import { BaseUrl } from "../../../constants/ens-vars";
 import "./BJupdate.css";
 
 export const BulletJournalUpdatePage = () => {
-  const [open, setOpen] = React.useState(false);
+  const [firstOpen, setFirstOpen] = React.useState(false);
+  const [secondOpen, setSecondOpen] = React.useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
   const history = useHistory();
 
@@ -65,12 +66,24 @@ export const BulletJournalUpdatePage = () => {
         console.log(err.message);
       });
     } else {
+      setSecondOpen(false);
+      setFirstOpen(false);
       history.push(routes.bulletJournal.listing); //probably needs to go to listing page
     }
   };
 
   const onClick3 = async () => {
-    setOpen(false);
+    setFirstOpen(false);
+    history.push(routes.bulletJournal.listing);
+  };
+
+  const onClick4 = async () => {
+    setSecondOpen(true);
+  };
+
+  const onClick5 = async () => {
+    setSecondOpen(false);
+    setFirstOpen(false);
     history.push(routes.bulletJournal.listing);
   };
 
@@ -81,8 +94,7 @@ export const BulletJournalUpdatePage = () => {
           <Modal
             basic
             as={Form}
-            onOpen={() => setOpen(true)}
-            onClose={() => setOpen(false)}
+            onClose={() => setFirstOpen(false)}
             open={true}
           >
             <Modal.Header style={{ textAlign: "center" }}>
@@ -108,17 +120,38 @@ export const BulletJournalUpdatePage = () => {
                   </Button>
                   <div style={{ textAlign: "center" }} className="or"></div>
 
-                  <Button className="ui btn-cancel" onClick={onClick2}>
+                  <Button
+                    className="ui btn-cancel"
+                    type="button"
+                    onClick={onClick4}
+                  >
                     Delete
                   </Button>
                 </div>
                 <br />
                 <br />
-                <Button className="ui large button" onClick={onClick3}>
+                <Button
+                  className="ui large button"
+                  type="button"
+                  onClick={onClick3}
+                >
                   Return
                 </Button>
               </span>
             </Modal.Actions>
+
+            <Modal open={secondOpen} size="small">
+              <Modal.Header>Are you sure you want to delete?</Modal.Header>
+              <Modal.Content>
+                <strong>
+                  Deleting an entry is a permenent action that you cannot undo.
+                </strong>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button icon="check" content="Yes, delete" onClick={onClick2} />
+                <Button icon="delete" content="No, cancel" onClick={onClick5} />
+              </Modal.Actions>
+            </Modal>
           </Modal>
         </Formik>
       )}

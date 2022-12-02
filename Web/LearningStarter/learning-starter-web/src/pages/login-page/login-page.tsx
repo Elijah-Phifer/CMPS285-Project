@@ -121,23 +121,25 @@ export const LoginPage = () => {
                     {({ field }) => <Input type="password" {...field} />}
                   </Field>
                 </div>
-                <div className="button-container-login-page">
+
+                <span className="button-container-login-page">
                   <Button className="login-button" type="submit">
                     Login
                   </Button>
-                  <br></br>
-                </div>
+                </span>
               </div>
             </Form>
           </Formik>
+
           <Modal
             basic
             trigger={<Button onClick={() => setOpen(true)}>Register</Button>}
             onOpen={() => setOpen(true)}
             onClose={() => setOpen(false)}
             open={open}
+            style={{ textAlign: "center" }}
           >
-            <Modal.Header>Create an Entry</Modal.Header>
+            <Modal.Header>Create an Account</Modal.Header>
 
             <Modal.Content>
               <Formik initialValues={initialValues1} onSubmit={onSubmit}>
@@ -164,7 +166,7 @@ export const LoginPage = () => {
                     <label htmlFor="password">Password</label>
                   </div>
                   <Field id="password" name="password">
-                    {({ field }) => <Input {...field} />}
+                    {({ field }) => <Input type="password" {...field} />}
                   </Field>
                   <div>
                     <label htmlFor="email">Email</label>
@@ -174,13 +176,18 @@ export const LoginPage = () => {
                   </Field>
                   <div></div>
                   <br></br>
-                  <Button
-                    className="login-button"
-                    type="submit"
-                    //onClick={() => setOpen(false)}
-                  >
-                    Create Account
-                  </Button>
+                  <div>
+                    <Button
+                      className="login-button"
+                      type="submit"
+                      //onClick={() => setOpen(false)}
+                    >
+                      Create Account
+                    </Button>
+                    <br />
+                    <br />
+                    <Button onClick={() => setOpen(false)}>Cancel</Button>
+                  </div>
                 </Form>
               </Formik>
             </Modal.Content>

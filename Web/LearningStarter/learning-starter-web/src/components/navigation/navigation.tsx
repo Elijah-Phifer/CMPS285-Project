@@ -50,88 +50,39 @@ const DesktopNavigation = () => {
 
       {
         text: "Inventory",
-        children: [
-          {
-            text: "Inventory",
-            icon: "user",
-            hide: false,
-            nav: {
-              to: routes.inventory.Inventory,
-            },
-          },
-          {
-            text: "Create a listing",
-            icon: "list",
-            hide: false,
-            nav: {
-              to: routes.inventory.InventoryCreate,
-            },
-          },
-        ],
+        icon: "shop",
+        hide: false,
+        nav: {
+          to: routes.inventory.Inventory,
+        },
       },
       {
         text: "Bullet Journal",
-        children: [
-          {
-            text: "Create",
-            icon: "plus",
-            hide: true,
-            nav: {
-              to: routes.bulletJournal.create,
-            },
-          },
-          {
-            text: "View Your Bullet Journal",
-            icon: "list",
-            hide: false,
-            nav: {
-              to: routes.bulletJournal.listing,
-            },
-          },
-        ],
+
+        icon: "list",
+        hide: false,
+        nav: {
+          to: routes.bulletJournal.listing,
+        },
       },
       {
         text: "Email Newsletters",
-        children: [
-          {
-            text: "Drafts",
-            icon: "list",
-            hide: false,
-            nav: {
-              to: routes.EmailNewsletters.listing,
-            },
-          },
-          {
-            text: "Create",
-            icon: "plus",
-            hide: false,
-            nav: {
-              to: routes.EmailNewsletters.create,
-            },
-          },
-        ],
+
+        icon: "newspaper",
+        hide: false,
+        nav: {
+          to: routes.EmailNewsletters.listing,
+        },
       },
 
       {
         text: "Subscribers",
-        children: [
-          {
-            text: "Listing",
-            icon: "list",
-            hide: false,
-            nav: {
-              to: routes.Subscribers.listing,
-            },
-          },
-          {
-            text: "Create",
-            icon: "plus",
-            hide: false,
-            nav: {
-              to: routes.Subscribers.create,
-            },
-          },
-        ],
+
+        icon: "user",
+        hide: false,
+        nav: {
+          to: routes.Subscribers.listing,
+        },
       },
     ];
   }, []);

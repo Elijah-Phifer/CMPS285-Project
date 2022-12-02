@@ -79,10 +79,9 @@ export const UserCreatePage = () => {
               onOpen={() => setOpen(true)}
               onClose={() => setOpen(false)}
               open={true}
-              style={{ textAlign: "center" }}
             >
               <Modal.Header style={{ textAlign: "center" }}>
-                Create an entry
+                Create an account
               </Modal.Header>
               <Modal.Content style={{ textAlign: "center" }}>
                 <Form>
@@ -108,7 +107,7 @@ export const UserCreatePage = () => {
                     <label htmlFor="password">password</label>
                   </div>
                   <Field id="password" name="password">
-                    {({ field }) => <Input {...field} />}
+                    {({ field }) => <Input password {...field} />}
                   </Field>
                   <div>
                     <label htmlFor="email">emailt</label>

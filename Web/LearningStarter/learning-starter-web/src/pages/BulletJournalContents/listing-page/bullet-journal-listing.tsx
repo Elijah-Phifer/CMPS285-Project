@@ -42,7 +42,8 @@ const initialValues: BulletJournalEntryCreateDTO = {
 };
 
 export const BulletJournalListingPage = () => {
-  const [open, setOpen] = React.useState(false);
+  const [firstOpen, setFirstOpen] = React.useState(false);
+  const [secondOpen, setSecondOpen] = React.useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
   const history = useHistory();
   const [bulletJournalEntries, setBulletJournalEntries] =
@@ -110,12 +111,7 @@ export const BulletJournalListingPage = () => {
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
                 >
-                  Id
-                </Table.HeaderCell>
-                <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                >
-                  isDone
+                  Is it done?
                 </Table.HeaderCell>
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
@@ -140,9 +136,6 @@ export const BulletJournalListingPage = () => {
                     borderColor: "black",
                   }}
                 >
-                  <Table.Cell style={{ color: "white" }}>
-                    {bulletJournalEntry.id}
-                  </Table.Cell>
                   <Table.Cell>
                     <Checkbox
                       name="isDone"
@@ -161,14 +154,14 @@ export const BulletJournalListingPage = () => {
                   <Table.Cell>
                     <Button
                       className="ui icon button"
-                      onClick={() =>
+                      onClick={() => {
                         history.push(
                           routes.bulletJournal.update.replace(
                             ":id",
                             `${bulletJournalEntry.id}`
                           )
-                        )
-                      }
+                        );
+                      }}
                     >
                       <i className="pencil icon"></i>
                     </Button>

@@ -36,29 +36,38 @@ export const LandingPage = () => {
         <Header className="head">Dash Board</Header>
       </div>
 
-      <div className="ui vertical buttons">
+      <div>
         <div>
           <Button
-            className="ui left labeled icon button"
-            onClick={() => history.push(routes.bulletJournal.listing)}>
+            className="ui big left labeled icon button"
+            onClick={() => history.push(routes.bulletJournal.listing)}
+          >
             <i className="list ul icon"></i>
             Check Your Bullet Journal!
           </Button>
         </div>
 
+        <br></br>
+
         <div>
           <Button
-            className="ui left labeled icon button btn-border"
-            onClick={() => history.push(routes.EmailNewsletters.listing)}>
+            className="ui big left labeled icon button btn-border"
+            onClick={() => history.push(routes.EmailNewsletters.listing)}
+            style={{ width: "316px" }}
+          >
             <i className="newspaper icon"></i>
             Draft Up a Newsletter!
           </Button>
         </div>
 
+        <br></br>
+
         <div>
           <Button
-            className="ui left labeled icon button"
-            onClick={() => history.push(routes.inventory.Inventory)}>
+            className="ui big left labeled icon button"
+            onClick={() => history.push(routes.inventory.Inventory)}
+            style={{ width: "316px" }}
+          >
             <i className="shop icon"></i>
             Check Your Inventory!
           </Button>
