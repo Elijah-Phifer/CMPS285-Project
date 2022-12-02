@@ -12,6 +12,7 @@ namespace LearningStarter.Entities
             public string ProductionCost { get; set; }
             public string Quantity { get; set; }
             public Boolean Availabilty { get; set; }
+            public string Comments { get; set; }
             public string SiteListing { get; set; }
             public string DateAdded { get; set; }
             public string OnlineStoreId { get; set; }    
@@ -25,6 +26,7 @@ namespace LearningStarter.Entities
         public string ProductionCost { get; set; }
         public string Quantity { get; set; }
         public Boolean Availabilty { get; set; }
+        public string Comments { get; set; }
         public string OnlineStoreId { get; set; }
         public string SiteListing { get; set; }
         public string DateAdded { get; set; }
@@ -36,7 +38,8 @@ namespace LearningStarter.Entities
             public string ProductionCost { get; set; }
             public string Quantity { get; set; }
             public Boolean Availabilty { get; set; }
-            public string OnlineStoreId { get; set; }
+        public string Comments { get; set; }
+        public string OnlineStoreId { get; set; }
             public string SiteListing { get; set; }
             public string DateAdded { get; set; }
         }
@@ -47,7 +50,8 @@ namespace LearningStarter.Entities
             public string ProductionCost { get; set; }
             public string Quantity { get; set; }
             public Boolean Availabilty { get; set; }
-            public string OnlineStoreId { get; set; }
+        public string Comments { get; set; }
+        public string OnlineStoreId { get; set; }
             public string SiteListing { get; set; }
             public string DateAdded { get; set; }
         }

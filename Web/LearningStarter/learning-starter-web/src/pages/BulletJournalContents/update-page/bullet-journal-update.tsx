@@ -83,8 +83,6 @@ export const BulletJournalUpdatePage = () => {
 
   const onClick5 = async () => {
     setSecondOpen(false);
-    setFirstOpen(false);
-    history.push(routes.bulletJournal.listing);
   };
 
   return (

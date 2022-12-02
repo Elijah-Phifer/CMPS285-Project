@@ -359,6 +359,7 @@ namespace LearningStarter
                     ProductionCost = "$12.32",
                     Quantity = "4", 
                     Availabilty = false,
+                    Comments = "All dresses are at the dry cleaners",
                     OnlineStoreId = "Ebay",
                     SiteListing = "$43.64",
                     DateAdded = "2/3/20",
@@ -368,7 +369,8 @@ namespace LearningStarter
                     ItemName = "Red Heels",
                     ProductionCost = "$2.00",
                     Quantity = "12",
-                    Availabilty = false,
+                    Availabilty = true,
+                    Comments = "Saved for friends wedding",
                     OnlineStoreId = "Etsy",
                     SiteListing = "$35.23",
                     DateAdded = "2/3/22",
@@ -379,6 +381,7 @@ namespace LearningStarter
                     ProductionCost = "$5.00",
                     Quantity = "3",
                     Availabilty = false,
+                    Comments = "Don't buy anymore; They dont sell well",
                     OnlineStoreId = "Ebay",
                     SiteListing = "$9.00",
                     DateAdded = "5/23/20",
@@ -389,6 +392,7 @@ namespace LearningStarter
                     ProductionCost = "$3.76",
                     Quantity = "1",
                     Availabilty = false,
+                    Comments = "Some sucker bought it, make more false rings",
                     OnlineStoreId = "Ebay",
                     SiteListing = "$26.32",
                     DateAdded = "2/3/21",
@@ -398,7 +402,8 @@ namespace LearningStarter
                     ItemName = "Hitch Hiker's guide to the galaxy - the book",
                     ProductionCost = "Free",
                     Quantity = "1",
-                    Availabilty = false,
+                    Availabilty = true,
+                    Comments = "Nobody wants it, ill keep it listed though",
                     OnlineStoreId = "Amazon",
                     SiteListing = "$42.00",
                     DateAdded = "8/1/22",
@@ -427,7 +432,16 @@ namespace LearningStarter
                     Pushes = 0
                 };
 
+                var seededBulletJournalEntry1 = new BulletJournalEntry
+                {
+                    DateCreated = DateTimeOffset.Now,
+                    Contents = "Buy red shoes",
+                    IsDone = false,
+                    Pushes = 0
+                };
+
                 dataContext.BulletJournalEntries.Add(seededBulletJournalEntry);
+                dataContext.BulletJournalEntries.Add(seededBulletJournalEntry1);
                 dataContext.SaveChanges();
             }
 

@@ -17,7 +17,8 @@ import { FormikBag } from "formik";
 import "./email-listing.css";
 
 export const EmailNewsletterUpdatePage = () => {
-  const [open, setOpen] = React.useState(false);
+  const [firstOpen, setFirstOpen] = React.useState(false);
+  const [secondOpen, setSecondOpen] = React.useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
   const history = useHistory();
   let match = useRouteMatch<{ id: string }>();
@@ -61,13 +62,23 @@ export const EmailNewsletterUpdatePage = () => {
         console.log(err.message);
       });
     } else {
+      setSecondOpen(false);
+      setFirstOpen(false);
       history.push(routes.EmailNewsletters.listing);
     }
   };
 
   const Click2 = async () => {
-    setOpen(false);
+    setFirstOpen(false);
     history.push(routes.EmailNewsletters.listing);
+  };
+
+  const onClick4 = async () => {
+    setSecondOpen(true);
+  };
+
+  const onClick5 = async () => {
+    setSecondOpen(false);
   };
 
   return (
@@ -77,8 +88,8 @@ export const EmailNewsletterUpdatePage = () => {
           <Modal
             basic
             as={Form}
-            onOpen={() => setOpen(true)}
-            onClose={() => setOpen(false)}
+            onOpen={() => setFirstOpen(true)}
+            onClose={() => setFirstOpen(false)}
             open={true}
           >
             <Modal.Header style={{ textAlign: "center" }}>
@@ -111,7 +122,11 @@ export const EmailNewsletterUpdatePage = () => {
                   Update
                 </Button>
                 <div style={{ textAlign: "center" }} className="or"></div>
-                <Button className="ui btn-cancel" onClick={Click1}>
+                <Button
+                  className="ui btn-cancel"
+                  type="button"
+                  onClick={onClick4}
+                >
                   Delete
                 </Button>
               </div>
@@ -121,6 +136,18 @@ export const EmailNewsletterUpdatePage = () => {
                 Return
               </Button>
             </Modal.Actions>
+            <Modal open={secondOpen} size="small">
+              <Modal.Header>Are you sure you want to delete?</Modal.Header>
+              <Modal.Content>
+                <strong>
+                  Deleting an entry is a permenent action that you cannot undo.
+                </strong>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button icon="check" content="Yes, delete" onClick={Click1} />
+                <Button icon="delete" content="No, cancel" onClick={onClick5} />
+              </Modal.Actions>
+            </Modal>
           </Modal>
         </Formik>
       )}

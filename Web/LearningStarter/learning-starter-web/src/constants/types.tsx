@@ -49,7 +49,8 @@ export type InventoriesGetDto = {
   itemName: string;
   productionCost: string;
   quantity: string;
-  availabilty: string;
+  availabilty: boolean;
+  comments: string;
   onlineStoreId: string;
   siteListing: string;
   dateAdded: string;
@@ -60,7 +61,8 @@ export type InventoriesCreateDto = {
   itemName: string;
   productionCost: string;
   quantity: string;
-  availabilty: string;
+  availabilty: boolean;
+  comments: string;
   onlineStoreId: string;
   siteListing: string;
   dateAdded: string;
@@ -70,7 +72,8 @@ export type InventoriesUpdateDto = {
   itemName: string;
   productionCost: string;
   quantity: string;
-  availabilty: string;
+  availabilty: boolean;
+  comments: string;
   onlineStoreId: string;
   siteListing: string;
   dateAdded: string;
@@ -81,7 +84,8 @@ export type InventoriesDeleteDto = {
   itemName: string;
   productionCost: string;
   quantity: string;
-  availabilty: string;
+  availabilty: boolean;
+  comments: string;
   onlineStoreId: string;
   siteListing: string;
   dateAdded: string;

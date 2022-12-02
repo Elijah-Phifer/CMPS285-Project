@@ -2,7 +2,7 @@
 import axios from "axios";
 import { O_DIRECTORY } from "constants";
 import { Field, Formik, Form } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import {
   Button,
   Checkbox,
@@ -11,6 +11,7 @@ import {
   Input,
   List,
   Modal,
+  Rating,
   Segment,
   Tab,
   Table,
@@ -118,11 +119,11 @@ export const BulletJournalListingPage = () => {
                 >
                   Contents
                 </Table.HeaderCell>
-                {/* <Table.HeaderCell
-      style={{ backgroundColor: "#44444c", color: "white" }}
-    >
-      Date Created
-</Table.HeaderCell> */}
+                <Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Importance
+                </Table.HeaderCell>
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c" }}
                 ></Table.HeaderCell>
@@ -150,6 +151,9 @@ export const BulletJournalListingPage = () => {
                     />
                   </Table.Cell>
                   <Table.Cell>{bulletJournalEntry.contents}</Table.Cell>
+                  <Table.Cell>
+                    <Rating defaultRating={0} maxRating={4} />
+                  </Table.Cell>
                   {/*<Table.Cell>{bulletJournalEntry.DateCreated}</Table.Cell>*/}
                   <Table.Cell>
                     <Button

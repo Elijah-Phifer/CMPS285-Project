@@ -31,6 +31,7 @@ namespace LearningStarter.Controllers
                 {
                     Id = Inventory.Id,
                     Availabilty = Inventory.Availabilty,
+                    Comments = Inventory.Comments,
                     DateAdded = Inventory.DateAdded,
                     ItemName = Inventory.ItemName,
                     OnlineStoreId = Inventory.OnlineStoreId,
@@ -54,6 +55,7 @@ namespace LearningStarter.Controllers
                 {
                     Id = inventories.Id,
                     Availabilty = inventories.Availabilty,
+                    Comments= inventories.Comments,
                     DateAdded = inventories.DateAdded,
                     ItemName = inventories.ItemName,
                     OnlineStoreId = inventories.OnlineStoreId,
@@ -119,6 +121,7 @@ namespace LearningStarter.Controllers
             var inventoriesToAdd = new Inventories()
             {
                 Availabilty = inventoriesCreateDto.Availabilty,
+                Comments = inventoriesCreateDto.Comments,
                 DateAdded = inventoriesCreateDto.DateAdded,
                 ItemName = inventoriesCreateDto.ItemName,
                 OnlineStoreId = inventoriesCreateDto.OnlineStoreId,
@@ -133,6 +136,7 @@ namespace LearningStarter.Controllers
             {
                 Id = inventoriesToAdd.Id,
                 Availabilty = inventoriesToAdd.Availabilty,
+                Comments = inventoriesToAdd.Comments,
                 DateAdded = inventoriesToAdd.DateAdded,
                 ItemName = inventoriesToAdd.ItemName,
                 OnlineStoreId = inventoriesToAdd.OnlineStoreId,
@@ -161,6 +165,7 @@ namespace LearningStarter.Controllers
                 return BadRequest(response);
             }
             inventoriesToUpdate.Availabilty = inventoriesUpdateDto.Availabilty;
+            inventoriesToUpdate.Comments = inventoriesUpdateDto.Comments;   
             inventoriesToUpdate.DateAdded = inventoriesUpdateDto.DateAdded;
             inventoriesToUpdate.ItemName = inventoriesUpdateDto.ItemName;
             inventoriesToUpdate.ProductionCost = inventoriesUpdateDto.ProductionCost;
@@ -174,6 +179,7 @@ namespace LearningStarter.Controllers
             {
                 Id = inventoriesToUpdate.Id,
                 Availabilty = inventoriesToUpdate.Availabilty,
+                Comments = inventoriesToUpdate.Comments,
                 DateAdded = inventoriesToUpdate.DateAdded,
                 ItemName = inventoriesToUpdate.ItemName,
                 OnlineStoreId = inventoriesToUpdate.OnlineStoreId,
