@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {
@@ -39,61 +40,57 @@ export const InventoriesPage = () => {
           <Header className="thing-tsb-white">Inventories</Header>
           <Button
             className="ui button thing-tsb-white"
-            onClick={() => history.push(routes.inventory.InventoryCreate)}
-          >
+            onClick={() => history.push(routes.inventory.InventoryCreate)}>
             <Icon name="add" />
             Create An Inventory Item
           </Button>
           <Table className="table-format">
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell
+                {/* <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
                 >
                   Id
-                </Table.HeaderCell>
+                </Table.HeaderCell> */}
 
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                >
+                  style={{ backgroundColor: "#44444c", color: "white" }}>
                   Item Name
                 </Table.HeaderCell>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                >
+                  style={{ backgroundColor: "#44444c", color: "white" }}>
                   Production Cost
                 </Table.HeaderCell>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                >
+                  style={{ backgroundColor: "#44444c", color: "white" }}>
                   Quantity
                 </Table.HeaderCell>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                >
+                  style={{ backgroundColor: "#44444c", color: "white" }}>
                   Availability
                 </Table.HeaderCell>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                >
+                  style={{ backgroundColor: "#44444c", color: "white" }}>
                   Store Listed at
                 </Table.HeaderCell>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                >
+                  style={{ backgroundColor: "#44444c", color: "white" }}>
                   Selling Price
                 </Table.HeaderCell>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                >
+                  style={{ backgroundColor: "#44444c", color: "white" }}>
                   Date Added
                 </Table.HeaderCell>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                ></Table.HeaderCell>
+                  style={{
+                    backgroundColor: "#44444c",
+                    color: "white",
+                  }}></Table.HeaderCell>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                ></Table.HeaderCell>
+                  style={{
+                    backgroundColor: "#44444c",
+                    color: "white",
+                  }}></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <TableBody>
@@ -118,8 +115,7 @@ export const InventoriesPage = () => {
                               `${inventory.id}`
                             )
                           )
-                        }
-                      >
+                        }>
                         <Icon name="pencil" />
                       </Button>
                     </Table.Cell>

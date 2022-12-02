@@ -155,24 +155,109 @@ namespace LearningStarter
                 var seededSubscriber = new Subscriber
                 {
                     DateSubscribed = DateTimeOffset.Now,
-                    Name = "First Last",
-                    Email = "email.aol" 
+                    Name = "Fist Larst",
+                    Email = "FL@aol.net",
                 };
                 var seededSubscriber1 = new Subscriber
                 {
                     DateSubscribed = DateTimeOffset.Now,
                     Name = "Kearney Butler",
-                    Email = "kearneybutler@gmail.com"
+                    Email = "kearneybutler95@gmail.com",
                 };
                 var seededSubscriber2 = new Subscriber
                 {
                     DateSubscribed = DateTimeOffset.Now,
-                    Name = "John soe",
-                    Email = "Johnsoe@aol.net"
+                    Name = "Elijah Phifer",
+                    Email = "elijahphifer@selu.edu",
                 };
+                var seededSubscriber3 = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "Aiden Hrenyk",
+                    Email = "aidenhrenyk@selu.edu",
+                };
+                var seededSubscriber4 = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "Kim Jones",
+                    Email = "KimThaBimbo32@yahoo.com",
+                };
+                var seededSubscriber5 = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "Bobby Philips",
+                    Email = "BBoiBob@gmail.com",
+                };
+                var seededSubscriber6 = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "Michael Clayton",
+                    Email = "ImAMovie@yahoo.com",
+                };
+                var seededSubscriber7 = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "Jerry Kaywood",
+                    Email = "JKversion1942@gmail.com",
+                };
+                var seededSubscriber8 = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "Lenora Burton",
+                    Email = "Lgunner@gmail.com",
+                };
+                var seededSubscriber9 = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "David Young",
+                    Email = "MRnobody11@yahoo.com",
+                };
+                var seededSubscriber10 = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "Erica Simms",
+                    Email = "EricaSims90@gmail.com",
+                };
+                var seededSubscriber11 = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "Humphry Gathers",
+                    Email = "DotheHump567@gmail.com",
+                };
+                var seededSubscriber12 = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "Yvone Johnson",
+                    Email = "YvoneJohn@gmail.com",
+                };
+                var seededSubscriber13 = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "Gerald Hope",
+                    Email = "TheGreat1@gmail.com",
+                };
+                var seededSubscriber14 = new Subscriber
+                {
+                    DateSubscribed = DateTimeOffset.Now,
+                    Name = "Kelly Rowe",
+                    Email = "kellythedoll@yahoo.com",
+                };
+
                 dataContext.Subscribers.Add(seededSubscriber);
                 dataContext.Subscribers.Add(seededSubscriber1);
                 dataContext.Subscribers.Add(seededSubscriber2);
+                dataContext.Subscribers.Add(seededSubscriber3);
+                dataContext.Subscribers.Add(seededSubscriber4);
+                dataContext.Subscribers.Add(seededSubscriber5);
+                dataContext.Subscribers.Add(seededSubscriber6);
+                dataContext.Subscribers.Add(seededSubscriber7);
+                dataContext.Subscribers.Add(seededSubscriber8);
+                dataContext.Subscribers.Add(seededSubscriber9);
+                dataContext.Subscribers.Add(seededSubscriber10);
+                dataContext.Subscribers.Add(seededSubscriber11);
+                dataContext.Subscribers.Add(seededSubscriber12);
+                dataContext.Subscribers.Add(seededSubscriber13);
+                dataContext.Subscribers.Add(seededSubscriber14);
                 dataContext.SaveChanges();
             }
         }
@@ -185,9 +270,58 @@ namespace LearningStarter
                 {
                     DateSent = DateTimeOffset.Now,
                     Title = "Welcome!",
-                    Message = "Hi, Welcome to your Virtual Newsletter!" 
+                    Message = "Hi, Welcome to your Virtual Newsletter!...",
+                };
+                var seededEmailNewsletter1 = new EmailNewsletter
+                {
+                    DateSent = DateTimeOffset.Now,
+                    Title = "This Week's Deals!",
+                    Message = "Check out this Week's Deals!...",
+                };
+                var seededEmailNewsletter2 = new EmailNewsletter
+                {
+                    DateSent = DateTimeOffset.Now,
+                    Title = "Best Things to Buy this Month!",
+                    Message = "Here's the Things to buy!...",
+                };
+                var seededEmailNewsletter3 = new EmailNewsletter
+                {
+                    DateSent = DateTimeOffset.Now,
+                    Title = "Deals on Top of Deals!",
+                    Message = "Let's take a look!...",
+                };
+                var seededEmailNewsletter4 = new EmailNewsletter
+                {
+                    DateSent = DateTimeOffset.Now,
+                    Title = "Holiday Deals!",
+                    Message = "Check out these deals for the holidays!...",
+                };
+                var seededEmailNewsletter5 = new EmailNewsletter
+                {
+                    DateSent = DateTimeOffset.Now,
+                    Title = "Happy Thanksgiving!",
+                    Message = "Happy Thansgiving!..."
+                };
+                var seededEmailNewsletter6 = new EmailNewsletter
+                {
+                    DateSent = DateTimeOffset.Now,
+                    Title = "Black Friday Sale!",
+                    Message = "Black Friday is here!...",
+                };
+                var seededEmailNewsletter7 = new EmailNewsletter
+                {
+                    DateSent = DateTimeOffset.Now,
+                    Title = "Merry Christmas!",
+                    Message = "Merry Christmas!...",
                 };
                 dataContext.EmailNewsletters.Add(seededEmailNewsletter);
+                dataContext.EmailNewsletters.Add(seededEmailNewsletter1);
+                dataContext.EmailNewsletters.Add(seededEmailNewsletter2);
+                dataContext.EmailNewsletters.Add(seededEmailNewsletter3);
+                dataContext.EmailNewsletters.Add(seededEmailNewsletter4);
+                dataContext.EmailNewsletters.Add(seededEmailNewsletter5);
+                dataContext.EmailNewsletters.Add(seededEmailNewsletter6);
+                dataContext.EmailNewsletters.Add(seededEmailNewsletter7);
                 dataContext.SaveChanges();
             }
         }

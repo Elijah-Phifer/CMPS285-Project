@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import "./login-page.css";
 import axios from "axios";
 import React, { useMemo, useState } from "react";
@@ -59,6 +60,7 @@ export const LoginPage = () => {
     if (response.data.data) {
       console.log("Successfully Logged In!");
       loginUser();
+      history.push(routes.home);
     }
   }, []);
 
@@ -83,7 +85,7 @@ export const LoginPage = () => {
         console.log(err.message);
       });
     } else {
-      history.push(routes.user.user);
+      history.push(routes.home);
     }
 
     setOpen(false);
@@ -135,7 +137,7 @@ export const LoginPage = () => {
             onClose={() => setOpen(false)}
             open={open}
           >
-            <Modal.Header>Create an entry</Modal.Header>
+            <Modal.Header>Create an Entry</Modal.Header>
 
             <Modal.Content>
               <Formik initialValues={initialValues1} onSubmit={onSubmit}>
@@ -159,13 +161,13 @@ export const LoginPage = () => {
                     {({ field }) => <Input {...field} />}
                   </Field>
                   <div>
-                    <label htmlFor="password">password</label>
+                    <label htmlFor="password">Password</label>
                   </div>
                   <Field id="password" name="password">
                     {({ field }) => <Input {...field} />}
                   </Field>
                   <div>
-                    <label htmlFor="email">emailt</label>
+                    <label htmlFor="email">Email</label>
                   </div>
                   <Field id="email" name="email">
                     {({ field }) => <Input {...field} />}

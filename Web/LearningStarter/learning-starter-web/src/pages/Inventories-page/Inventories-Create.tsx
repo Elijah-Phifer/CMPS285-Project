@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
 import { Field, Form, Formik } from "formik";
 import { Button, Input, Modal } from "semantic-ui-react";
@@ -18,7 +19,7 @@ const initialValues: InventoriesCreateDto = {
   quantity: "",
   availabilty: "",
   onlineStoreId: "",
-  siteListing: "",
+  siteListing: "$",
   dateAdded: "",
 };
 
@@ -73,8 +74,7 @@ export const InventoriesCreatePage = () => {
           as={Form}
           onOpen={() => setOpen(true)}
           onClose={() => setOpen(false)}
-          open={true}
-        >
+          open={true}>
           <Modal.Header style={{ textAlign: "center" }}>
             Create An Inventory Item
           </Modal.Header>
@@ -87,7 +87,7 @@ export const InventoriesCreatePage = () => {
                 {({ field }) => <Input {...field} />}
               </Field>
               <div>
-                <label htmlFor="productionCost">production Cost</label>
+                <label htmlFor="productionCost">Production Cost</label>
               </div>
               <Field id="productionCost" name="productionCost">
                 {({ field }) => <Input {...field} />}

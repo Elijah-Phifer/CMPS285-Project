@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
@@ -76,8 +78,7 @@ export const InventoriesUpdatePage = () => {
             as={Form}
             onOpen={() => setOpen(true)}
             onClose={() => setOpen(false)}
-            open={true}
-          >
+            open={true}>
             <Modal.Header style={{ textAlign: "center" }}>
               Edit Your Inventory Item
             </Modal.Header>
