@@ -2,7 +2,7 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { Button, Input, Modal, Table } from "semantic-ui-react";
+import { Button, Input, Modal, Table, TextArea } from "semantic-ui-react";
 import {
   ApiResponse,
   EmailNewsletterGetDto,
@@ -96,7 +96,12 @@ export const EmailNewsletterUpdatePage = () => {
                   <label htmlFor="message">Message</label>
                 </div>
                 <Field id="message" name="message">
-                  {({ field }) => <Input {...field} />}
+                  {({ field }) => (
+                    <TextArea
+                      style={{ minHeight: 300, minWidth: 300 }}
+                      {...field}
+                    />
+                  )}
                 </Field>
               </Form>
             </Modal.Content>
