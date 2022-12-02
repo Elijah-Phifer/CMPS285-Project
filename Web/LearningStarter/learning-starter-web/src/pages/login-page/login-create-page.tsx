@@ -79,9 +79,12 @@ export const UserCreatePage = () => {
               onOpen={() => setOpen(true)}
               onClose={() => setOpen(false)}
               open={true}
+              style={{ textAlign: "center" }}
             >
-              <Modal.Header>Create an entry</Modal.Header>
-              <Modal.Content>
+              <Modal.Header style={{ textAlign: "center" }}>
+                Create an entry
+              </Modal.Header>
+              <Modal.Content style={{ textAlign: "center" }}>
                 <Form>
                   <div>
                     <label htmlFor="firstName">First Name</label>
@@ -115,7 +118,7 @@ export const UserCreatePage = () => {
                   </Field>
                 </Form>
               </Modal.Content>
-              <Modal.Actions>
+              <Modal.Actions style={{ textAlign: "center" }}>
                 <div className="ui large buttons">
                   <Button type="submit" className="ui btn thing-tsb-white">
                     Save
