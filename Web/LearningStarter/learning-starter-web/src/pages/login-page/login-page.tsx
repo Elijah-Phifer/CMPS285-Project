@@ -122,12 +122,15 @@ export const LoginPage = () => {
                   </Field>
                 </div>
 
+                <br></br>
+
                 <span className="button-container-login-page">
                   <Button className="login-button" type="submit">
                     Login
                   </Button>
                 </span>
               </div>
+              <br></br>
             </Form>
           </Formik>
 
@@ -176,6 +179,7 @@ export const LoginPage = () => {
                   </Field>
                   <div></div>
                   <br></br>
+
                   <div>
                     <Button
                       className="login-button"

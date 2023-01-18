@@ -119,11 +119,11 @@ export const BulletJournalListingPage = () => {
                 >
                   Contents
                 </Table.HeaderCell>
-                <Table.HeaderCell
+                {/*<Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
                 >
                   Importance
-                </Table.HeaderCell>
+                </Table.HeaderCell>*/}
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c" }}
                 ></Table.HeaderCell>
@@ -151,9 +151,9 @@ export const BulletJournalListingPage = () => {
                     />
                   </Table.Cell>
                   <Table.Cell>{bulletJournalEntry.contents}</Table.Cell>
-                  <Table.Cell>
+                  {/*<Table.Cell>
                     <Rating defaultRating={0} maxRating={4} />
-                  </Table.Cell>
+                  </Table.Cell>*/}
                   {/*<Table.Cell>{bulletJournalEntry.DateCreated}</Table.Cell>*/}
                   <Table.Cell>
                     <Button
