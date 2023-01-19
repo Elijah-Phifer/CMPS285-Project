@@ -35,7 +35,7 @@ const initialValues: BulletJournalEntryCreateDTO = {
   //need to add date created
   isDone: false,
 
-  /*DateCreated: Now,*/
+  /*DateCreated: -Now,*/
 
   DateCreated: new Date(),
 };
@@ -102,7 +102,8 @@ export const BulletJournalCreatePage = () => {
           as={Form}
           onOpen={() => setOpen(true)}
           onClose={() => setOpen(false)}
-          open={true}>
+          open={true}
+        >
           <Modal.Header style={{ textAlign: "center" }}>
             Create An Entry
           </Modal.Header>
@@ -115,7 +116,8 @@ export const BulletJournalCreatePage = () => {
                 id="contents"
                 name="contents"
                 type="input"
-                placeHolder="Do Something">
+                placeHolder="Do Something"
+              >
                 {({ field }) => <Input className="ui fluid input" {...field} />}
               </Field>
             </Form>
@@ -194,15 +196,18 @@ export const BulletJournalCreateListing = () => {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}>
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
                   Id
                 </Table.HeaderCell>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}>
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
                   isDone
                 </Table.HeaderCell>
                 <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}>
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
                   Contents
                 </Table.HeaderCell>
               </Table.Row>
@@ -214,7 +219,8 @@ export const BulletJournalCreateListing = () => {
                     key={bulletJournalEntry.id}
                     style={{
                       borderColor: "black",
-                    }}>
+                    }}
+                  >
                     <Table.Cell style={{ color: "white" }}>
                       {bulletJournalEntry.id}
                     </Table.Cell>
