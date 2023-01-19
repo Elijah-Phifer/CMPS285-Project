@@ -3,7 +3,14 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { Button, Input, Label, Modal, Table } from "semantic-ui-react";
+import {
+  Button,
+  Input,
+  Label,
+  Modal,
+  Table,
+  TextArea,
+} from "semantic-ui-react";
 import {
   ApiResponse,
   InventoriesUpdateDto,
@@ -18,7 +25,8 @@ import { routes } from "../../routes/config";
 import "./Inventories-Update-Page.css";
 
 export const InventoriesUpdatePage = () => {
-  const [open, setOpen] = React.useState(false);
+  const [firstOpen, setFirstOpen] = React.useState(false);
+  const [secondOpen, setSecondOpen] = React.useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
   let match = useRouteMatch<{ id: number }>();
   const id = match.params.id;
@@ -60,13 +68,23 @@ export const InventoriesUpdatePage = () => {
         console.log(err.message);
       });
     } else {
+      setSecondOpen(false);
+      setFirstOpen(false);
       history.push(routes.inventory.Inventory);
     }
   };
 
-  const Click2 = async () => {
-    setOpen(false);
+  const onClick3 = async () => {
+    setFirstOpen(false);
     history.push(routes.inventory.Inventory);
+  };
+
+  const onClick4 = async () => {
+    setSecondOpen(true);
+  };
+
+  const onClick5 = async () => {
+    setSecondOpen(false);
   };
 
   return (
@@ -76,9 +94,10 @@ export const InventoriesUpdatePage = () => {
           <Modal
             basic
             as={Form}
-            onOpen={() => setOpen(true)}
-            onClose={() => setOpen(false)}
-            open={true}>
+            onOpen={() => setFirstOpen(true)}
+            onClose={() => setFirstOpen(false)}
+            open={true}
+          >
             <Modal.Header style={{ textAlign: "center" }}>
               Edit Your Inventory Item
             </Modal.Header>
@@ -103,10 +122,10 @@ export const InventoriesUpdatePage = () => {
                   {({ field }) => <Input {...field} />}
                 </Field>
                 <div>
-                  <label htmlFor="availabilty">Availabilty</label>
+                  <label htmlFor="comments">Comments</label>
                 </div>
-                <Field id="availabilty" name="availabilty">
-                  {({ field }) => <Input {...field} />}
+                <Field id="comments" name="comments">
+                  {({ field }) => <TextArea {...field} />}
                 </Field>
                 <div>
                   <label htmlFor="onlineStoreId">Store Listed at</label>
@@ -134,16 +153,32 @@ export const InventoriesUpdatePage = () => {
                   Update
                 </Button>
                 <div style={{ textAlign: "center" }} className="or"></div>
-                <Button className="ui btn-cancel" onClick={Click1}>
+                <Button
+                  className="ui btn-cancel"
+                  type="button"
+                  onClick={onClick4}
+                >
                   Delete
                 </Button>
               </div>
               <br />
               <br />
-              <Button className="ui large button" onClick={Click2}>
+              <Button className="ui large button" onClick={onClick3}>
                 Return
               </Button>
             </Modal.Actions>
+            <Modal open={secondOpen} size="small">
+              <Modal.Header>Are you sure you want to delete?</Modal.Header>
+              <Modal.Content>
+                <strong>
+                  Deleting an entry is a permenent action that you cannot undo.
+                </strong>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button icon="check" content="Yes, delete" onClick={Click1} />
+                <Button icon="delete" content="No, cancel" onClick={onClick5} />
+              </Modal.Actions>
+            </Modal>
           </Modal>
         </Formik>
       )}

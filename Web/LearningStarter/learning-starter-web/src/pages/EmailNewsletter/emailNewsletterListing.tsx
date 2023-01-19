@@ -61,11 +61,6 @@ export const EmailNewslettersPage = () => {
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
                 >
-                  Id
-                </Table.HeaderCell>
-                <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                >
                   Title
                 </Table.HeaderCell>
                 <Table.HeaderCell
@@ -76,7 +71,7 @@ export const EmailNewslettersPage = () => {
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
                 >
-                  Date Sent
+                  Date Created
                 </Table.HeaderCell>
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
@@ -88,7 +83,6 @@ export const EmailNewslettersPage = () => {
                 return (
                   <>
                     <Table.Row>
-                      <Table.Cell>{emailNewsletter.id}</Table.Cell>
                       <Table.Cell>{emailNewsletter.title} </Table.Cell>
                       <Table.Cell>{emailNewsletter.message}</Table.Cell>
                       <Table.Cell>{emailNewsletter.dateSent}</Table.Cell>

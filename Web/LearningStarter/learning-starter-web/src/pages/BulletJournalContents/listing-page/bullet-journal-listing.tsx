@@ -2,7 +2,7 @@
 import axios from "axios";
 import { O_DIRECTORY } from "constants";
 import { Field, Formik, Form } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import {
   Button,
   Checkbox,
@@ -11,6 +11,7 @@ import {
   Input,
   List,
   Modal,
+  Rating,
   Segment,
   Tab,
   Table,
@@ -42,7 +43,8 @@ const initialValues: BulletJournalEntryCreateDTO = {
 };
 
 export const BulletJournalListingPage = () => {
-  const [open, setOpen] = React.useState(false);
+  const [firstOpen, setFirstOpen] = React.useState(false);
+  const [secondOpen, setSecondOpen] = React.useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
   const history = useHistory();
   const [bulletJournalEntries, setBulletJournalEntries] =
@@ -110,23 +112,18 @@ export const BulletJournalListingPage = () => {
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
                 >
-                  Id
-                </Table.HeaderCell>
-                <Table.HeaderCell
-                  style={{ backgroundColor: "#44444c", color: "white" }}
-                >
-                  isDone
+                  Is it done?
                 </Table.HeaderCell>
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c", color: "white" }}
                 >
                   Contents
                 </Table.HeaderCell>
-                {/* <Table.HeaderCell
-      style={{ backgroundColor: "#44444c", color: "white" }}
-    >
-      Date Created
-</Table.HeaderCell> */}
+                {/*<Table.HeaderCell
+                  style={{ backgroundColor: "#44444c", color: "white" }}
+                >
+                  Importance
+                </Table.HeaderCell>*/}
                 <Table.HeaderCell
                   style={{ backgroundColor: "#44444c" }}
                 ></Table.HeaderCell>
@@ -140,9 +137,6 @@ export const BulletJournalListingPage = () => {
                     borderColor: "black",
                   }}
                 >
-                  <Table.Cell style={{ color: "white" }}>
-                    {bulletJournalEntry.id}
-                  </Table.Cell>
                   <Table.Cell>
                     <Checkbox
                       name="isDone"
@@ -157,18 +151,21 @@ export const BulletJournalListingPage = () => {
                     />
                   </Table.Cell>
                   <Table.Cell>{bulletJournalEntry.contents}</Table.Cell>
+                  {/*<Table.Cell>
+                    <Rating defaultRating={0} maxRating={4} />
+                  </Table.Cell>*/}
                   {/*<Table.Cell>{bulletJournalEntry.DateCreated}</Table.Cell>*/}
                   <Table.Cell>
                     <Button
                       className="ui icon button"
-                      onClick={() =>
+                      onClick={() => {
                         history.push(
                           routes.bulletJournal.update.replace(
                             ":id",
                             `${bulletJournalEntry.id}`
                           )
-                        )
-                      }
+                        );
+                      }}
                     >
                       <i className="pencil icon"></i>
                     </Button>

@@ -80,8 +80,10 @@ export const UserCreatePage = () => {
               onClose={() => setOpen(false)}
               open={true}
             >
-              <Modal.Header>Create an entry</Modal.Header>
-              <Modal.Content>
+              <Modal.Header style={{ textAlign: "center" }}>
+                Create an account
+              </Modal.Header>
+              <Modal.Content style={{ textAlign: "center" }}>
                 <Form>
                   <div>
                     <label htmlFor="firstName">First Name</label>
@@ -105,7 +107,7 @@ export const UserCreatePage = () => {
                     <label htmlFor="password">password</label>
                   </div>
                   <Field id="password" name="password">
-                    {({ field }) => <Input {...field} />}
+                    {({ field }) => <Input password {...field} />}
                   </Field>
                   <div>
                     <label htmlFor="email">emailt</label>
@@ -115,7 +117,7 @@ export const UserCreatePage = () => {
                   </Field>
                 </Form>
               </Modal.Content>
-              <Modal.Actions>
+              <Modal.Actions style={{ textAlign: "center" }}>
                 <div className="ui large buttons">
                   <Button type="submit" className="ui btn thing-tsb-white">
                     Save

@@ -39,7 +39,8 @@ export const SubscribersPage = () => {
                 type="text"
                 placeholder="Search Subscribers..."
                 className="ui left icon input loading"
-                id="abId0.6393624643593341"></Input>
+                id="abId0.6393624643593341"
+              ></Input>
             </span>
           </div>
           <Header className="thing-tsb-white">Subscribers</Header>
@@ -53,19 +54,18 @@ export const SubscribersPage = () => {
           <Table className="table-format">
             <Table.Header>
               <Table.HeaderCell
-                style={{ backgroundColor: "#44444c", color: "white" }}>
-                Id
-              </Table.HeaderCell>
-              <Table.HeaderCell
-                style={{ backgroundColor: "#44444c", color: "white" }}>
+                style={{ backgroundColor: "#44444c", color: "white" }}
+              >
                 Name
               </Table.HeaderCell>
               <Table.HeaderCell
-                style={{ backgroundColor: "#44444c", color: "white" }}>
+                style={{ backgroundColor: "#44444c", color: "white" }}
+              >
                 Email
               </Table.HeaderCell>
               <Table.HeaderCell
-                style={{ backgroundColor: "#44444c", color: "white" }}>
+                style={{ backgroundColor: "#44444c", color: "white" }}
+              >
                 Date Subscribed
               </Table.HeaderCell>
             </Table.Header>
@@ -74,7 +74,6 @@ export const SubscribersPage = () => {
                 return (
                   <>
                     <Table.Row>
-                      <Table.Cell>{subscriber.id}</Table.Cell>
                       <Table.Cell>{subscriber.name} </Table.Cell>
                       <Table.Cell>{subscriber.email}</Table.Cell>
                       <Table.Cell>{subscriber.dateSubscribed}</Table.Cell>
@@ -88,7 +87,8 @@ export const SubscribersPage = () => {
                                 `${subscriber.id}`
                               )
                             )
-                          }>
+                          }
+                        >
                           <i className="pencil alternate icon"></i>
                         </Button>
                       </Table.Cell>
